@@ -77,18 +77,10 @@
                         </div>
 
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            <div class="bg-[#dbeafe] p-4 rounded-xl shadow-inner h-80">
-                                <canvas id="chartWeight"></canvas>
-                            </div>
-                            <div class="bg-[#dbeafe] p-4 rounded-xl shadow-inner h-80">
-                                <canvas id="chartADG"></canvas>
-                            </div>
-                            <div class="bg-[#dbeafe] p-4 rounded-xl shadow-inner h-80">
-                                <canvas id="chartBiomass"></canvas>
-                            </div>
-                            <div class="bg-[#dbeafe] p-4 rounded-xl shadow-inner h-80">
-                                <canvas id="chartLength"></canvas>
-                            </div>
+                            <div class="bg-[#dbeafe] p-4 rounded-xl shadow-inner h-80"><canvas id="chartWeight"></canvas></div>
+                            <div class="bg-[#dbeafe] p-4 rounded-xl shadow-inner h-80"><canvas id="chartADG"></canvas></div>
+                            <div class="bg-[#dbeafe] p-4 rounded-xl shadow-inner h-80"><canvas id="chartBiomass"></canvas></div>
+                            <div class="bg-[#dbeafe] p-4 rounded-xl shadow-inner h-80"><canvas id="chartLength"></canvas></div>
                         </div>
                     </div>
 
@@ -175,8 +167,12 @@
                             <h3 class="text-lg font-semibold mb-5 text-slate-700"><i class="fa-solid fa-droplet text-cyan-500 mr-2"></i>Water Quality Log</h3>
                             <form class="space-y-5">
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Zone/Pond ID</label>
-                                    <select class="block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2.5 border bg-slate-50"><option>Pond A</option></select>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Zone/Location ID</label>
+                                    <select class="block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2.5 border bg-slate-50">
+                                        <option>Ekas, Lombok</option>
+                                        <option>Kei Islands</option>
+                                        <option>Rote Island</option>
+                                    </select>
                                 </div>
                                 <div class="grid grid-cols-2 gap-5">
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">Temperature (°C)</label><input type="number" class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-50"></div>
@@ -188,7 +184,7 @@
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                             <h3 class="text-lg font-semibold mb-5 text-slate-700"><i class="fa-solid fa-fish-fins text-emerald-500 mr-2"></i>Manual Sampling Log</h3>
                             <form class="space-y-5">
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Species Focus</label><select class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-50"><option>Fish</option><option>Lobster</option></select></div>
+                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Species Focus</label><select class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-50"><option>Fish</option><option>Lobster</option><option>Seaweed</option></select></div>
                                 <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Count (n)</label><input type="number" class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-50"></div>
                                 <button type="button" class="bg-slate-800 text-white px-4 py-3 rounded-lg hover:bg-slate-700 transition w-full font-medium mt-4">Submit Manual Sample</button>
                             </form>
@@ -271,7 +267,6 @@
             });
         }
 
-        // Init the 4 IMTA Charts
         createChart('chartWeight', 'Mean Body Weight (gr)', [
             [8, 10, 11, 13, 18, 38], [8, 12, 11, 14, 17, 36], 
             [8, 9, 12, 13, 22, 40], [8, 9, 10, 13, 17, 33], [8, 8, 10, 14, 18, 30]
@@ -289,10 +284,19 @@
             [6, 7.5, 8, 8, 9.8, 11], [6, 8.2, 8, 8.8, 10.2, 10.8], [6, 8.5, 8.5, 8.5, 10.5, 11.5]
         ]);
 
-        // --- Leaflet Map Initialization ---
-        const map = L.map('map').setView([-2.5489, 118.0149], 5);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-        L.marker([-6.2088, 106.8456]).addTo(map).bindPopup('<b>Pond A Node</b>');
+        // --- Leaflet Map Initialization (Updated Locations) ---
+        // Centered over central/eastern Indonesia to show all three locations
+        const map = L.map('map').setView([-8.0, 124.0], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Ekas, Lombok
+        L.marker([-8.868, 116.452]).addTo(map).bindPopup('<b>Ekas, Lombok Node</b><br>DO: 6.5 mg/L<br>Temp: 28°C<br>Focus: Lobster/Seaweed');
+        // Kei Islands
+        L.marker([-5.756, 132.732]).addTo(map).bindPopup('<b>Kei Islands Node</b><br>DO: 5.9 mg/L<br>Temp: 29°C<br>Focus: Seaweed/IMTA');
+        // Rote Island
+        L.marker([-10.733, 123.113]).addTo(map).bindPopup('<b>Rote Island Node</b><br>DO: 6.8 mg/L<br>Temp: 27.5°C<br>Focus: Seaweed');
     </script>
 </body>
 </html>
