@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaOps Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-slate-900 text-white flex flex-col hidden md:flex">
+        <div class="p-6 border-b border-slate-700">
+            <h1 class="text-2xl font-bold tracking-wider"><i class="fa-solid fa-water text-blue-400 mr-2"></i>AquaOps</h1>
+            <p class="text-xs text-slate-400 mt-1">Farm Management System</p>
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+            <a href="#" class="block px-4 py-3 bg-blue-600 rounded-lg shadow"><i class="fa-solid fa-chart-line mr-3"></i> Dashboard</a>
+            <a href="#" class="block px-4 py-3 hover:bg-slate-800 rounded-lg transition"><i class="fa-solid fa-desktop mr-3"></i> IoT Map</a>
+            <a href="#" class="block px-4 py-3 hover:bg-slate-800 rounded-lg transition"><i class="fa-solid fa-clipboard-list mr-3"></i> Field Sampling</a>
+            <a href="#" class="block px-4 py-3 hover:bg-slate-800 rounded-lg transition"><i class="fa-solid fa-camera mr-3"></i> Vision & Biomass</a>
+        </nav>
+        <div class="p-4 border-t border-slate-700 text-xs text-slate-400">
+            <p>Syncing to ThingsBoard CE: <span class="text-green-400">Active</span></p>
+        </div>
+    </aside>
+
+    <main class="flex-1 overflow-y-auto">
+        <header class="bg-white shadow-sm p-4 flex justify-between items-center sticky top-0 z-10">
+            <h2 class="text-xl font-semibold text-slate-700">Farm Overview</h2>
+            <div class="flex space-x-4">
+                <button class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
+                    <i class="fa-solid fa-file-export mr-2"></i>Export to Looker Studio
+                </button>
+            </div>
+        </header>
+
+        <div class="p-6 space-y-6 max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-semibold mb-4"><i class="fa-solid fa-map-location-dot text-blue-500 mr-2"></i>Live IoT Sensor Map</h3>
+                    <div id="map" class="h-80 w-full rounded-lg bg-slate-100 z-0"></div>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-semibold mb-4"><i class="fa-solid fa-microchip text-indigo-500 mr-2"></i>Vision Analysis (Biomass & ID)</h3>
+                    
+                    <div class="border-2 border-dashed border-slate-300 rounded-lg p-6 text-center hover:bg-slate-50 transition cursor-pointer">
+                        <i class="fa-solid fa-cloud-arrow-up text-4xl text-slate-400 mb-2"></i>
+                        <p class="text-slate-600">Drag & drop sampling image or click to upload</p>
+                        <p class="text-xs text-slate-400 mt-1">Supports seaweed identification, fish/lobster length measurement</p>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                            <p class="text-xs text-slate-500 uppercase">Detection Result</p>
+                            <p class="font-semibold">Gracilaria sp.</p>
+                            <p class="text-xs text-green-600 mt-1">98% Confidence</p>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                            <p class="text-xs text-slate-500 uppercase">Est. Biomass (L-W Relation)</p>
+                            <p class="font-semibold text-blue-600">~145.2 grams</p>
+                            <p class="text-xs text-slate-400 mt-1">Length measured: 22.4 cm</p>
+                        </div>
+                    </div>
+                    <button class="w-full mt-4 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded transition">
+                        Run Cloud Processing
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-semibold mb-4"><i class="fa-solid fa-droplet text-cyan-500 mr-2"></i>Water Quality Log</h3>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Zone/Pond ID</label>
+                                <select class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                                    <option>Pond A (Max Revenue)</option>
+                                    <option>Pond B (Max Food)</option>
+                                    <option>Pond C (Cleanest Farm)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Temperature (°C)</label>
+                                <input type="number" step="0.1" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="e.g., 28.5">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Dissolved Oxygen (mg/L)</label>
+                                <input type="number" step="0.1" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="e.g., 6.2">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Salinity (ppt)</label>
+                                <input type="number" step="0.1" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="e.g., 30">
+                            </div>
+                        </div>
+                        <button type="button" class="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition w-full">Submit Water Data</button>
+                    </form>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-semibold mb-4"><i class="fa-solid fa-fish-fins text-emerald-500 mr-2"></i>Manual Sampling Log</h3>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Species Focus</label>
+                                <select class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                                    <option>Fish</option>
+                                    <option>Lobster</option>
+                                    <option>Sea Cucumber (H. scabra)</option>
+                                    <option>Oyster (C. iredalei)</option>
+                                    <option>Seaweed</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Sample Count</label>
+                                <input type="number" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="Number of items">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Avg Length (cm)</label>
+                                <input type="number" step="0.1" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="Manual entry">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Avg Weight (g)</label>
+                                <input type="number" step="0.1" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="Manual entry">
+                            </div>
+                        </div>
+                        <button type="button" class="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition w-full">Submit Manual Sample</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 mb-8">
+                <h3 class="text-lg font-semibold mb-4"><i class="fa-solid fa-chart-area text-purple-500 mr-2"></i>Data Correlation: Water Quality vs. Biomass Growth</h3>
+                <div class="w-full h-72">
+                    <canvas id="correlationChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Initialize Leaflet Map (Mocking ESP32 Node locations)
+        const map = L.map('map').setView([-2.5489, 118.0149], 5); // Centered roughly on Indonesia
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Mock IoT Device Markers
+        L.marker([-6.2088, 106.8456]).addTo(map).bindPopup('<b>Node 1 (ESP32)</b><br>DO: 6.5 mg/L<br>Temp: 28°C');
+        L.marker([-7.2504, 112.7688]).addTo(map).bindPopup('<b>Node 2 (ESP32)</b><br>DO: 5.9 mg/L<br>Temp: 29°C');
+        L.marker([-8.4095, 115.1889]).addTo(map).bindPopup('<b>Node 3 (ESP32)</b><br>DO: 6.8 mg/L<br>Temp: 27.5°C');
+
+        // Initialize Chart.js for Correlation Data
+        const ctx = document.getElementById('correlationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+                datasets: [
+                    {
+                        label: 'Average Biomass (grams)',
+                        data: [120, 135, 142, 160, 185, 210],
+                        borderColor: 'rgb(79, 70, 229)', // Indigo
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        yAxisID: 'y',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Dissolved Oxygen (mg/L)',
+                        data: [6.1, 6.3, 5.8, 6.5, 6.7, 6.6],
+                        borderColor: 'rgb(6, 182, 212)', // Cyan
+                        yAxisID: 'y1',
+                        borderDash: [5, 5],
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: { display: true, text: 'Biomass (g)' }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: { display: true, text: 'DO (mg/L)' },
+                        grid: { drawOnChartArea: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
