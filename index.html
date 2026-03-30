@@ -61,9 +61,6 @@
     <main class="flex-1 flex flex-col h-screen overflow-hidden">
         <header class="bg-white shadow-sm p-4 flex justify-between items-center z-10">
             <h2 id="page-title" class="text-xl font-semibold text-slate-700">Correlation Analysis Dashboard</h2>
-            <button class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition flex items-center text-sm font-medium">
-                <i class="fa-solid fa-file-export mr-2"></i>Export to Looker Studio
-            </button>
         </header>
 
         <div class="flex-1 overflow-y-auto p-6 bg-[#f4f7f9]">
@@ -129,8 +126,26 @@
                         <h3 class="text-xl font-bold mb-6 text-slate-800 border-b pb-4"><i class="fa-solid fa-clipboard-check text-blue-500 mr-2"></i>Daily Field Sampling Log</h3>
                         <form class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-4 rounded-lg border border-slate-100">
-                                <div><label class="block text-sm font-semibold text-slate-700 mb-2">Sampling Date</label><input type="date" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                <div><label class="block text-sm font-semibold text-slate-700 mb-2">Cage Code</label><input type="text" placeholder="e.g., C1F" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm font-mono uppercase"></div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Sampling Date</label>
+                                    <input type="date" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Cage Code</label>
+                                    <select class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm font-mono font-bold">
+                                        <option value="" disabled selected>Select Cage</option>
+                                        <option value="C1F">C1F</option>
+                                        <option value="C2F">C2F</option>
+                                        <option value="EX1F">EX1F</option>
+                                        <option value="H2F">H2F</option>
+                                        <option value="H1F">H1F</option>
+                                        <option value="C1L">C1L</option>
+                                        <option value="C2L">C2L</option>
+                                        <option value="EX1L">EX1L</option>
+                                        <option value="H2L">H2L</option>
+                                        <option value="H1L">H1L</option>
+                                    </select>
+                                </div>
                             </div>
                             <div>
                                 <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 mt-2">Water Quality Parameters</h4>
@@ -150,15 +165,25 @@
                 <div id="view-stocking" class="page-view hidden space-y-6">
                     <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto">
                         <h3 class="text-xl font-bold mb-6 text-slate-800 border-b pb-4"><i class="fa-solid fa-box-open text-indigo-500 mr-2"></i>Initial Stocking Record</h3>
-                        
                         <form class="space-y-8">
-                            
                             <div>
                                 <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">1. General Information</h4>
                                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-50 p-5 rounded-lg border border-slate-100">
                                     <div>
                                         <label class="block text-sm font-semibold text-slate-700 mb-1">Cage Code</label>
-                                        <input type="text" placeholder="e.g., C1F" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm font-mono uppercase">
+                                        <select class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm font-mono font-bold">
+                                            <option value="" disabled selected>Select Cage</option>
+                                            <option value="C1F">C1F</option>
+                                            <option value="C2F">C2F</option>
+                                            <option value="EX1F">EX1F</option>
+                                            <option value="H2F">H2F</option>
+                                            <option value="H1F">H1F</option>
+                                            <option value="C1L">C1L</option>
+                                            <option value="C2L">C2L</option>
+                                            <option value="EX1L">EX1L</option>
+                                            <option value="H2L">H2L</option>
+                                            <option value="H1L">H1L</option>
+                                        </select>
                                     </div>
                                     <div class="md:col-span-2">
                                         <label class="block text-sm font-semibold text-slate-700 mb-1">Species</label>
@@ -229,7 +254,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="pt-4 border-t border-slate-200">
                                 <button type="button" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 shadow-md transition w-full md:w-auto font-semibold">
                                     <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Register New Stock
@@ -250,9 +274,44 @@
 
                 <div id="view-batch" class="page-view hidden h-full">
                     <div class="flex h-[calc(100vh-120px)] bg-[#0e1117] rounded-xl overflow-hidden shadow-lg border border-slate-300">
+                        <div class="w-80 bg-[#262730] p-6 flex flex-col border-r border-[#3a3b45] text-slate-200 dark-scrollbar overflow-y-auto">
+                            <h3 class="text-xl font-bold text-white mb-6">Settings</h3>
+                            <div class="mb-6"><label class="text-sm block mb-2 text-slate-300">Select Species</label><select class="w-full bg-[#0e1117] border border-[#3a3b45] text-white p-2.5 rounded"><option>Silver Pompano (Trachinotus...)</option></select></div>
+                            <div class="mb-8">
+                                <label class="text-sm block text-slate-400 mb-4">Measure Total Length</label>
+                                <label class="text-sm block mb-2 text-slate-300">Ruler Reference (cm)</label>
+                                <div class="flex items-center bg-[#0e1117] border border-[#3a3b45] rounded p-1"><input type="number" value="1.00" class="bg-transparent text-white w-full p-2 outline-none"></div>
+                            </div>
+                            
+                            <hr class="border-[#3a3b45] mb-6">
+
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-4">Results & Uniformity</h3>
+                                <div class="bg-[#1e253c] border border-[#2d3753] rounded-lg p-4 text-sm text-slate-300 shadow-inner">
+                                    <div class="flex justify-between mb-3 pb-3 border-b border-[#2d3753]">
+                                        <span class="text-slate-400">Total Fish Detected</span>
+                                        <span class="font-bold text-white">--</span>
+                                    </div>
+                                    <div class="flex justify-between mb-3 pb-3 border-b border-[#2d3753]">
+                                        <span class="text-slate-400">Avg Length</span>
+                                        <span class="font-bold text-blue-400">-- cm</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-400">Uniformity (CV)</span>
+                                        <span class="font-bold text-green-400">-- %</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="flex-1 p-10 overflow-y-auto dark-scrollbar max-w-4xl text-white">
                             <h2 class="text-4xl font-bold mb-8">🐟 Multi-Fish Batch Processor</h2>
-                            <div class="mb-6 border border-[#3a3b45] bg-[#262730] rounded p-6 flex justify-between cursor-pointer">Drag and drop files here</div>
+                            <div class="mb-6 border border-[#3a3b45] bg-[#262730] rounded p-6 flex justify-between cursor-pointer">
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-cloud-arrow-up text-3xl text-slate-400 mr-5"></i>
+                                    <div><p class="text-white font-medium text-lg">Drag and drop files here</p></div>
+                                </div>
+                                <button class="bg-[#0e1117] border border-[#3a3b45] text-slate-200 px-5 py-2 rounded">Browse files</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -302,7 +361,6 @@
             }
         }
 
-        // Charts and Map implementations remain the same below...
         const commonOptions = { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false } };
         new Chart(document.getElementById('chartSalinityPH').getContext('2d'), { type: 'line', data: { labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'], datasets: [ { label: 'pH Level', data: [8.2, 8.1, 7.9, 7.7, 7.4, 7.2], borderColor: '#3b82f6', yAxisID: 'y', tension: 0.3 }, { label: 'Mortality (Count)', data: [2, 3, 5, 8, 25, 45], type: 'bar', backgroundColor: '#ef4444', yAxisID: 'y1' } ] }, options: { ...commonOptions, scales: { y: { min: 6.5, max: 8.5 }, y1: { position: 'right' } }} });
         new Chart(document.getElementById('chartUniformity').getContext('2d'), { type: 'line', data: { labels: ['DOC 10', 'DOC 20', 'DOC 30', 'DOC 40', 'DOC 50', 'DOC 60'], datasets: [{ label: 'Uniformity (%)', data: [95, 92, 88, 83, 78, 72], borderColor: '#eab308', backgroundColor: '#fef08a', fill: true, tension: 0.4 }] }, options: { ...commonOptions, scales: { y: { min: 60, max: 100 } } } });
