@@ -14,7 +14,6 @@
         .dark-scrollbar::-webkit-scrollbar-track { background: #1e293b; }
         .dark-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
         
-        /* Custom styling for Leaflet Popups to accommodate the detailed data table */
         .leaflet-popup-content-wrapper { border-radius: 8px; padding: 0; overflow: hidden; }
         .leaflet-popup-content { margin: 12px; width: 260px !important; }
         .leaflet-container a.leaflet-popup-close-button { color: #64748b; padding: 4px; }
@@ -43,10 +42,13 @@
                 <i class="fa-solid fa-box-open w-6"></i> Form Stocking
             </button>
             <button onclick="navigate('sampling', 'Daily Water Quality Entry')" id="nav-sampling" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
-                <i class="fa-solid fa-droplet w-6"></i> Daily WQ Sampling
+                <i class="fa-solid fa-droplet w-6"></i> Daily WQ
             </button>
             <button onclick="navigate('weekly', 'Weekly Water Quality Entry')" id="nav-weekly" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
-                <i class="fa-solid fa-flask w-6"></i> Weekly WQ Sampling
+                <i class="fa-solid fa-flask w-6"></i> Weekly WQ
+            </button>
+            <button onclick="navigate('weekly-sampling', 'Weekly Biomass Sampling')" id="nav-weekly-sampling" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
+                <i class="fa-solid fa-fish-fins w-6"></i> Weekly Sampling
             </button>
             
             <div class="pt-4 pb-1">
@@ -91,47 +93,20 @@
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
                             <h4 class="font-bold text-slate-700 mb-4 text-center">Salinity & pH vs Mortality Rate</h4>
                             <div class="flex-1 h-64"><canvas id="chartSalinityPH"></canvas></div>
-                            <div class="mt-4 bg-red-50 border-l-4 border-red-500 p-4 rounded text-sm">
-                                <span class="font-bold text-red-700 block mb-1">Analysis: Environmental Stress</span>
-                                <p class="text-slate-700">Identifying "Deadly Threshold". Detected a pH drop trend approaching 7.5 with rising mortality. <b>Immediate liming / water treatment required.</b></p>
-                            </div>
+                            <div class="mt-4 bg-red-50 border-l-4 border-red-500 p-4 rounded text-sm"><span class="font-bold text-red-700 block mb-1">Analysis: Environmental Stress</span><p class="text-slate-700">Identifying "Deadly Threshold". Detected a pH drop trend approaching 7.5 with rising mortality. <b>Immediate liming / water treatment required.</b></p></div>
                         </div>
                         <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
                             <h4 class="font-bold text-slate-700 mb-4 text-center">DOC (Day of Culture) vs Uniformity (%)</h4>
                             <div class="flex-1 h-64"><canvas id="chartUniformity"></canvas></div>
-                            <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded text-sm">
-                                <span class="font-bold text-yellow-700 block mb-1">Analysis: Size Grading</span>
-                                <p class="text-slate-700">Uniformity is projected to drop below 80% by DOC 45, indicating feeding competition or dominance. <b>Decision: Schedule size grading to separate sizes.</b></p>
-                            </div>
+                            <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded text-sm"><span class="font-bold text-yellow-700 block mb-1">Analysis: Size Grading</span><p class="text-slate-700">Uniformity is projected to drop below 80% by DOC 45, indicating feeding competition. <b>Decision: Schedule size grading.</b></p></div>
                         </div>
                     </div>
 
                     <h3 class="text-xl font-bold text-slate-700 border-b pb-2 mt-10"><i class="fa-solid fa-scale-balanced text-emerald-500 mr-2"></i>Feed & Growth Efficiency</h3>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-                            <h4 class="font-bold text-slate-700 mb-4 text-sm text-center">Actual Feed/Day vs ADG</h4>
-                            <div class="flex-1 h-56"><canvas id="chartFeedADG"></canvas></div>
-                            <div class="mt-4 bg-orange-50 border-l-4 border-orange-500 p-3 rounded text-xs">
-                                <span class="font-bold text-orange-700 block mb-1">Feeding Efficiency</span>
-                                <p class="text-slate-700">Feed continues to increase but ADG remains flat. This indicates wasted feed (low efficiency) or environmental stress.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-                            <h4 class="font-bold text-slate-700 mb-4 text-sm text-center">DO vs Feed Accumulation</h4>
-                            <div class="flex-1 h-56"><canvas id="chartDOFeed"></canvas></div>
-                            <div class="mt-4 bg-blue-50 border-l-4 border-blue-500 p-3 rounded text-xs">
-                                <span class="font-bold text-blue-700 block mb-1">Hypoxia Alert</span>
-                                <p class="text-slate-700">DO is critically low (approaching 4 mg/L), appetite will drop drastically. <b>Decision: Reduce feed dosage to prevent ammonia spikes.</b></p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-                            <h4 class="font-bold text-slate-700 mb-4 text-sm text-center">Temperature vs MBW</h4>
-                            <div class="flex-1 h-56"><canvas id="chartTempMBW"></canvas></div>
-                            <div class="mt-4 bg-green-50 border-l-4 border-green-500 p-3 rounded text-xs">
-                                <span class="font-bold text-green-700 block mb-1">Metabolic Rate</span>
-                                <p class="text-slate-700">Relatively high temperature (29-30°C) accelerates metabolic rate. <b>Decision: Adjust feed dosage to prevent nutritional deficit.</b></p>
-                            </div>
-                        </div>
+                        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col"><h4 class="font-bold text-slate-700 mb-4 text-sm text-center">Actual Feed/Day vs ADG</h4><div class="flex-1 h-56"><canvas id="chartFeedADG"></canvas></div><div class="mt-4 bg-orange-50 border-l-4 border-orange-500 p-3 rounded text-xs"><span class="font-bold text-orange-700 block mb-1">Feeding Efficiency</span><p class="text-slate-700">Feed continues to increase but ADG remains flat. Indicates wasted feed or stress.</p></div></div>
+                        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col"><h4 class="font-bold text-slate-700 mb-4 text-sm text-center">DO vs Feed Accumulation</h4><div class="flex-1 h-56"><canvas id="chartDOFeed"></canvas></div><div class="mt-4 bg-blue-50 border-l-4 border-blue-500 p-3 rounded text-xs"><span class="font-bold text-blue-700 block mb-1">Hypoxia Alert</span><p class="text-slate-700">DO is critically low, appetite will drop. <b>Decision: Reduce feed dosage.</b></p></div></div>
+                        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col"><h4 class="font-bold text-slate-700 mb-4 text-sm text-center">Temperature vs MBW</h4><div class="flex-1 h-56"><canvas id="chartTempMBW"></canvas></div><div class="mt-4 bg-green-50 border-l-4 border-green-500 p-3 rounded text-xs"><span class="font-bold text-green-700 block mb-1">Metabolic Rate</span><p class="text-slate-700">High temp accelerates metabolic rate. <b>Decision: Adjust feed dosage.</b></p></div></div>
                     </div>
                 </div>
 
@@ -154,18 +129,11 @@
                                         <option value="C1F">C1F</option>
                                         <option value="C2F">C2F</option>
                                         <option value="EX1F">EX1F</option>
-                                        <option value="H2F">H2F</option>
-                                        <option value="H1F">H1F</option>
-                                        <option value="C1L">C1L</option>
-                                        <option value="C2L">C2L</option>
-                                        <option value="EX1L">EX1L</option>
-                                        <option value="H2L">H2L</option>
-                                        <option value="H1L">H1L</option>
                                     </select>
                                 </div>
                             </div>
                             <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 mt-2">Physical/Daily Parameters</h4>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 mt-2">Physical Parameters</h4>
                                 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">DO</label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">Temp</label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
@@ -174,7 +142,7 @@
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">pH</label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
                                 </div>
                             </div>
-                            <div class="pt-4"><button type="button" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 shadow-md transition w-full font-semibold">Save Daily Record</button></div>
+                            <div class="pt-4"><button type="button" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 shadow-md transition font-semibold">Save Daily Record</button></div>
                         </form>
                     </div>
                 </div>
@@ -187,35 +155,23 @@
                                 <div><label class="block text-sm font-semibold text-purple-900 mb-2">Sampling Date</label><input type="date" class="block w-full rounded-md border-purple-300 p-2.5 border bg-white shadow-sm"></div>
                                 <div>
                                     <label class="block text-sm font-semibold text-purple-900 mb-2">Cage Code</label>
-                                    <select class="block w-full rounded-md border-purple-300 p-2.5 border bg-white shadow-sm font-mono font-bold">
-                                        <option value="" disabled selected>Select Cage</option>
-                                        <option value="C1F">C1F</option>
-                                        <option value="C2F">C2F</option>
-                                        <option value="EX1F">EX1F</option>
-                                        <option value="H2F">H2F</option>
-                                        <option value="H1F">H1F</option>
-                                        <option value="C1L">C1L</option>
-                                        <option value="C2L">C2L</option>
-                                        <option value="EX1L">EX1L</option>
-                                        <option value="H2L">H2L</option>
-                                        <option value="H1L">H1L</option>
-                                    </select>
+                                    <select class="block w-full rounded-md border-purple-300 p-2.5 border bg-white shadow-sm font-mono font-bold"><option value="C1F">C1F</option></select>
                                 </div>
                                 <div><label class="block text-sm font-semibold text-purple-900 mb-2">Cycle</label><input type="number" placeholder="1" class="block w-full rounded-md border-purple-300 p-2.5 border bg-white shadow-sm"></div>
                                 <div><label class="block text-sm font-semibold text-purple-900 mb-2">DOC</label><input type="number" placeholder="35" class="block w-full rounded-md border-purple-300 p-2.5 border bg-white shadow-sm"></div>
                             </div>
                             <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 mt-2">Chemical Laboratory Parameters</h4>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 mt-2">Chemical Parameters</h4>
                                 <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">Ammonia <span class="text-xs text-slate-400">(mg/L)</span></label><input type="number" step="0.001" placeholder="0.150" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">Nitrite <span class="text-xs text-slate-400">(mg/L)</span></label><input type="number" step="0.001" placeholder="0.020" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Nitrate <span class="text-xs text-slate-400">(mg/L)</span></label><input type="number" id="nitrateInput" oninput="calculateNP()" step="0.001" placeholder="0.150" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Phosphate <span class="text-xs text-slate-400">(mg/L)</span></label><input type="number" id="phosphateInput" oninput="calculateNP()" step="0.001" placeholder="0.030" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Nitrate <span class="text-xs text-slate-400">(mg/L)</span></label><input type="number" id="nitrateInput" step="0.001" placeholder="0.150" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Phosphate <span class="text-xs text-slate-400">(mg/L)</span></label><input type="number" id="phosphateInput" step="0.001" placeholder="0.030" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">Alkalinity</label><input type="number" step="1" placeholder="130" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">N/P Ratio <span class="text-xs text-slate-400">(Auto)</span></label><input type="number" id="npRatio" step="0.01" readonly class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-100 text-slate-500 font-bold shadow-inner focus:outline-none cursor-not-allowed"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">N/P Ratio <span class="text-xs text-slate-400">(Auto)</span></label><input type="number" id="npRatio" step="0.01" readonly class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-100 text-slate-500 font-bold shadow-inner focus:outline-none"></div>
                                 </div>
                             </div>
-                            <div class="pt-4"><button type="button" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 shadow-md transition w-full font-semibold">Save Weekly Record</button></div>
+                            <div class="pt-4"><button type="button" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 shadow-md transition font-semibold">Save Weekly Record</button></div>
                         </form>
                     </div>
                 </div>
@@ -223,54 +179,76 @@
                 <div id="view-stocking" class="page-view hidden space-y-6">
                     <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto">
                         <h3 class="text-xl font-bold mb-6 text-slate-800 border-b pb-4"><i class="fa-solid fa-box-open text-indigo-500 mr-2"></i>Initial Stocking Record</h3>
+                        <p class="text-slate-500 italic">Form loads here...</p>
+                    </div>
+                </div>
+
+                <div id="view-weekly-sampling" class="page-view hidden space-y-6">
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-6xl mx-auto">
+                        <div class="flex justify-between items-center border-b pb-4 mb-6">
+                            <h3 class="text-xl font-bold text-slate-800"><i class="fa-solid fa-fish-fins text-emerald-500 mr-2"></i>Weekly Biomass & Growth Sampling</h3>
+                            <button class="bg-slate-100 text-slate-600 hover:bg-slate-200 px-3 py-1.5 rounded text-sm transition font-medium">
+                                <i class="fa-solid fa-cloud-arrow-down mr-1"></i> Pull Data from Batch Processor
+                            </button>
+                        </div>
+                        
                         <form class="space-y-8">
                             <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">1. General Information</h4>
-                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-50 p-5 rounded-lg border border-slate-100">
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">1. General Tracking</h4>
+                                <div class="grid grid-cols-2 md:grid-cols-6 gap-4 bg-slate-50 p-5 rounded-lg border border-slate-200">
+                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Sampling Date</label><input type="date" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm"></div>
                                     <div>
                                         <label class="block text-sm font-semibold text-slate-700 mb-1">Cage Code</label>
-                                        <select class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm font-mono font-bold">
-                                            <option value="" disabled selected>Select Cage</option>
-                                            <option value="C1F">C1F</option>
-                                            <option value="C2F">C2F</option>
-                                            <option value="EX1F">EX1F</option>
-                                            <option value="H2F">H2F</option>
-                                            <option value="H1F">H1F</option>
-                                            <option value="C1L">C1L</option>
-                                            <option value="C2L">C2L</option>
-                                            <option value="EX1L">EX1L</option>
-                                            <option value="H2L">H2L</option>
-                                            <option value="H1L">H1L</option>
+                                        <select class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm font-mono font-bold text-sm">
+                                            <option value="" disabled selected>Cage</option><option value="C1F">C1F</option><option value="C2F">C2F</option>
                                         </select>
                                     </div>
-                                    <div class="md:col-span-2"><label class="block text-sm font-semibold text-slate-700 mb-1">Species</label><select class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm italic"><option>Trachinotus blochii</option><option>Panulirus homarus</option><option>Lates calcarifer</option></select></div>
-                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Stocking Date</label><input type="date" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">DOC</label><input type="number" placeholder="15" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm"></div>
+                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Cycle</label><input type="number" placeholder="1" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm"></div>
+                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Stock Date</label><input type="date" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm"></div>
+                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Initial Stock <span class="text-xs text-slate-400">(ind)</span></label><input type="number" id="bsStockNum" oninput="calcBiomassForm()" placeholder="1000" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm"></div>
                                 </div>
                             </div>
+
                             <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">2. Stocking Details</h4>
-                                <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Cycle</label><input type="number" placeholder="1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div class="md:col-span-2"><label class="block text-sm font-medium text-slate-700 mb-1">Stock Source</label><input type="text" placeholder="e.g., bbpl or Ekas" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div class="md:col-span-2"><label class="block text-sm font-medium text-slate-700 mb-1">Size of Net</label><input type="text" placeholder="e.g., 3x3x3" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Stocking Number</label><input type="number" placeholder="1000" id="stockNumber" oninput="calculateDensity()" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div class="md:col-span-2"><label class="block text-sm font-medium text-slate-700 mb-1">Cage Area <span class="text-xs text-slate-400">(m²)</span></label><input type="number" step="0.01" placeholder="22.50" id="cageArea" oninput="calculateDensity()" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div class="md:col-span-2"><label class="block text-sm font-medium text-slate-700 mb-1">Density <span class="text-xs text-slate-400">(Auto)</span></label><input type="number" step="0.01" placeholder="44.44" id="density" readonly class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-100 text-slate-600 font-bold shadow-inner focus:outline-none cursor-not-allowed"></div>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">2. Field Measurements</h4>
+                                <div class="grid grid-cols-2 md:grid-cols-6 gap-4 border-l-4 border-emerald-500 pl-4">
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Wt <span class="text-xs text-emerald-600">(kg)</span></label><input type="number" step="0.01" id="bsSampleWt" oninput="calcBiomassForm()" placeholder="0.28" class="block w-full rounded-md border-emerald-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Ct <span class="text-xs text-emerald-600">(ind)</span></label><input type="number" id="bsSampleCt" oninput="calcBiomassForm()" placeholder="23" class="block w-full rounded-md border-emerald-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Avg Length <span class="text-xs text-slate-400">(cm)</span></label><input type="number" step="0.01" placeholder="8.52" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Uniformity <span class="text-xs text-slate-400">(%)</span></label><input type="number" step="0.01" placeholder="88.43" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Accum. Feed <span class="text-xs text-slate-400">(kg)</span></label><input type="number" step="0.01" id="bsAccumFeed" oninput="calcBiomassForm()" placeholder="4.50" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Accum. Mortal <span class="text-xs text-red-500">(ind)</span></label><input type="number" id="bsAccumMortal" oninput="calcBiomassForm()" placeholder="95" class="block w-full rounded-md border-red-300 p-2 border bg-white shadow-sm"></div>
                                 </div>
                             </div>
+
                             <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">3. Initial Sampling</h4>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-[#eef2ff] p-5 rounded-lg border border-indigo-100">
-                                    <div><label class="block text-sm font-medium text-indigo-900 mb-1">Sample Weight <span class="text-xs text-indigo-500">(g)</span></label><input type="number" step="0.1" placeholder="192.4" id="sampleWeight" oninput="calculateMBW()" class="block w-full rounded-md border-indigo-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div><label class="block text-sm font-medium text-indigo-900 mb-1">Sample Count</label><input type="number" placeholder="25" id="sampleCount" oninput="calculateMBW()" class="block w-full rounded-md border-indigo-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div><label class="block text-sm font-medium text-indigo-900 mb-1">MBW <span class="text-xs text-indigo-500">(Auto)</span></label><input type="number" step="0.01" placeholder="7.70" id="mbw" readonly class="block w-full rounded-md border-indigo-300 p-2.5 border bg-indigo-50 text-indigo-700 font-bold shadow-inner focus:outline-none cursor-not-allowed"></div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-indigo-900 mb-1">Uniformity <span class="text-xs text-indigo-500">(%)</span></label>
-                                        <div class="relative"><input type="number" step="0.01" placeholder="86.12" class="block w-full rounded-md border-indigo-300 p-2.5 border bg-white shadow-sm pr-8"><span class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400">%</span></div>
-                                    </div>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">3. Performance Metrics (Auto-Calculated vs Target)</h4>
+                                <div class="grid grid-cols-2 md:grid-cols-5 gap-y-6 gap-x-4 bg-slate-800 p-6 rounded-lg text-white">
+                                    
+                                    <div><label class="block text-xs text-slate-400 mb-1">MBW <span class="text-emerald-400">(gr)</span></label><input type="number" id="bsMbw" readonly placeholder="12.00" class="block w-full rounded bg-slate-700 border-none p-2 font-bold focus:ring-0"></div>
+                                    <div><label class="block text-xs text-slate-400 mb-1">Target MBW <span class="text-slate-500">(gr)</span></label><input type="number" step="0.01" placeholder="14.31" class="block w-full rounded bg-slate-900 border border-slate-600 p-2 text-sm focus:ring-emerald-500"></div>
+                                    
+                                    <div><label class="block text-xs text-slate-400 mb-1">ADG <span class="text-emerald-400">(gr)</span></label><input type="number" step="0.01" placeholder="0.35" class="block w-full rounded bg-slate-900 border border-slate-600 p-2 text-sm focus:ring-emerald-500"></div>
+                                    <div><label class="block text-xs text-slate-400 mb-1">Target ADG <span class="text-slate-500">(gr)</span></label><input type="number" step="0.01" placeholder="0.40" class="block w-full rounded bg-slate-900 border border-slate-600 p-2 text-sm focus:ring-emerald-500"></div>
+                                    
+                                    <div><label class="block text-xs text-slate-400 mb-1">FCR <span class="text-emerald-400">(Auto)</span></label><input type="number" id="bsFcr" readonly placeholder="0.41" class="block w-full rounded bg-slate-700 border-none p-2 font-bold text-emerald-300 focus:ring-0"></div>
+
+                                    <div><label class="block text-xs text-slate-400 mb-1">Population <span class="text-emerald-400">(ind)</span></label><input type="number" id="bsPop" readonly placeholder="905" class="block w-full rounded bg-slate-700 border-none p-2 font-bold focus:ring-0"></div>
+                                    <div><label class="block text-xs text-slate-400 mb-1">Mortality Rate <span class="text-red-400">(%)</span></label><input type="text" id="bsMortalRate" readonly placeholder="9.50%" class="block w-full rounded bg-slate-700 border-none p-2 font-bold text-red-300 focus:ring-0"></div>
+                                    <div><label class="block text-xs text-slate-400 mb-1">Survival Rate <span class="text-emerald-400">(%)</span></label><input type="text" id="bsSurvRate" readonly placeholder="90.50%" class="block w-full rounded bg-slate-700 border-none p-2 font-bold text-emerald-300 focus:ring-0"></div>
+                                    
+                                    <div><label class="block text-xs text-slate-400 mb-1">Biomass <span class="text-emerald-400">(kg)</span></label><input type="number" id="bsBiomass" readonly placeholder="10.86" class="block w-full rounded bg-slate-700 border-none p-2 font-bold focus:ring-0"></div>
+                                    <div><label class="block text-xs text-slate-400 mb-1">Target Biomass <span class="text-slate-500">(kg)</span></label><input type="number" step="0.01" placeholder="12.95" class="block w-full rounded bg-slate-900 border border-slate-600 p-2 text-sm focus:ring-emerald-500"></div>
+
                                 </div>
                             </div>
-                            <div class="pt-4 border-t border-slate-200"><button type="button" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 shadow-md transition w-full md:w-auto font-semibold">Register New Stock</button></div>
+                            
+                            <div class="pt-4 border-t border-slate-200">
+                                <button type="button" class="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 shadow-md transition font-semibold text-lg flex items-center justify-center w-full md:w-auto">
+                                    <i class="fa-solid fa-database mr-2"></i> Save Weekly Sampling Data
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -286,25 +264,23 @@
 
                 <div id="view-batch" class="page-view hidden h-full">
                     <div class="flex h-[calc(100vh-120px)] bg-[#0e1117] rounded-xl overflow-hidden shadow-lg border border-slate-300">
-                        <div class="w-80 bg-[#262730] p-6 flex flex-col border-r border-[#3a3b45] text-slate-200 dark-scrollbar overflow-y-auto">
+                        <div class="w-80 bg-[#262730] p-6 flex flex-col border-r border-[#3a3b45] text-slate-200">
                             <h3 class="text-xl font-bold text-white mb-6">Settings</h3>
-                            <div class="mb-6"><label class="text-sm block mb-2 text-slate-300">Select Species</label><select class="w-full bg-[#0e1117] border border-[#3a3b45] text-white p-2.5 rounded"><option>Silver Pompano (Trachinotus...)</option></select></div>
-                            <div class="mb-8"><label class="text-sm block text-slate-400 mb-4">Measure Total Length</label><label class="text-sm block mb-2 text-slate-300">Ruler Reference (cm)</label><div class="flex items-center bg-[#0e1117] border border-[#3a3b45] rounded p-1"><input type="number" value="1.00" class="bg-transparent text-white w-full p-2 outline-none"></div></div>
+                            <div class="mb-6"><label class="text-sm block mb-2 text-slate-300">Select Species</label><select class="w-full bg-[#0e1117] border border-[#3a3b45] text-white p-2.5 rounded"><option>Silver Pompano</option></select></div>
                             <hr class="border-[#3a3b45] mb-6">
                             <div>
                                 <h3 class="text-lg font-bold text-white mb-4">Results & Uniformity</h3>
                                 <div class="bg-[#1e253c] border border-[#2d3753] rounded-lg p-4 text-sm text-slate-300 shadow-inner">
-                                    <div class="flex justify-between mb-3 pb-3 border-b border-[#2d3753]"><span class="text-slate-400">Total Fish Detected</span><span class="font-bold text-white">--</span></div>
+                                    <div class="flex justify-between mb-3 pb-3 border-b border-[#2d3753]"><span class="text-slate-400">Total Fish</span><span class="font-bold text-white">--</span></div>
                                     <div class="flex justify-between mb-3 pb-3 border-b border-[#2d3753]"><span class="text-slate-400">Avg Length</span><span class="font-bold text-blue-400">-- cm</span></div>
-                                    <div class="flex justify-between"><span class="text-slate-400">Uniformity (CV)</span><span class="font-bold text-green-400">-- %</span></div>
+                                    <div class="flex justify-between"><span class="text-slate-400">Uniformity</span><span class="font-bold text-green-400">-- %</span></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="flex-1 p-10 overflow-y-auto dark-scrollbar max-w-4xl text-white">
+                        <div class="flex-1 p-10 overflow-y-auto max-w-4xl text-white">
                             <h2 class="text-4xl font-bold mb-8">🐟 Multi-Fish Batch Processor</h2>
                             <div class="mb-6 border border-[#3a3b45] bg-[#262730] rounded p-6 flex justify-between cursor-pointer">
-                                <div class="flex items-center"><i class="fa-solid fa-cloud-arrow-up text-3xl text-slate-400 mr-5"></i><div><p class="text-white font-medium text-lg">Drag and drop files here</p></div></div>
-                                <button class="bg-[#0e1117] border border-[#3a3b45] text-slate-200 px-5 py-2 rounded">Browse files</button>
+                                Drag and drop files here
                             </div>
                         </div>
                     </div>
@@ -329,29 +305,56 @@
             if(viewId === 'map' && typeof map !== 'undefined') { setTimeout(() => { map.invalidateSize(); }, 100); }
         }
 
-        // Form Calculations
-        function calculateDensity() {
-            const stock = parseFloat(document.getElementById('stockNumber').value);
-            const area = parseFloat(document.getElementById('cageArea').value);
-            const densityField = document.getElementById('density');
-            if (stock && area && area > 0) { densityField.value = (stock / area).toFixed(2); } else { densityField.value = ''; }
+        // --- NEW CALCULATIONS FOR WEEKLY BIOMASS FORM ---
+        function calcBiomassForm() {
+            // Inputs
+            const stockNum = parseFloat(document.getElementById('bsStockNum').value) || 0;
+            const sampleWtKg = parseFloat(document.getElementById('bsSampleWt').value) || 0;
+            const sampleCt = parseFloat(document.getElementById('bsSampleCt').value) || 0;
+            const accumFeed = parseFloat(document.getElementById('bsAccumFeed').value) || 0;
+            const accumMortal = parseFloat(document.getElementById('bsAccumMortal').value) || 0;
+
+            // Output Fields
+            const fieldMbw = document.getElementById('bsMbw');
+            const fieldPop = document.getElementById('bsPop');
+            const fieldMortalRate = document.getElementById('bsMortalRate');
+            const fieldSurvRate = document.getElementById('bsSurvRate');
+            const fieldBiomass = document.getElementById('bsBiomass');
+            const fieldFcr = document.getElementById('bsFcr');
+
+            // 1. Calculate MBW (convert kg to gr)
+            let currentMbw = 0;
+            if (sampleWtKg > 0 && sampleCt > 0) {
+                currentMbw = (sampleWtKg * 1000) / sampleCt;
+                fieldMbw.value = currentMbw.toFixed(2);
+            } else { fieldMbw.value = ''; }
+
+            // 2. Calculate Population & Rates
+            if (stockNum > 0) {
+                const pop = stockNum - accumMortal;
+                fieldPop.value = pop;
+                
+                const mortRate = (accumMortal / stockNum) * 100;
+                fieldMortalRate.value = mortRate.toFixed(2) + '%';
+                fieldSurvRate.value = (100 - mortRate).toFixed(2) + '%';
+
+                // 3. Calculate Biomass (convert MBW back to kg for total)
+                if (currentMbw > 0) {
+                    const biomassKg = (currentMbw * pop) / 1000;
+                    fieldBiomass.value = biomassKg.toFixed(2);
+
+                    // 4. Calculate FCR (Feed Conversion Ratio) = Total Feed / Biomass 
+                    // (Assuming simple calculation: Feed / Current Biomass)
+                    if (accumFeed > 0 && biomassKg > 0) {
+                        fieldFcr.value = (accumFeed / biomassKg).toFixed(2);
+                    } else { fieldFcr.value = ''; }
+                } else { fieldBiomass.value = ''; fieldFcr.value = ''; }
+            } else {
+                fieldPop.value = ''; fieldMortalRate.value = ''; fieldSurvRate.value = ''; fieldBiomass.value = ''; fieldFcr.value = '';
+            }
         }
 
-        function calculateMBW() {
-            const weight = parseFloat(document.getElementById('sampleWeight').value);
-            const count = parseFloat(document.getElementById('sampleCount').value);
-            const mbwField = document.getElementById('mbw');
-            if (weight && count && count > 0) { mbwField.value = (weight / count).toFixed(2); } else { mbwField.value = ''; }
-        }
-
-        function calculateNP() {
-            const nitrate = parseFloat(document.getElementById('nitrateInput').value);
-            const phosphate = parseFloat(document.getElementById('phosphateInput').value);
-            const npField = document.getElementById('npRatio');
-            if (nitrate && phosphate && phosphate > 0) { npField.value = (nitrate / phosphate).toFixed(2); } else { npField.value = ''; }
-        }
-
-        // Charts
+        // Standard Chart Initializations...
         const commonOptions = { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false } };
         new Chart(document.getElementById('chartSalinityPH').getContext('2d'), { type: 'line', data: { labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'], datasets: [ { label: 'pH Level', data: [8.2, 8.1, 7.9, 7.7, 7.4, 7.2], borderColor: '#3b82f6', yAxisID: 'y', tension: 0.3 }, { label: 'Mortality (Count)', data: [2, 3, 5, 8, 25, 45], type: 'bar', backgroundColor: '#ef4444', yAxisID: 'y1' } ] }, options: { ...commonOptions, scales: { y: { min: 6.5, max: 8.5 }, y1: { position: 'right' } }} });
         new Chart(document.getElementById('chartUniformity').getContext('2d'), { type: 'line', data: { labels: ['DOC 10', 'DOC 20', 'DOC 30', 'DOC 40', 'DOC 50', 'DOC 60'], datasets: [{ label: 'Uniformity (%)', data: [95, 92, 88, 83, 78, 72], borderColor: '#eab308', backgroundColor: '#fef08a', fill: true, tension: 0.4 }] }, options: { ...commonOptions, scales: { y: { min: 60, max: 100 } } } });
@@ -359,27 +362,9 @@
         new Chart(document.getElementById('chartDOFeed').getContext('2d'), { type: 'line', data: { labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'], datasets: [ { label: 'DO (mg/L)', data: [6.5, 6.2, 5.5, 4.8, 4.1], borderColor: '#06b6d4', yAxisID: 'y', tension: 0.3 }, { label: 'Feed Accum. (kg)', data: [2, 3, 6, 12, 18], type: 'bar', backgroundColor: '#334155', yAxisID: 'y1' } ] }, options: { ...commonOptions, scales: { y1: { position: 'right' } } } });
         new Chart(document.getElementById('chartTempMBW').getContext('2d'), { type: 'line', data: { labels: ['W1', 'W2', 'W3', 'W4', 'W5'], datasets: [ { label: 'Temp (°C)', data: [28.5, 29.1, 29.8, 30.2, 30.0], borderColor: '#ef4444', borderDash: [5, 5], yAxisID: 'y', tension: 0.4 }, { label: 'MBW (g)', data: [15, 25, 40, 65, 100], borderColor: '#22c55e', backgroundColor: '#bbf7d0', fill: true, yAxisID: 'y1', tension: 0.4 } ] }, options: { ...commonOptions, scales: { y: { min: 26, max: 32, position: 'right' }, y1: { position: 'left' } }} });
         
-        // --- LEAFLET MAP INITIALIZATION & POPUPS ---
+        // Map Init
         const map = L.map('map').setView([-7.0, 124.0], 5);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
-
-        function generatePopupHTML(siteName, statusData, isOptimal) {
-            const statusColorClass = isOptimal ? 'border-green-500 text-green-600' : 'border-orange-500 text-orange-600';
-            const statusIcon = isOptimal ? 'fa-check-circle' : 'fa-triangle-exclamation';
-            const statusText = isOptimal ? 'OPTIMAL CONDITION' : 'WARNING: LOW DO';
-            let tableRows = '';
-            for (const [key, val] of Object.entries(statusData)) { tableRows += `<tr><td class="font-semibold py-0.5 text-gray-600">${key}:</td><td class="text-right text-gray-800">${val}</td></tr>`; }
-            return `<div class="text-sm font-sans p-1"><h4 class="font-bold text-gray-800 text-base mb-2">${siteName} IoT</h4><div class="border ${statusColorClass} font-bold text-center rounded py-1 mb-3 text-xs bg-white"><i class="fa-solid ${statusIcon}"></i> ${statusText}</div><table class="w-full text-xs">${tableRows}</table></div>`;
-        }
-
-        const ekasData = { "Temperature": "29.70 °C", "Depth": "2.19 meters", "Dissolved Oxygen": "7.62 mg/L", "pH": "7.80", "Salinity": "32.38 ppt", "Nitrate": "0.27 mg/L", "Ammonia": "0.01 mg/L", "Electroconductivity": "29.70 uS/cm", "Turbidity": "9.50 NTU" };
-        L.marker([-8.868, 116.452]).addTo(map).bindPopup(generatePopupHTML('Ekas Bay (IMTA)', ekasData, true));
-
-        const kupangData = { "Temperature": "28.50 °C", "Depth": "1.80 meters", "Dissolved Oxygen": "6.80 mg/L", "pH": "8.10", "Salinity": "34.10 ppt", "Nitrate": "0.15 mg/L", "Ammonia": "0.02 mg/L", "Electroconductivity": "30.10 uS/cm", "Turbidity": "4.20 NTU" };
-        L.marker([-10.158, 123.596]).addTo(map).bindPopup(generatePopupHTML('Kupang Bay', kupangData, true));
-
-        const keiData = { "Temperature": "30.10 °C", "Depth": "2.40 meters", "Dissolved Oxygen": "<span class='text-red-500 font-bold'>3.80 mg/L</span>", "pH": "7.20", "Salinity": "33.00 ppt", "Nitrate": "0.55 mg/L", "Ammonia": "0.18 mg/L", "Electroconductivity": "28.50 uS/cm", "Turbidity": "12.40 NTU" };
-        L.marker([-5.756, 132.732]).addTo(map).bindPopup(generatePopupHTML('Kei Islands', keiData, false));
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
     </script>
 </body>
 </html>
