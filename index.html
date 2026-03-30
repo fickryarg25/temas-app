@@ -362,32 +362,6 @@
         new Chart(document.getElementById('chartDOFeed').getContext('2d'), { type: 'line', data: { labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'], datasets: [ { label: 'DO (mg/L)', data: [6.5, 6.2, 5.5, 4.8, 4.1], borderColor: '#06b6d4', yAxisID: 'y', tension: 0.3 }, { label: 'Feed Accum. (kg)', data: [2, 3, 6, 12, 18], type: 'bar', backgroundColor: '#334155', yAxisID: 'y1' } ] }, options: { ...commonOptions, scales: { y1: { position: 'right' } } } });
         new Chart(document.getElementById('chartTempMBW').getContext('2d'), { type: 'line', data: { labels: ['W1', 'W2', 'W3', 'W4', 'W5'], datasets: [ { label: 'Temp (°C)', data: [28.5, 29.1, 29.8, 30.2, 30.0], borderColor: '#ef4444', borderDash: [5, 5], yAxisID: 'y', tension: 0.4 }, { label: 'MBW (g)', data: [15, 25, 40, 65, 100], borderColor: '#22c55e', backgroundColor: '#bbf7d0', fill: true, yAxisID: 'y1', tension: 0.4 } ] }, options: { ...commonOptions, scales: { y: { min: 26, max: 32, position: 'right' }, y1: { position: 'left' } }} });
         
-        // Map Init
-        const map = L.map('map').setView([-7.0, 124.0], 5);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-        // Navigation Logic
-        function navigate(viewId, title) {
-            document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
-            document.getElementById('view-' + viewId).classList.remove('hidden');
-            document.getElementById('page-title').innerText = title;
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('bg-blue-600', 'text-white', 'shadow');
-                btn.classList.add('text-slate-300', 'hover:bg-slate-800');
-            });
-            const activeBtn = document.getElementById('nav-' + viewId);
-            activeBtn.classList.remove('text-slate-300', 'hover:bg-slate-800');
-            activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow');
-            if(viewId === 'map' && typeof map !== 'undefined') { setTimeout(() => { map.invalidateSize(); }, 100); }
-        }
-
-        // --- CHART JS CORRELATION PLOTS (Initialization) ---
-        const commonOptions = { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false } };
-        new Chart(document.getElementById('chartSalinityPH').getContext('2d'), { type: 'line', data: { labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'], datasets: [ { label: 'pH Level', data: [8.2, 8.1, 7.9, 7.7, 7.4, 7.2], borderColor: '#3b82f6', yAxisID: 'y', tension: 0.3 }, { label: 'Mortality (Count)', data: [2, 3, 5, 8, 25, 45], type: 'bar', backgroundColor: '#ef4444', yAxisID: 'y1' } ] }, options: { ...commonOptions, scales: { y: { min: 6.5, max: 8.5 }, y1: { position: 'right' } }} });
-        new Chart(document.getElementById('chartUniformity').getContext('2d'), { type: 'line', data: { labels: ['DOC 10', 'DOC 20', 'DOC 30', 'DOC 40', 'DOC 50', 'DOC 60'], datasets: [{ label: 'Uniformity (%)', data: [95, 92, 88, 83, 78, 72], borderColor: '#eab308', backgroundColor: '#fef08a', fill: true, tension: 0.4 }] }, options: { ...commonOptions, scales: { y: { min: 60, max: 100 } } } });
-        new Chart(document.getElementById('chartFeedADG').getContext('2d'), { type: 'line', data: { labels: ['W1', 'W2', 'W3', 'W4', 'W5'], datasets: [ { label: 'Feed (kg)', data: [50, 65, 80, 100, 120], type: 'bar', backgroundColor: '#94a3b8', yAxisID: 'y' }, { label: 'ADG (g)', data: [1.2, 1.5, 1.8, 1.85, 1.82], borderColor: '#f97316', yAxisID: 'y1', tension: 0.3 } ] }, options: { ...commonOptions, scales: { y1: { position: 'right' } } } });
-        new Chart(document.getElementById('chartDOFeed').getContext('2d'), { type: 'line', data: { labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'], datasets: [ { label: 'DO (mg/L)', data: [6.5, 6.2, 5.5, 4.8, 4.1], borderColor: '#06b6d4', yAxisID: 'y', tension: 0.3 }, { label: 'Feed Accum. (kg)', data: [2, 3, 6, 12, 18], type: 'bar', backgroundColor: '#334155', yAxisID: 'y1' } ] }, options: { ...commonOptions, scales: { y1: { position: 'right' } } } });
-        new Chart(document.getElementById('chartTempMBW').getContext('2d'), { type: 'line', data: { labels: ['W1', 'W2', 'W3', 'W4', 'W5'], datasets: [ { label: 'Temp (°C)', data: [28.5, 29.1, 29.8, 30.2, 30.0], borderColor: '#ef4444', borderDash: [5, 5], yAxisID: 'y', tension: 0.4 }, { label: 'MBW (g)', data: [15, 25, 40, 65, 100], borderColor: '#22c55e', backgroundColor: '#bbf7d0', fill: true, yAxisID: 'y1', tension: 0.4 } ] }, options: { ...commonOptions, scales: { y: { min: 26, max: 32, position: 'right' }, y1: { position: 'left' } }} });
-        
         // --- LEAFLET MAP INITIALIZATION & POPUPS ---
         const map = L.map('map').setView([-7.0, 124.0], 5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
