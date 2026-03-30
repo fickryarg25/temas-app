@@ -37,8 +37,11 @@
             <button onclick="navigate('stocking', 'Stocking Data Entry')" id="nav-stocking" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
                 <i class="fa-solid fa-box-open w-6"></i> Form Stocking
             </button>
-            <button onclick="navigate('sampling', 'Field Data Entry')" id="nav-sampling" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
-                <i class="fa-solid fa-clipboard-list w-6"></i> Daily Sampling
+            <button onclick="navigate('sampling', 'Daily Water Quality Entry')" id="nav-sampling" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
+                <i class="fa-solid fa-droplet w-6"></i> Daily WQ Sampling
+            </button>
+            <button onclick="navigate('weekly', 'Weekly Water Quality Entry')" id="nav-weekly" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
+                <i class="fa-solid fa-flask w-6"></i> Weekly WQ Sampling
             </button>
             
             <div class="pt-4 pb-1">
@@ -123,7 +126,7 @@
 
                 <div id="view-sampling" class="page-view hidden space-y-6">
                     <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-4xl mx-auto">
-                        <h3 class="text-xl font-bold mb-6 text-slate-800 border-b pb-4"><i class="fa-solid fa-clipboard-check text-blue-500 mr-2"></i>Daily Field Sampling Log</h3>
+                        <h3 class="text-xl font-bold mb-6 text-slate-800 border-b pb-4"><i class="fa-solid fa-clipboard-check text-blue-500 mr-2"></i>Daily Water Quality Sampling</h3>
                         <form class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-4 rounded-lg border border-slate-100">
                                 <div>
@@ -148,16 +151,87 @@
                                 </div>
                             </div>
                             <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 mt-2">Water Quality Parameters</h4>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 mt-2">Physical/Daily Parameters</h4>
                                 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">DO</label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Temperature</label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Salinity</label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">DO <span class="text-xs text-slate-400">(mg/L)</span></label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Temp <span class="text-xs text-slate-400">(°C)</span></label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Salinity <span class="text-xs text-slate-400">(ppt)</span></label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">Brightness</label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">pH</label><input type="number" step="0.1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
                                 </div>
                             </div>
-                            <div class="pt-4"><button type="button" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 shadow-md transition w-full font-semibold">Save Record to Database</button></div>
+                            <div class="pt-4"><button type="button" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 shadow-md transition w-full font-semibold">Save Daily Record</button></div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="view-weekly" class="page-view hidden space-y-6">
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto">
+                        <h3 class="text-xl font-bold mb-6 text-slate-800 border-b pb-4"><i class="fa-solid fa-flask text-purple-500 mr-2"></i>Weekly Water Quality Sampling</h3>
+                        <form class="space-y-6">
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 bg-purple-50 p-4 rounded-lg border border-purple-100">
+                                <div>
+                                    <label class="block text-sm font-semibold text-purple-900 mb-2">Sampling Date</label>
+                                    <input type="date" class="block w-full rounded-md border-purple-300 p-2.5 border bg-white shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-purple-900 mb-2">Cage Code</label>
+                                    <select class="block w-full rounded-md border-purple-300 p-2.5 border bg-white shadow-sm font-mono font-bold focus:border-purple-500 focus:ring-purple-500">
+                                        <option value="" disabled selected>Select Cage</option>
+                                        <option value="C1F">C1F</option>
+                                        <option value="C2F">C2F</option>
+                                        <option value="EX1F">EX1F</option>
+                                        <option value="H2F">H2F</option>
+                                        <option value="H1F">H1F</option>
+                                        <option value="C1L">C1L</option>
+                                        <option value="C2L">C2L</option>
+                                        <option value="EX1L">EX1L</option>
+                                        <option value="H2L">H2L</option>
+                                        <option value="H1L">H1L</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-purple-900 mb-2">Cycle</label>
+                                    <input type="number" placeholder="1" class="block w-full rounded-md border-purple-300 p-2.5 border bg-white shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-purple-900 mb-2">DOC</label>
+                                    <input type="number" placeholder="35" class="block w-full rounded-md border-purple-300 p-2.5 border bg-white shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 mt-2">Chemical Laboratory Parameters</h4>
+                                <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Ammonia <span class="text-xs text-slate-400">(mg/L)</span></label>
+                                        <input type="number" step="0.001" placeholder="0.150" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Nitrite <span class="text-xs text-slate-400">(mg/L)</span></label>
+                                        <input type="number" step="0.001" placeholder="0.020" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Nitrate <span class="text-xs text-slate-400">(mg/L)</span></label>
+                                        <input type="number" id="nitrateInput" oninput="calculateNP()" step="0.001" placeholder="0.150" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Phosphate <span class="text-xs text-slate-400">(mg/L)</span></label>
+                                        <input type="number" id="phosphateInput" oninput="calculateNP()" step="0.001" placeholder="0.030" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Alkalinity</label>
+                                        <input type="number" step="1" placeholder="130" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">N/P Ratio <span class="text-xs text-slate-400">(Auto)</span></label>
+                                        <input type="number" id="npRatio" step="0.01" readonly class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-100 text-slate-500 font-bold shadow-inner focus:outline-none cursor-not-allowed">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-4"><button type="button" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 shadow-md transition w-full font-semibold">Save Weekly Record</button></div>
                         </form>
                     </div>
                 </div>
@@ -203,62 +277,28 @@
                             <div>
                                 <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">2. Stocking Details</h4>
                                 <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-1">Cycle</label>
-                                        <input type="number" placeholder="1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <label class="block text-sm font-medium text-slate-700 mb-1">Stock Source</label>
-                                        <input type="text" placeholder="e.g., bbpl or Ekas" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <label class="block text-sm font-medium text-slate-700 mb-1">Size of Net</label>
-                                        <input type="text" placeholder="e.g., 3x3x3" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-slate-700 mb-1">Stocking Number</label>
-                                        <input type="number" placeholder="1000" id="stockNumber" oninput="calculateDensity()" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <label class="block text-sm font-medium text-slate-700 mb-1">Cage Area <span class="text-xs text-slate-400">(m²)</span></label>
-                                        <input type="number" step="0.01" placeholder="22.50" id="cageArea" oninput="calculateDensity()" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <label class="block text-sm font-medium text-slate-700 mb-1">Density <span class="text-xs text-slate-400">(Auto-calculated)</span></label>
-                                        <input type="number" step="0.01" placeholder="44.44" id="density" readonly class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-100 text-slate-600 font-bold shadow-inner focus:outline-none cursor-not-allowed">
-                                    </div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Cycle</label><input type="number" placeholder="1" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div class="md:col-span-2"><label class="block text-sm font-medium text-slate-700 mb-1">Stock Source</label><input type="text" placeholder="e.g., bbpl or Ekas" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div class="md:col-span-2"><label class="block text-sm font-medium text-slate-700 mb-1">Size of Net</label><input type="text" placeholder="e.g., 3x3x3" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Stocking Number</label><input type="number" placeholder="1000" id="stockNumber" oninput="calculateDensity()" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div class="md:col-span-2"><label class="block text-sm font-medium text-slate-700 mb-1">Cage Area <span class="text-xs text-slate-400">(m²)</span></label><input type="number" step="0.01" placeholder="22.50" id="cageArea" oninput="calculateDensity()" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div class="md:col-span-2"><label class="block text-sm font-medium text-slate-700 mb-1">Density <span class="text-xs text-slate-400">(Auto)</span></label><input type="number" step="0.01" placeholder="44.44" id="density" readonly class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-100 text-slate-600 font-bold shadow-inner focus:outline-none cursor-not-allowed"></div>
                                 </div>
                             </div>
 
                             <div>
                                 <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">3. Initial Sampling</h4>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-[#eef2ff] p-5 rounded-lg border border-indigo-100">
-                                    <div>
-                                        <label class="block text-sm font-medium text-indigo-900 mb-1">Sample Weight <span class="text-xs text-indigo-500">(g)</span></label>
-                                        <input type="number" step="0.1" placeholder="192.4" id="sampleWeight" oninput="calculateMBW()" class="block w-full rounded-md border-indigo-300 p-2.5 border bg-white shadow-sm">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-indigo-900 mb-1">Sample Count</label>
-                                        <input type="number" placeholder="25" id="sampleCount" oninput="calculateMBW()" class="block w-full rounded-md border-indigo-300 p-2.5 border bg-white shadow-sm">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-indigo-900 mb-1">MBW <span class="text-xs text-indigo-500">(Auto)</span></label>
-                                        <input type="number" step="0.01" placeholder="7.70" id="mbw" readonly class="block w-full rounded-md border-indigo-300 p-2.5 border bg-indigo-50 text-indigo-700 font-bold shadow-inner focus:outline-none cursor-not-allowed">
-                                    </div>
+                                    <div><label class="block text-sm font-medium text-indigo-900 mb-1">Sample Weight <span class="text-xs text-indigo-500">(g)</span></label><input type="number" step="0.1" placeholder="192.4" id="sampleWeight" oninput="calculateMBW()" class="block w-full rounded-md border-indigo-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-indigo-900 mb-1">Sample Count</label><input type="number" placeholder="25" id="sampleCount" oninput="calculateMBW()" class="block w-full rounded-md border-indigo-300 p-2.5 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-indigo-900 mb-1">MBW <span class="text-xs text-indigo-500">(Auto)</span></label><input type="number" step="0.01" placeholder="7.70" id="mbw" readonly class="block w-full rounded-md border-indigo-300 p-2.5 border bg-indigo-50 text-indigo-700 font-bold shadow-inner focus:outline-none cursor-not-allowed"></div>
                                     <div>
                                         <label class="block text-sm font-medium text-indigo-900 mb-1">Uniformity <span class="text-xs text-indigo-500">(%)</span></label>
-                                        <div class="relative">
-                                            <input type="number" step="0.01" placeholder="86.12" class="block w-full rounded-md border-indigo-300 p-2.5 border bg-white shadow-sm pr-8">
-                                            <span class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400">%</span>
-                                        </div>
+                                        <div class="relative"><input type="number" step="0.01" placeholder="86.12" class="block w-full rounded-md border-indigo-300 p-2.5 border bg-white shadow-sm pr-8"><span class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400">%</span></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="pt-4 border-t border-slate-200">
-                                <button type="button" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 shadow-md transition w-full md:w-auto font-semibold">
-                                    <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Register New Stock
-                                </button>
-                            </div>
+                            <div class="pt-4 border-t border-slate-200"><button type="button" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 shadow-md transition w-full md:w-auto font-semibold">Register New Stock</button></div>
                         </form>
                     </div>
                 </div>
@@ -282,24 +322,13 @@
                                 <label class="text-sm block mb-2 text-slate-300">Ruler Reference (cm)</label>
                                 <div class="flex items-center bg-[#0e1117] border border-[#3a3b45] rounded p-1"><input type="number" value="1.00" class="bg-transparent text-white w-full p-2 outline-none"></div>
                             </div>
-                            
                             <hr class="border-[#3a3b45] mb-6">
-
                             <div>
                                 <h3 class="text-lg font-bold text-white mb-4">Results & Uniformity</h3>
                                 <div class="bg-[#1e253c] border border-[#2d3753] rounded-lg p-4 text-sm text-slate-300 shadow-inner">
-                                    <div class="flex justify-between mb-3 pb-3 border-b border-[#2d3753]">
-                                        <span class="text-slate-400">Total Fish Detected</span>
-                                        <span class="font-bold text-white">--</span>
-                                    </div>
-                                    <div class="flex justify-between mb-3 pb-3 border-b border-[#2d3753]">
-                                        <span class="text-slate-400">Avg Length</span>
-                                        <span class="font-bold text-blue-400">-- cm</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-400">Uniformity (CV)</span>
-                                        <span class="font-bold text-green-400">-- %</span>
-                                    </div>
+                                    <div class="flex justify-between mb-3 pb-3 border-b border-[#2d3753]"><span class="text-slate-400">Total Fish Detected</span><span class="font-bold text-white">--</span></div>
+                                    <div class="flex justify-between mb-3 pb-3 border-b border-[#2d3753]"><span class="text-slate-400">Avg Length</span><span class="font-bold text-blue-400">-- cm</span></div>
+                                    <div class="flex justify-between"><span class="text-slate-400">Uniformity (CV)</span><span class="font-bold text-green-400">-- %</span></div>
                                 </div>
                             </div>
                         </div>
@@ -335,32 +364,33 @@
             if(viewId === 'map' && typeof map !== 'undefined') { setTimeout(() => { map.invalidateSize(); }, 100); }
         }
 
-        // Feature: Auto-calculate Density based on spreadsheet logic
+        // Form Calculations
         function calculateDensity() {
             const stock = parseFloat(document.getElementById('stockNumber').value);
             const area = parseFloat(document.getElementById('cageArea').value);
             const densityField = document.getElementById('density');
-            
-            if (stock && area && area > 0) {
-                densityField.value = (stock / area).toFixed(2);
-            } else {
-                densityField.value = '';
-            }
+            if (stock && area && area > 0) { densityField.value = (stock / area).toFixed(2); } else { densityField.value = ''; }
         }
 
-        // Feature: Auto-calculate Mean Body Weight (MBW) based on spreadsheet logic
         function calculateMBW() {
             const weight = parseFloat(document.getElementById('sampleWeight').value);
             const count = parseFloat(document.getElementById('sampleCount').value);
             const mbwField = document.getElementById('mbw');
-            
-            if (weight && count && count > 0) {
-                mbwField.value = (weight / count).toFixed(2);
+            if (weight && count && count > 0) { mbwField.value = (weight / count).toFixed(2); } else { mbwField.value = ''; }
+        }
+
+        function calculateNP() {
+            const nitrate = parseFloat(document.getElementById('nitrateInput').value);
+            const phosphate = parseFloat(document.getElementById('phosphateInput').value);
+            const npField = document.getElementById('npRatio');
+            if (nitrate && phosphate && phosphate > 0) {
+                npField.value = (nitrate / phosphate).toFixed(2);
             } else {
-                mbwField.value = '';
+                npField.value = '';
             }
         }
 
+        // Charts
         const commonOptions = { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false } };
         new Chart(document.getElementById('chartSalinityPH').getContext('2d'), { type: 'line', data: { labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'], datasets: [ { label: 'pH Level', data: [8.2, 8.1, 7.9, 7.7, 7.4, 7.2], borderColor: '#3b82f6', yAxisID: 'y', tension: 0.3 }, { label: 'Mortality (Count)', data: [2, 3, 5, 8, 25, 45], type: 'bar', backgroundColor: '#ef4444', yAxisID: 'y1' } ] }, options: { ...commonOptions, scales: { y: { min: 6.5, max: 8.5 }, y1: { position: 'right' } }} });
         new Chart(document.getElementById('chartUniformity').getContext('2d'), { type: 'line', data: { labels: ['DOC 10', 'DOC 20', 'DOC 30', 'DOC 40', 'DOC 50', 'DOC 60'], datasets: [{ label: 'Uniformity (%)', data: [95, 92, 88, 83, 78, 72], borderColor: '#eab308', backgroundColor: '#fef08a', fill: true, tension: 0.4 }] }, options: { ...commonOptions, scales: { y: { min: 60, max: 100 } } } });
