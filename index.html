@@ -47,6 +47,9 @@
             <button onclick="navigate('weekly', 'Weekly Water Quality Entry')" id="nav-weekly" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
                 <i class="fa-solid fa-flask w-6"></i> Weekly WQ
             </button>
+            <button onclick="navigate('feed', 'Actual Feed Report')" id="nav-feed" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
+                <i class="fa-solid fa-cubes-stacked w-6"></i> Feed Report
+            </button>
             <button onclick="navigate('weekly-sampling', 'Weekly Biomass Sampling')" id="nav-weekly-sampling" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
                 <i class="fa-solid fa-fish-fins w-6"></i> Weekly Sampling
             </button>
@@ -184,6 +187,68 @@
                         </form>
                     </div>
                 </div>
+                
+                <div id="view-feed" class="page-view hidden space-y-6">
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-4xl mx-auto">
+                        <h3 class="text-xl font-bold mb-6 text-slate-800 border-b pb-4"><i class="fa-solid fa-cubes-stacked text-orange-500 mr-2"></i>Actual Feed Report</h3>
+                        
+                        <form class="space-y-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-5 rounded-lg border border-slate-200">
+                                <div><label class="block text-sm font-semibold text-slate-700 mb-2">Date</label><input type="date" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm" required></div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Cage Code</label>
+                                    <select class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm font-mono font-bold text-orange-700" required>
+                                        <option value="" disabled selected>Select Cage</option>
+                                        <option value="C1F">C1F</option>
+                                        <option value="C2F">C2F</option>
+                                        <option value="EX1F">EX1F</option>
+                                        <option value="H1F">H1F</option>
+                                        <option value="H2F">H2F</option>
+                                        <option value="C1L">C1L</option>
+                                        <option value="C2L">C2L</option>
+                                        <option value="EX1L">EX1L</option>
+                                        <option value="H1L">H1L</option>
+                                        <option value="H2L">H2L</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">Actual Feed (kg)</h4>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 border-l-4 border-orange-400 pl-4">
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">07.00</label><input type="number" step="0.001" id="feed07" oninput="calcFeedReport()" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">12.00</label><input type="number" step="0.001" id="feed12" oninput="calcFeedReport()" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">15.00</label><input type="number" step="0.001" id="feed15" oninput="calcFeedReport()" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">17.00</label><input type="number" step="0.001" id="feed17" oninput="calcFeedReport()" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">Accumulative Summary</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-l-4 border-blue-500 pl-4 bg-slate-50 p-4 rounded-lg">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-600 mb-1">Daily Accumulative <span class="text-xs text-orange-500">(Auto)</span></label>
+                                        <input type="number" id="feedDailyAcc" readonly class="block w-full rounded-md border-none p-2 bg-white font-bold text-orange-600 shadow-sm focus:ring-0">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-600 mb-1">Previous Total <span class="text-xs text-slate-400">(Optional input)</span></label>
+                                        <input type="number" step="0.001" id="feedPrevAcc" oninput="calcFeedReport()" placeholder="0.000" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-600 mb-1">Total Accumulative <span class="text-xs text-blue-500">(Auto)</span></label>
+                                        <input type="number" id="feedTotalAcc" readonly class="block w-full rounded-md border-none p-2 bg-white font-bold text-blue-600 shadow-sm focus:ring-0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-200">
+                                <button type="button" class="bg-orange-600 text-white px-8 py-3 rounded-lg hover:bg-orange-700 shadow-md transition font-semibold text-lg flex items-center justify-center w-full md:w-auto">
+                                    <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Save Feed Report
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
                 <div id="view-stocking" class="page-view hidden space-y-6">
                     <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto">
@@ -257,7 +322,16 @@
                                     <div>
                                         <label class="block text-sm font-semibold text-slate-700 mb-1">Cage Code</label>
                                         <select class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm font-mono font-bold text-sm">
-                                            <option value="" disabled selected>Cage</option><option value="C1F">C1F</option><option value="C2F">C2F</option>
+                                            <option value="C1F">C1F</option>
+                                            <option value="C2F">C2F</option>
+                                            <option value="EX1F">EX1F</option>
+                                            <option value="H2F">H2F</option>
+                                            <option value="H1F">H1F</option>
+                                            <option value="C1L">C1L</option>
+                                            <option value="C2L">C2L</option>
+                                            <option value="EX1L">EX1L</option>
+                                            <option value="H2L">H2L</option>
+                                            <option value="H1L">H1L</option>
                                         </select>
                                     </div>
                                     <div><label class="block text-sm font-semibold text-slate-700 mb-1">DOC</label><input type="number" placeholder="15" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm"></div>
@@ -270,8 +344,8 @@
                             <div>
                                 <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">2. Field Measurements</h4>
                                 <div class="grid grid-cols-2 md:grid-cols-6 gap-4 border-l-4 border-emerald-500 pl-4">
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Wt <span class="text-xs text-emerald-600">(kg)</span></label><input type="number" step="0.01" id="bsSampleWt" oninput="calcBiomassForm()" placeholder="0.28" class="block w-full rounded-md border-emerald-300 p-2 border bg-white shadow-sm"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Ct <span class="text-xs text-emerald-600">(ind)</span></label><input type="number" id="bsSampleCt" oninput="calcBiomassForm()" placeholder="23" class="block w-full rounded-md border-emerald-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Weight <span class="text-xs text-emerald-600">(kg)</span></label><input type="number" step="0.01" id="bsSampleWt" oninput="calcBiomassForm()" placeholder="0.28" class="block w-full rounded-md border-emerald-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Count <span class="text-xs text-emerald-600">(ind)</span></label><input type="number" id="bsSampleCt" oninput="calcBiomassForm()" placeholder="23" class="block w-full rounded-md border-emerald-300 p-2 border bg-white shadow-sm"></div>
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">Avg Length <span class="text-xs text-slate-400">(cm)</span></label><input type="number" step="0.01" placeholder="8.52" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">Uniformity <span class="text-xs text-slate-400">(%)</span></label><input type="number" step="0.01" placeholder="88.43" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
                                     <div><label class="block text-sm font-medium text-slate-700 mb-1">Accum. Feed <span class="text-xs text-slate-400">(kg)</span></label><input type="number" step="0.01" id="bsAccumFeed" oninput="calcBiomassForm()" placeholder="4.50" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
