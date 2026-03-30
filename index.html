@@ -48,16 +48,17 @@
     <main class="flex-1 flex flex-col h-screen overflow-hidden">
         <header class="bg-white shadow-sm p-4 flex justify-between items-center z-10">
             <h2 id="page-title" class="text-xl font-semibold text-slate-700">Executive Dashboard</h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition flex items-center text-sm font-medium">
+                <i class="fa-solid fa-file-export mr-2"></i>Export to Looker Studio
+            </button>
         </header>
 
         <div class="flex-1 overflow-y-auto p-6 bg-[#f4f7f9]">
             <div class="max-w-[1400px] mx-auto h-full">
                 
                 <div id="view-dashboard" class="page-view block space-y-10">
-                    
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                         <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">IMTA Executive Summary : <span class="italic font-serif">Trachinotus blochii</span></h2>
-                        
                         <div class="flex justify-center gap-6 mb-8">
                             <div class="bg-[#fef3c7] text-center p-4 rounded-xl w-48 shadow-sm">
                                 <p class="text-xs text-slate-600 font-medium mb-1">Stocking Date</p>
@@ -72,7 +73,6 @@
                                 <p class="text-xl font-semibold">43</p>
                             </div>
                         </div>
-
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             <div class="bg-[#dbeafe] p-4 rounded-xl shadow-inner h-80"><canvas id="chartWeight"></canvas></div>
                             <div class="bg-[#dbeafe] p-4 rounded-xl shadow-inner h-80"><canvas id="chartADG"></canvas></div>
@@ -89,7 +89,6 @@
                                 <select class="text-sm border-slate-300 rounded shadow-sm py-1 px-3 bg-slate-50"><option>1 Jan 2024 - 31 Dec 2025</option></select>
                             </div>
                         </div>
-
                         <div class="grid grid-cols-6 gap-2 mb-6">
                             <select class="border rounded px-2 py-1 text-xs text-slate-500"><option>Region</option></select>
                             <select class="border rounded px-2 py-1 text-xs text-slate-500"><option>Seaweed Type</option></select>
@@ -98,21 +97,18 @@
                             <select class="border rounded px-2 py-1 text-xs text-slate-500"><option>Sample For</option></select>
                             <select class="border rounded px-2 py-1 text-xs text-slate-500"><option>TEAC Range</option></select>
                         </div>
-
                         <div class="grid grid-cols-5 gap-4 mb-8">
                             <div class="border border-slate-200 p-3 rounded"><p class="text-xs text-slate-500">Total Sample</p><p class="text-2xl font-normal">4,454</p></div>
                             <div class="border border-slate-200 p-3 rounded"><p class="text-xs text-slate-500">Bioprofiling Samples</p><p class="text-2xl font-normal">1,057</p></div>
                             <div class="border border-slate-200 p-3 rounded"><p class="text-xs text-slate-500">Avg pH</p><p class="text-2xl font-normal">8.05</p></div>
                             <div class="border border-slate-200 p-3 rounded"><p class="text-xs text-slate-500">Avg Salinity</p><p class="text-2xl font-normal">28.71</p></div>
                             <div class="border border-slate-200 p-3 rounded"><p class="text-xs text-slate-500">TEAC (STAT)</p><p class="text-2xl font-normal">0.95</p></div>
-                            
                             <div class="border border-slate-200 p-3 rounded"><p class="text-xs text-slate-500">Avg Temperature</p><p class="text-2xl font-normal">29.84</p></div>
                             <div class="border border-slate-200 p-3 rounded"><p class="text-xs text-slate-500">Avg DO</p><p class="text-2xl font-normal">6.23</p></div>
                             <div class="border border-slate-200 p-3 rounded"><p class="text-xs text-slate-500">Avg NH3</p><p class="text-2xl font-normal">0.68</p></div>
                             <div class="border border-slate-200 p-3 rounded"><p class="text-xs text-slate-500">Avg NO3</p><p class="text-2xl font-normal">1.6</p></div>
                             <div class="border border-slate-200 p-3 rounded"><p class="text-xs text-slate-500">Avg PO4</p><p class="text-2xl font-normal">1.4</p></div>
                         </div>
-
                         <div class="grid grid-cols-2 gap-8">
                             <div>
                                 <h4 class="font-bold text-slate-700 mb-3">Top Seaweed Species Ranking</h4>
@@ -124,8 +120,6 @@
                                         <tr><td class="py-2">Halimeda opuntia</td><td class="py-2 text-right">156</td><td class="py-2 text-right">0.86</td></tr>
                                         <tr><td class="py-2">Caulerpa racemosa</td><td class="py-2 text-right">125</td><td class="py-2 text-right">1.08</td></tr>
                                         <tr><td class="py-2">Gracilaria salicornia</td><td class="py-2 text-right">113</td><td class="py-2 text-right">0.91</td></tr>
-                                        <tr><td class="py-2 text-slate-400 italic">Unidentified</td><td class="py-2 text-right">106</td><td class="py-2 text-right">0.97</td></tr>
-                                        <tr><td class="py-2">Palisada perforata</td><td class="py-2 text-right">103</td><td class="py-2 text-right">0.85</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -139,8 +133,6 @@
                                         <tr><td class="py-2">Halimeda</td><td class="py-2 text-right">452</td><td class="py-2 text-right">0.91</td></tr>
                                         <tr><td class="py-2">Gracilaria</td><td class="py-2 text-right">369</td><td class="py-2 text-right">0.87</td></tr>
                                         <tr><td class="py-2">Sargassum</td><td class="py-2 text-right">343</td><td class="py-2 text-right">0.88</td></tr>
-                                        <tr><td class="py-2">Caulerpa</td><td class="py-2 text-right">314</td><td class="py-2 text-right">1.01</td></tr>
-                                        <tr><td class="py-2">Padina</td><td class="py-2 text-right">291</td><td class="py-2 text-right">0.97</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -159,33 +151,53 @@
                 </div>
 
                 <div id="view-sampling" class="page-view hidden space-y-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                            <h3 class="text-lg font-semibold mb-5 text-slate-700"><i class="fa-solid fa-droplet text-cyan-500 mr-2"></i>Water Quality Log</h3>
-                            <form class="space-y-5">
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-4xl mx-auto">
+                        <h3 class="text-xl font-bold mb-6 text-slate-800 border-b pb-4"><i class="fa-solid fa-clipboard-check text-blue-500 mr-2"></i>Daily Field Sampling Log</h3>
+                        
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-4 rounded-lg border border-slate-100">
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Zone/Location ID</label>
-                                    <select class="block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2.5 border bg-slate-50">
-                                        <option>Ekas, Lombok</option>
-                                        <option>Kei Islands</option>
-                                        <option>Rote Island</option>
-                                    </select>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Sampling Date</label>
+                                    <input type="date" class="block w-full rounded-md border-slate-300 focus:border-blue-500 focus:ring-blue-500 p-2.5 border bg-white shadow-sm">
                                 </div>
-                                <div class="grid grid-cols-2 gap-5">
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Temperature (°C)</label><input type="number" class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-50"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">DO (mg/L)</label><input type="number" class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-50"></div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Cage Code</label>
+                                    <input type="text" placeholder="e.g., C1F" class="block w-full rounded-md border-slate-300 focus:border-blue-500 focus:ring-blue-500 p-2.5 border bg-white shadow-sm font-mono uppercase">
                                 </div>
-                                <button type="button" class="bg-slate-800 text-white px-4 py-3 rounded-lg hover:bg-slate-700 transition w-full font-medium mt-4">Submit Water Data</button>
-                            </form>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                            <h3 class="text-lg font-semibold mb-5 text-slate-700"><i class="fa-solid fa-fish-fins text-emerald-500 mr-2"></i>Manual Sampling Log</h3>
-                            <form class="space-y-5">
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Species Focus</label><select class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-50"><option>Fish</option><option>Lobster</option><option>Seaweed</option></select></div>
-                                <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Count (n)</label><input type="number" class="block w-full rounded-md border-slate-300 p-2.5 border bg-slate-50"></div>
-                                <button type="button" class="bg-slate-800 text-white px-4 py-3 rounded-lg hover:bg-slate-700 transition w-full font-medium mt-4">Submit Manual Sample</button>
-                            </form>
-                        </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 mt-2">Water Quality Parameters</h4>
+                                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">DO <span class="text-xs text-slate-400">(mg/L)</span></label>
+                                        <input type="number" step="0.1" placeholder="5.7" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Temperature <span class="text-xs text-slate-400">(°C)</span></label>
+                                        <input type="number" step="0.1" placeholder="29.2" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Salinity <span class="text-xs text-slate-400">(ppt)</span></label>
+                                        <input type="number" step="0.1" placeholder="35" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Brightness</label>
+                                        <input type="number" step="0.1" placeholder="2.5" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">pH</label>
+                                        <input type="number" step="0.1" placeholder="8.6" class="block w-full rounded-md border-slate-300 p-2.5 border bg-white shadow-sm">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-4">
+                                <button type="button" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 shadow-md transition w-full md:w-auto font-semibold text-lg flex justify-center items-center">
+                                    <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Save Record to Database
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -233,7 +245,7 @@
             if(viewId === 'map' && typeof map !== 'undefined') { setTimeout(() => { map.invalidateSize(); }, 100); }
         }
 
-        // --- Chart.js Reusable Configurations for IMTA Dashboard ---
+        // --- Chart.js ---
         const labelsDOC = [1, 8, 15, 22, 29, 43];
         const datasetsMock = [
             { label: 'H2F', borderColor: '#3b82f6', backgroundColor: '#3b82f6', tension: 0.2 },
@@ -246,7 +258,6 @@
         function createChart(elementId, titleText, dataOverrides) {
             const ctx = document.getElementById(elementId).getContext('2d');
             const data = datasetsMock.map((ds, index) => ({ ...ds, data: dataOverrides[index] }));
-            
             new Chart(ctx, {
                 type: 'line',
                 data: { labels: labelsDOC, datasets: data },
@@ -264,35 +275,16 @@
             });
         }
 
-        createChart('chartWeight', 'Mean Body Weight (gr)', [
-            [8, 10, 11, 13, 18, 38], [8, 12, 11, 14, 17, 36], 
-            [8, 9, 12, 13, 22, 40], [8, 9, 10, 13, 17, 33], [8, 8, 10, 14, 18, 30]
-        ]);
-        createChart('chartADG', 'Average Daily Growth (gr)', [
-            [0, 0.3, 0.2, 0.4, 0.7, 1.6], [0, 0.6, 0.0, 0.4, 0.4, 1.4],
-            [0, 0.1, 0.4, 0.4, 1.3, 1.2], [0, 0.2, 0.3, 0.5, 0.6, 1.1], [0, 0.3, 0.2, 0.1, 0.7, 0.9]
-        ]);
-        createChart('chartBiomass', 'Biomass (kg)', [
-            [8, 9, 10, 11, 15, 36], [8, 12, 4, 5, 6, 14],
-            [8, 8, 10, 12, 20, 37], [8, 9, 10, 11, 18, 33], [8, 10, 11, 12, 16, 28]
-        ]);
-        createChart('chartLength', 'Average Fish Length (cm)', [
-            [6, 9, 8, 8.5, 10, 11.2], [6, 8, 8.2, 9, 9.5, 10.5],
-            [6, 7.5, 8, 8, 9.8, 11], [6, 8.2, 8, 8.8, 10.2, 10.8], [6, 8.5, 8.5, 8.5, 10.5, 11.5]
-        ]);
+        createChart('chartWeight', 'Mean Body Weight (gr)', [ [8, 10, 11, 13, 18, 38], [8, 12, 11, 14, 17, 36], [8, 9, 12, 13, 22, 40], [8, 9, 10, 13, 17, 33], [8, 8, 10, 14, 18, 30] ]);
+        createChart('chartADG', 'Average Daily Growth (gr)', [ [0, 0.3, 0.2, 0.4, 0.7, 1.6], [0, 0.6, 0.0, 0.4, 0.4, 1.4], [0, 0.1, 0.4, 0.4, 1.3, 1.2], [0, 0.2, 0.3, 0.5, 0.6, 1.1], [0, 0.3, 0.2, 0.1, 0.7, 0.9] ]);
+        createChart('chartBiomass', 'Biomass (kg)', [ [8, 9, 10, 11, 15, 36], [8, 12, 4, 5, 6, 14], [8, 8, 10, 12, 20, 37], [8, 9, 10, 11, 18, 33], [8, 10, 11, 12, 16, 28] ]);
+        createChart('chartLength', 'Average Fish Length (cm)', [ [6, 9, 8, 8.5, 10, 11.2], [6, 8, 8.2, 9, 9.5, 10.5], [6, 7.5, 8, 8, 9.8, 11], [6, 8.2, 8, 8.8, 10.2, 10.8], [6, 8.5, 8.5, 8.5, 10.5, 11.5] ]);
 
-        // --- Leaflet Map Initialization (Updated Locations) ---
-        // Centered over central/eastern Indonesia to show all three locations
+        // --- Leaflet Map Initialization ---
         const map = L.map('map').setView([-8.0, 124.0], 5);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Ekas, Lombok
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
         L.marker([-8.868, 116.452]).addTo(map).bindPopup('<b>Ekas, Lombok Node</b><br>DO: 6.5 mg/L<br>Temp: 28°C<br>Focus: Lobster/Seaweed');
-        // Kei Islands
         L.marker([-5.756, 132.732]).addTo(map).bindPopup('<b>Kei Islands Node</b><br>DO: 5.9 mg/L<br>Temp: 29°C<br>Focus: Seaweed/IMTA');
-        // Rote Island
         L.marker([-10.733, 123.113]).addTo(map).bindPopup('<b>Rote Island Node</b><br>DO: 6.8 mg/L<br>Temp: 27.5°C<br>Focus: Seaweed');
     </script>
 </body>
