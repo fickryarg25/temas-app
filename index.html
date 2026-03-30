@@ -435,7 +435,30 @@
             activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow');
             if(viewId === 'map' && typeof map !== 'undefined') { setTimeout(() => { map.invalidateSize(); }, 100); }
         }
+        // --- NEW: ACTUAL FEED REPORT LOGIC ---
+        function calcFeedReport() {
+            const f07 = parseFloat(document.getElementById('feed07').value) || 0;
+            const f12 = parseFloat(document.getElementById('feed12').value) || 0;
+            const f15 = parseFloat(document.getElementById('feed15').value) || 0;
+            const f17 = parseFloat(document.getElementById('feed17').value) || 0;
+            
+            const dailyTotal = f07 + f12 + f15 + f17;
+            
+            // Set daily accumulative
+            if (dailyTotal > 0) {
+                document.getElementById('feedDailyAcc').value = dailyTotal.toFixed(3);
+            } else {
+                document.getElementById('feedDailyAcc').value = '';
+            }
 
+            // Set total accumulative
+            const prevTotal = parseFloat(document.getElementById('feedPrevAcc').value) || 0;
+            if (dailyTotal > 0 || prevTotal > 0) {
+                document.getElementById('feedTotalAcc').value = (prevTotal + dailyTotal).toFixed(3);
+            } else {
+                document.getElementById('feedTotalAcc').value = '';
+            }
+        }
         // --- NEW CALCULATIONS FOR WEEKLY BIOMASS FORM ---
         function calcBiomassForm() {
             // Inputs
