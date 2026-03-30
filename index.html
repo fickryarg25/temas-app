@@ -179,7 +179,46 @@
                 <div id="view-stocking" class="page-view hidden space-y-6">
                     <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto">
                         <h3 class="text-xl font-bold mb-6 text-slate-800 border-b pb-4"><i class="fa-solid fa-box-open text-indigo-500 mr-2"></i>Initial Stocking Record</h3>
-                        <p class="text-slate-500 italic">Form loads here...</p>
+                        
+                        <form class="space-y-8">
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">1. General Information</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 bg-slate-50 p-5 rounded-lg border border-slate-200">
+                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Cage Code</label><input type="text" id="fsCageCode" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm" required></div>
+                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Species</label><input type="text" id="fsSpecies" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm" required></div>
+                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Stocking Date</label><input type="date" id="fsStockingDate" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm" required></div>
+                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Cycle</label><input type="text" id="fsCycle" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm"></div>
+                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Stock Source</label><input type="text" id="fsStockSource" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">2. Cage & Density Details</h4>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 border-l-4 border-blue-500 pl-4">
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Size of Net</label><input type="text" id="fsSizeOfNet" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Stocking Number <span class="text-xs text-slate-400">(ind)</span></label><input type="number" id="fsStockingNumber" oninput="calculateDensity()" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Cage Area <span class="text-xs text-slate-400">(sqm)</span></label><input type="number" step="0.01" id="fsCageArea" oninput="calculateDensity()" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Density <span class="text-xs text-blue-500">(Auto)</span></label><input type="number" id="fsDensity" readonly class="block w-full rounded-md border-none p-2 bg-slate-100 font-bold text-blue-600 focus:ring-0"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">3. Initial Sampling</h4>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 border-l-4 border-emerald-500 pl-4">
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Weight <span class="text-xs text-emerald-600">(gr)</span></label><input type="number" step="0.01" id="fsSampleWeight" oninput="calculateMBW()" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Count <span class="text-xs text-slate-400">(ind)</span></label><input type="number" id="fsSampleCount" oninput="calculateMBW()" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Uniformity <span class="text-xs text-slate-400">(%)</span></label><input type="number" step="0.1" id="fsUniformity" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
+                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Initial MBW <span class="text-xs text-emerald-500">(Auto)</span></label><input type="number" id="fsMbw" readonly class="block w-full rounded-md border-none p-2 bg-slate-100 font-bold text-emerald-600 focus:ring-0"></div>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-200">
+                                <button type="button" class="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 shadow-md transition font-semibold text-lg flex items-center justify-center w-full md:w-auto">
+                                    <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Save Stocking Data
+                                </button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
 
@@ -303,6 +342,31 @@
             activeBtn.classList.remove('text-slate-300', 'hover:bg-slate-800');
             activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow');
             if(viewId === 'map' && typeof map !== 'undefined') { setTimeout(() => { map.invalidateSize(); }, 100); }
+        }
+
+        // --- NEW CALCULATIONS FOR STOCKING FORM ---
+        function calculateDensity() {
+            const stockingNumber = parseFloat(document.getElementById('fsStockingNumber').value);
+            const cageArea = parseFloat(document.getElementById('fsCageArea').value);
+            const densityField = document.getElementById('fsDensity');
+
+            if (!isNaN(stockingNumber) && !isNaN(cageArea) && cageArea > 0) {
+                densityField.value = (stockingNumber / cageArea).toFixed(2);
+            } else {
+                densityField.value = '';
+            }
+        }
+
+        function calculateMBW() {
+            const sampleWeight = parseFloat(document.getElementById('fsSampleWeight').value);
+            const sampleCount = parseFloat(document.getElementById('fsSampleCount').value);
+            const mbwField = document.getElementById('fsMbw');
+
+            if (!isNaN(sampleWeight) && !isNaN(sampleCount) && sampleCount > 0) {
+                mbwField.value = (sampleWeight / sampleCount).toFixed(2);
+            } else {
+                mbwField.value = '';
+            }
         }
 
         // --- NEW CALCULATIONS FOR WEEKLY BIOMASS FORM ---
