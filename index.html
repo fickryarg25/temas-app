@@ -179,62 +179,7 @@
                 <div id="view-stocking" class="page-view hidden space-y-6">
                     <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto">
                         <h3 class="text-xl font-bold mb-6 text-slate-800 border-b pb-4"><i class="fa-solid fa-box-open text-indigo-500 mr-2"></i>Initial Stocking Record</h3>
-                        
-                        <form class="space-y-8">
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">1. General Information</h4>
-                                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 bg-slate-50 p-5 rounded-lg border border-slate-200">
-                                    <div>
-                                        <label class="block text-sm font-semibold text-slate-700 mb-1">Cage Code</label>
-                                        <select id="fsCageCode" onchange="autofillStockingData()" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm text-sm font-bold text-indigo-700" required>
-                                            <option value="" disabled selected>Select Cage</option>
-                                            <option value="C1F">C1F</option>
-                                            <option value="C2F">C2F</option>
-                                            <option value="EX1F">EX1F</option>
-                                            <option value="H1F">H1F</option>
-                                            <option value="H2F">H2F</option>
-                                            <option value="C1L">C1L</option>
-                                            <option value="C2L">C2L</option>
-                                            <option value="EX1L">EX1L</option>
-                                            <option value="H1L">H1L</option>
-                                            <option value="H2L">H2L</option>
-                                        </select>
-                                    </div>
-                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Species</label><input type="text" id="fsSpecies" class="block w-full rounded-md border-slate-300 p-2 border bg-slate-100 shadow-sm text-sm" readonly></div>
-                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Stocking Date</label><input type="date" id="fsStockingDate" class="block w-full rounded-md border-slate-300 p-2 border bg-slate-100 shadow-sm text-sm" readonly></div>
-                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Cycle</label><input type="text" id="fsCycle" class="block w-full rounded-md border-slate-300 p-2 border bg-slate-100 shadow-sm text-sm" readonly></div>
-                                    <div><label class="block text-sm font-semibold text-slate-700 mb-1">Stock Source</label><input type="text" id="fsStockSource" class="block w-full rounded-md border-slate-300 p-2 border bg-slate-100 shadow-sm text-sm" readonly></div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">2. Cage & Density Details</h4>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 border-l-4 border-blue-500 pl-4">
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Size of Net</label><input type="text" id="fsSizeOfNet" class="block w-full rounded-md border-slate-300 p-2 border bg-white shadow-sm"></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Stocking Number <span class="text-xs text-slate-400">(ind)</span></label><input type="number" id="fsStockingNumber" oninput="calculateDensity()" class="block w-full rounded-md border-slate-300 p-2 border bg-slate-100 shadow-sm" readonly></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Cage Area <span class="text-xs text-slate-400">(sqm)</span></label><input type="number" step="0.01" id="fsCageArea" oninput="calculateDensity()" class="block w-full rounded-md border-slate-300 p-2 border bg-slate-100 shadow-sm" readonly></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Density <span class="text-xs text-blue-500">(Auto)</span></label><input type="number" id="fsDensity" readonly class="block w-full rounded-md border-none p-2 bg-slate-100 font-bold text-blue-600 focus:ring-0"></div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">3. Initial Sampling</h4>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 border-l-4 border-emerald-500 pl-4">
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Weight <span class="text-xs text-emerald-600">(gr)</span></label><input type="number" step="0.01" id="fsSampleWeight" oninput="calculateMBW()" class="block w-full rounded-md border-slate-300 p-2 border bg-slate-100 shadow-sm" readonly></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Sample Count <span class="text-xs text-slate-400">(ind)</span></label><input type="number" id="fsSampleCount" oninput="calculateMBW()" class="block w-full rounded-md border-slate-300 p-2 border bg-slate-100 shadow-sm" readonly></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Uniformity <span class="text-xs text-slate-400">(%)</span></label><input type="number" step="0.01" id="fsUniformity" class="block w-full rounded-md border-slate-300 p-2 border bg-slate-100 shadow-sm" readonly></div>
-                                    <div><label class="block text-sm font-medium text-slate-700 mb-1">Initial MBW <span class="text-xs text-emerald-500">(Auto)</span></label><input type="number" step="0.01" id="fsMbw" readonly class="block w-full rounded-md border-none p-2 bg-slate-100 font-bold text-emerald-600 focus:ring-0"></div>
-                                </div>
-                            </div>
-
-                            <div class="pt-4 border-t border-slate-200 flex justify-between">
-                                <button type="button" class="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 shadow-md transition font-semibold text-lg flex items-center justify-center w-full md:w-auto">
-                                    <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Save Stocking Data
-                                </button>
-                                <button type="button" onclick="resetStockingForm()" class="bg-slate-200 text-slate-600 px-4 py-3 rounded-lg hover:bg-slate-300 transition font-medium">Clear</button>
-                            </div>
-                        </form>
-
+                        <p class="text-slate-500 italic">Form loads here...</p>
                     </div>
                 </div>
 
@@ -360,82 +305,16 @@
             if(viewId === 'map' && typeof map !== 'undefined') { setTimeout(() => { map.invalidateSize(); }, 100); }
         }
 
-        // --- NEW DATA & AUTOFILL LOGIC FOR STOCKING FORM ---
-        const stockingData = {
-            "C1F":  { species: "Trachinotus blochii", date: "2026-01-18", cycle: 1, source: "bbpl", stock: 1000, area: 22.50, density: 44.44, sw: 192.4, sc: 25, mbw: 7.70, unif: 86.12 },
-            "C2F":  { species: "Trachinotus blochii", date: "2026-01-18", cycle: 1, source: "bbpl", stock: 1000, area: 22.50, density: 44.44, sw: 192.4, sc: 25, mbw: 7.70, unif: 86.12 },
-            "H1F":  { species: "Trachinotus blochii", date: "2026-01-18", cycle: 1, source: "bbpl", stock: 1000, area: 22.50, density: 44.44, sw: 192.4, sc: 25, mbw: 7.70, unif: 86.12 },
-            "H2F":  { species: "Trachinotus blochii", date: "2026-01-18", cycle: 1, source: "bbpl", stock: 1000, area: 22.50, density: 44.44, sw: 192.4, sc: 25, mbw: 7.70, unif: 86.12 },
-            "EX1F": { species: "Trachinotus blochii", date: "2026-01-18", cycle: 1, source: "bbpl", stock: 1000, area: 22.50, density: 44.44, sw: 192.4, sc: 25, mbw: 7.70, unif: 86.12 },
-            "C1L":  { species: "Panulirus homarus",   date: "2026-01-18", cycle: 1, source: "Ekas", stock: 30,   area: 3.38,  density: 8.89,  sw: 53.1,  sc: 7,  mbw: 7.59, unif: 91.09 },
-            "C2L":  { species: "Panulirus homarus",   date: "2026-01-18", cycle: 1, source: "Ekas", stock: 30,   area: 3.38,  density: 8.89,  sw: 48.6,  sc: 7,  mbw: 6.94, unif: 89.91 },
-            "H1L":  { species: "Panulirus homarus",   date: "2026-01-18", cycle: 1, source: "Ekas", stock: 30,   area: 3.38,  density: 8.89,  sw: 51.7,  sc: 7,  mbw: 7.39, unif: 89.63 },
-            "H2L":  { species: "Panulirus homarus",   date: "2026-01-18", cycle: 1, source: "Ekas", stock: 30,   area: 3.38,  density: 8.89,  sw: 57.7,  sc: 6,  mbw: 9.61, unif: 91.57 },
-            "EX1L": { species: "Panulirus homarus",   date: "2026-01-18", cycle: 1, source: "Ekas", stock: 30,   area: 3.38,  density: 8.89,  sw: 58.6,  sc: 7,  mbw: 8.37, unif: 91.32 }
-        };
-
-        function autofillStockingData() {
-            const cageId = document.getElementById('fsCageCode').value;
-            const data = stockingData[cageId];
-
-            if (data) {
-                document.getElementById('fsSpecies').value = data.species;
-                document.getElementById('fsStockingDate').value = data.date;
-                document.getElementById('fsCycle').value = data.cycle;
-                document.getElementById('fsStockSource').value = data.source;
-                document.getElementById('fsStockingNumber').value = data.stock;
-                document.getElementById('fsCageArea').value = data.area;
-                document.getElementById('fsDensity').value = data.density;
-                document.getElementById('fsSampleWeight').value = data.sw;
-                document.getElementById('fsSampleCount').value = data.sc;
-                document.getElementById('fsMbw').value = data.mbw;
-                document.getElementById('fsUniformity').value = data.unif;
-            }
-        }
-
-        function resetStockingForm() {
-            document.getElementById('fsCageCode').selectedIndex = 0;
-            document.getElementById('fsSpecies').value = '';
-            document.getElementById('fsStockingDate').value = '';
-            document.getElementById('fsCycle').value = '';
-            document.getElementById('fsStockSource').value = '';
-            document.getElementById('fsStockingNumber').value = '';
-            document.getElementById('fsCageArea').value = '';
-            document.getElementById('fsDensity').value = '';
-            document.getElementById('fsSampleWeight').value = '';
-            document.getElementById('fsSampleCount').value = '';
-            document.getElementById('fsMbw').value = '';
-            document.getElementById('fsUniformity').value = '';
-        }
-
-        function calculateDensity() {
-            const stockingNumber = parseFloat(document.getElementById('fsStockingNumber').value);
-            const cageArea = parseFloat(document.getElementById('fsCageArea').value);
-            const densityField = document.getElementById('fsDensity');
-
-            if (!isNaN(stockingNumber) && !isNaN(cageArea) && cageArea > 0) {
-                densityField.value = (stockingNumber / cageArea).toFixed(2);
-            } else { densityField.value = ''; }
-        }
-
-        function calculateMBW() {
-            const sampleWeight = parseFloat(document.getElementById('fsSampleWeight').value);
-            const sampleCount = parseFloat(document.getElementById('fsSampleCount').value);
-            const mbwField = document.getElementById('fsMbw');
-
-            if (!isNaN(sampleWeight) && !isNaN(sampleCount) && sampleCount > 0) {
-                mbwField.value = (sampleWeight / sampleCount).toFixed(2);
-            } else { mbwField.value = ''; }
-        }
-
-        // --- WEEKLY BIOMASS FORM LOGIC ---
+        // --- NEW CALCULATIONS FOR WEEKLY BIOMASS FORM ---
         function calcBiomassForm() {
+            // Inputs
             const stockNum = parseFloat(document.getElementById('bsStockNum').value) || 0;
             const sampleWtKg = parseFloat(document.getElementById('bsSampleWt').value) || 0;
             const sampleCt = parseFloat(document.getElementById('bsSampleCt').value) || 0;
             const accumFeed = parseFloat(document.getElementById('bsAccumFeed').value) || 0;
             const accumMortal = parseFloat(document.getElementById('bsAccumMortal').value) || 0;
 
+            // Output Fields
             const fieldMbw = document.getElementById('bsMbw');
             const fieldPop = document.getElementById('bsPop');
             const fieldMortalRate = document.getElementById('bsMortalRate');
@@ -443,12 +322,14 @@
             const fieldBiomass = document.getElementById('bsBiomass');
             const fieldFcr = document.getElementById('bsFcr');
 
+            // 1. Calculate MBW (convert kg to gr)
             let currentMbw = 0;
             if (sampleWtKg > 0 && sampleCt > 0) {
                 currentMbw = (sampleWtKg * 1000) / sampleCt;
                 fieldMbw.value = currentMbw.toFixed(2);
             } else { fieldMbw.value = ''; }
 
+            // 2. Calculate Population & Rates
             if (stockNum > 0) {
                 const pop = stockNum - accumMortal;
                 fieldPop.value = pop;
@@ -457,10 +338,13 @@
                 fieldMortalRate.value = mortRate.toFixed(2) + '%';
                 fieldSurvRate.value = (100 - mortRate).toFixed(2) + '%';
 
+                // 3. Calculate Biomass (convert MBW back to kg for total)
                 if (currentMbw > 0) {
                     const biomassKg = (currentMbw * pop) / 1000;
                     fieldBiomass.value = biomassKg.toFixed(2);
 
+                    // 4. Calculate FCR (Feed Conversion Ratio) = Total Feed / Biomass 
+                    // (Assuming simple calculation: Feed / Current Biomass)
                     if (accumFeed > 0 && biomassKg > 0) {
                         fieldFcr.value = (accumFeed / biomassKg).toFixed(2);
                     } else { fieldFcr.value = ''; }
