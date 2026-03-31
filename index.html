@@ -27,8 +27,11 @@
             <p class="text-xs text-slate-400 mt-1">Farm Management System</p>
         </div>
         <nav class="flex-1 p-4 space-y-2 overflow-y-auto dark-scrollbar">
-            <button onclick="navigate('dashboard', 'Correlation Analysis Dashboard')" id="nav-dashboard" class="nav-btn w-full text-left px-4 py-3 bg-blue-600 text-white rounded-lg shadow transition flex items-center">
-                <i class="fa-solid fa-chart-line w-6"></i> Dashboard
+            <button onclick="navigate('overview', 'Overview Operational Dashboard')" id="nav-overview" class="nav-btn w-full text-left px-4 py-3 bg-blue-600 text-white rounded-lg shadow transition flex items-center">
+                <i class="fa-solid fa-chart-line w-6"></i> Overview Dashboard
+            </button>
+            <button onclick="navigate('analysis', 'Correlation Analysis Dashboard')" id="nav-analysis" class="nav-btn w-full text-left px-4 py-3 bg-blue-600 text-white rounded-lg shadow transition flex items-center">
+                <i class="fa-solid fa-chart-line w-6"></i> Analysis Dashboard
             </button>
             <button onclick="navigate('map', 'Live IoT Sensor Map')" id="nav-map" class="nav-btn w-full text-left px-4 py-3 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300">
                 <i class="fa-solid fa-map-location-dot w-6"></i> IoT Map
@@ -86,7 +89,7 @@
         <div class="flex-1 overflow-y-auto p-6 bg-[#f4f7f9]">
             <div class="max-w-[1400px] mx-auto h-full">
                 
-                <div id="view-dashboard" class="page-view space-y-8">
+                <div id="view-analysis" class="page-view space-y-8">
                     <div class="bg-slate-800 text-white p-6 rounded-xl shadow-md flex items-center justify-between">
                         <div>
                             <h2 class="text-2xl font-bold mb-1">Knowledge & Predictive Analysis</h2>
