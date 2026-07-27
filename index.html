@@ -300,297 +300,298 @@
                                         <th class="p-2 border border-emerald-200">Tags/Line</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200">Stocking Date</th><th class="p-2 border border-emerald-200">Cycle</th><th class="p-2 border border-emerald-200">Stock Source</th><th class="p-2 border border-emerald-200">Bibbit Age</th><th class="p-2 border border-emerald-200">Bibbit Quality</th><th class="p-2 border border-emerald-200">Seeding Date</th><th class="p-2 border border-emerald-200">Planting Date</th><th class="p-2 border border-emerald-200">Overnight Care</th><th class="p-2 border border-emerald-200">Planting Loc.</th><th class="p-2 border border-emerald-200">Line Tie Type</th><th class="p-2 border border-emerald-200 bg-white">Stocking Wt (kg)</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
                                     </tr>
                                 </thead>
-                                <tbody id="tbody-farm-seaweed" class="divide-y divide-slate-100 text-sm"></tbody>
-                            </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addFarmSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                                <button onclick="exportTableToCSV('tbl-farm-seaweed', 'Seaweed_Farm_Registry.csv')" class="ml-auto bg-slate-100 text-slate-600 px-3 py-1 rounded text-xs font-semibold hover:bg-slate-200">Export</button>
-                            </div>
+                <!-- ACTUAL FEED -->
+                <div id="content-feed-actual" class="internal-tab-content hidden bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 max-w-[1400px] mx-auto mt-0 w-full">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-4 gap-3">
+                        <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-clipboard-list text-blue-500 mr-2"></i>Actual Feed Entry</h3>
+                        <button class="bg-blue-600 text-white px-5 py-2 rounded shadow-sm hover:bg-blue-700 font-semibold transition text-xs md:text-sm flex items-center justify-center w-full sm:w-auto"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Save All</button>
+                    </div>
+                    <div class="overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
+                        <table id="tbl-feed" class="w-full text-sm text-left border border-slate-200 whitespace-nowrap">
+                            <thead class="bg-slate-100 text-slate-600 uppercase text-xs font-bold">
+                                <tr><th class="p-3 border border-slate-200">Date</th><th class="p-3 border border-slate-200">Cage Code</th><th class="p-3 border border-slate-200">Feed Type</th><th class="p-3 border border-slate-200 bg-white">07.00</th><th class="p-3 border border-slate-200 bg-white">12.00</th><th class="p-3 border border-slate-200 bg-white">15.00</th><th class="p-3 border border-slate-200 bg-white">17.00</th><th class="p-3 border border-slate-200 bg-slate-200 text-slate-800">Daily Total</th><th class="p-3 border border-slate-200 bg-white">Prev Acc Total</th><th class="p-3 border border-slate-200 bg-blue-100 text-blue-800">Total Acc.</th><th class="p-3 border border-slate-200">Intensity</th><th class="p-3 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
+                            </thead>
+                            <tbody id="tbody-feed" class="divide-y divide-slate-100"></tbody>
+                        </table>
+                    </div>
+                    <button type="button" onclick="addFeedRow()" class="mt-4 text-blue-600 hover:text-blue-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
+                </div>
+            </div> <!-- CLOSE view-feed-intel -->
+
+            <!-- ==========================================
+                 7. GROWTH & BIOMASS MONITORING (SAMPLING)
+            =========================================== -->
+            <div id="view-growth-biomass" class="page-view hidden space-y-6 w-full">
+                <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 w-full mx-auto mt-0">
+                    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b pb-4 mb-6 gap-4">
+                        <div>
+                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-ruler text-blue-500 mr-2"></i>Growth & Biomass Monitoring</h3>
+                            <p class="text-xs text-slate-500 mt-1">Growth metrics & visual observations integrated per PRD.</p>
+                        </div>
+                        <div class="flex gap-2 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0">
+                            <button onclick="switchTab('samp', 'fish')" id="tab-samp-fish" class="px-4 py-2 bg-blue-600 text-white font-bold rounded shadow-sm text-sm shrink-0">Fish & Lobster</button>
+                            <button onclick="switchTab('samp', 'oyster')" id="tab-samp-oyster" class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold rounded text-sm shrink-0">Oyster</button>
+                            <button onclick="switchTab('samp', 'seaweed')" id="tab-samp-seaweed" class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold rounded text-sm shrink-0">Seaweed</button>
+                        </div>
+                    </div>
+
+                    <!-- Fish Sampling -->
+                    <div id="content-samp-fish" class="tab-content active overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
+                        <table id="tbl-samp-fish" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
+                            <thead class="bg-slate-100 text-slate-600 uppercase font-bold">
+                                <tr>
+                                    <!-- Core Metrics -->
+                                    <th class="p-2 border border-slate-200">Date</th><th class="p-2 border border-slate-200">Cage Code</th><th class="p-2 border border-slate-200">DOC</th><th class="p-2 border border-slate-200">Length/Carapace</th><th class="p-2 border border-slate-200 bg-white">Samp Wt</th><th class="p-2 border border-slate-200 bg-white">Samp Ct</th><th class="p-2 border border-slate-200 bg-white">Acc Feed</th><th class="p-2 border border-slate-200 bg-white">Acc Mortal</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">MBW</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Pop</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">SR (%)</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Biomass</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">FCR</th><th class="p-2 border border-slate-200">Uniformity (%)</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-samp-fish" class="divide-y divide-slate-100 text-sm"></tbody>
+                        </table>
+                        <div class="flex gap-2 mt-4">
+                            <button type="button" onclick="addSampFishRow()" class="text-blue-600 hover:text-blue-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
+                        </div>
+                    </div>
+
+                    <!-- Oyster Sampling -->
+                    <div id="content-samp-oyster" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
+                        <table id="tbl-samp-oyster" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
+                            <thead class="bg-slate-100 text-slate-600 uppercase font-bold">
+                                <tr>
+                                    <!-- Core Metrics -->
+                                    <th class="p-2 border border-slate-200">Date</th><th class="p-2 border border-slate-200">Cage/Line</th><th class="p-2 border border-slate-200">DOC</th><th class="p-2 border border-slate-200 bg-white">Avg Shell Length (cm)</th><th class="p-2 border border-slate-200 bg-white">Sample Ct</th><th class="p-2 border border-slate-200 bg-white">Acc Mortal</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Mortality Rate (%)</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Pop</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">SR (%)</th><th class="p-2 border border-slate-200">Uniformity (%)</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-samp-oyster" class="divide-y divide-slate-100 text-sm"></tbody>
+                        </table>
+                        <div class="flex gap-2 mt-4">
+                            <button type="button" onclick="addSampOysterRow()" class="text-slate-600 hover:text-slate-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
+                        </div>
+                    </div>
+
+                    <!-- Seaweed Sampling -->
+                    <div id="content-samp-seaweed" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
+                        <table id="tbl-samp-seaweed" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
+                            <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
+                                <tr>
+                                    <!-- Core Metrics -->
+                                    <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Float ID/Tags</th><th class="p-2 border border-emerald-200">Rope/Line</th><th class="p-2 border border-emerald-200">Age (Days)</th><th class="p-2 border border-emerald-200 bg-white">Weekly Growth (cm)</th><th class="p-2 border border-emerald-200">Anchor Condition</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-samp-seaweed" class="divide-y divide-slate-100 text-sm"></tbody>
+                        </table>
+                        <div class="flex gap-2 mt-4">
+                            <button type="button" onclick="addSampSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
                         </div>
                     </div>
                 </div>
+            </div> <!-- CLOSE view-growth-biomass -->
 
-                <!-- 4. SAMPLING MODULE -->
-                <div id="view-sampling" class="page-view hidden space-y-6 w-full">
-                    <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 w-full mx-auto mt-0">
-                        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b pb-4 mb-6 gap-4">
+            <!-- ==========================================
+                 8. HEALTH, MORTALITY & DISEASE MONITORING
+            =========================================== -->
+            <div id="view-health-disease" class="page-view hidden space-y-6 w-full">
+                <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 w-full mx-auto mt-0">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-4 gap-3">
+                        <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-staff-snake text-red-500 mr-2"></i>Health & Disease Logs</h3>
+                        <button class="bg-red-600 text-white px-5 py-2 rounded shadow-sm hover:bg-red-700 font-semibold transition text-xs md:text-sm flex items-center justify-center w-full sm:w-auto"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Save All</button>
+                    </div>
+                    <div class="overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
+                        <table id="tbl-health" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
+                            <thead class="bg-red-50 text-red-900 uppercase font-bold">
+                                <tr>
+                                    <th class="p-2 border border-red-200">Date</th><th class="p-2 border border-red-200">Time</th><th class="p-2 border border-red-200">Cage/Line</th><th class="p-2 border border-red-200">Species</th><th class="p-2 border border-red-200">Weather</th><th class="p-2 border border-red-200">Season</th><th class="p-2 border border-red-200 bg-white">Disease Observed</th><th class="p-2 border border-red-200 bg-white">Behavior Notes</th><th class="p-2 border border-red-200">Mortality Ct</th><th class="p-2 border border-red-200">Photo Ref</th><th class="p-2 border border-red-200 text-center"><i class="fa-solid fa-gear"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-health" class="divide-y divide-slate-100 text-sm"></tbody>
+                        </table>
+                    </div>
+                    <button type="button" onclick="addHealthRow()" class="mt-4 text-red-600 hover:text-red-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
+                </div>
+            </div> <!-- CLOSE view-health-disease -->
+
+            <!-- ==========================================
+                 9. HARVEST & REVENUE
+            =========================================== -->
+            <div id="view-harvest" class="page-view hidden space-y-6 w-full">
+                <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 w-full mx-auto mt-0">
+                    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b pb-4 mb-6 gap-4">
+                        <div>
+                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-sack-dollar text-emerald-500 mr-2"></i>Harvest & Revenue Transaction</h3>
+                        </div>
+                        <div class="flex gap-2 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0">
+                            <button onclick="switchTab('harv', 'fish')" id="tab-harv-fish" class="px-4 py-2 bg-emerald-600 text-white font-bold rounded shadow-sm text-sm shrink-0">Fish & Lobster</button>
+                            <button onclick="switchTab('harv', 'oyster')" id="tab-harv-oyster" class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold rounded text-sm shrink-0">Oyster</button>
+                            <button onclick="switchTab('harv', 'seaweed')" id="tab-harv-seaweed" class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold rounded text-sm shrink-0">Seaweed</button>
+                        </div>
+                    </div>
+
+                    <!-- Fish Harvest -->
+                    <div id="content-harv-fish" class="tab-content active overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
+                        <table id="tbl-harv-fish" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
+                            <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
+                                <tr>
+                                    <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Time</th><th class="p-2 border border-emerald-200">Cage Code</th><th class="p-2 border border-emerald-200 bg-white">Sample Ct</th><th class="p-2 border border-emerald-200 bg-white">Sample Wt (kg)</th><th class="p-2 border border-emerald-200 bg-emerald-100/50">MBW</th><th class="p-2 border border-emerald-200 bg-white">Pop. Harvested</th><th class="p-2 border border-emerald-200 bg-emerald-100/50 font-bold text-emerald-700">Biomass (kg)</th><th class="p-2 border border-emerald-200 bg-white">Price/kg (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-harv-fish" class="divide-y divide-slate-100 text-sm"></tbody>
+                        </table>
+                        <div class="flex gap-2 mt-4"><button type="button" onclick="addHarvFishRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
+                    </div>
+
+                    <!-- Oyster Harvest -->
+                    <div id="content-harv-oyster" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
+                        <table id="tbl-harv-oyster" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
+                            <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
+                                <tr>
+                                    <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Time</th><th class="p-2 border border-emerald-200">Cage Code</th><th class="p-2 border border-emerald-200 bg-white">Sample Ct</th><th class="p-2 border border-emerald-200 bg-white">Avg Length (cm)</th><th class="p-2 border border-emerald-200 bg-white">Pop. Harvested</th><th class="p-2 border border-emerald-200 bg-white">Price/cm (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-harv-oyster" class="divide-y divide-slate-100 text-sm"></tbody>
+                        </table>
+                        <div class="flex gap-2 mt-4"><button type="button" onclick="addHarvOysterRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
+                    </div>
+
+                    <!-- Seaweed Harvest -->
+                    <div id="content-harv-seaweed" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
+                        <table id="tbl-harv-seaweed" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
+                            <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
+                                <tr>
+                                    <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Line/Tags</th><th class="p-2 border border-emerald-200 bg-white">Final Wt (kg)</th><th class="p-2 border border-emerald-200">Age (Days)</th><th class="p-2 border border-emerald-200 bg-emerald-100/50">DGR (%)</th><th class="p-2 border border-emerald-200 bg-white">X (Harvest Factor)</th><th class="p-2 border border-emerald-200 bg-white">Price/kg (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-harv-seaweed" class="divide-y divide-slate-100 text-sm"></tbody>
+                        </table>
+                        <div class="flex gap-2 mt-4"><button type="button" onclick="addHarvSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
+                    </div>
+                </div>
+            </div> <!-- CLOSE view-harvest -->
+
+            <!-- ==========================================
+                 10. IOT MAP & SENSORS
+            =========================================== -->
+            <div id="view-map" class="page-view hidden h-full w-full">
+                <div class="flex flex-col lg:flex-row gap-4 h-[calc(100vh-140px)] md:h-[calc(100vh-120px)] w-full">
+                    <!-- Map Container -->
+                    <div class="bg-white p-2 rounded-xl shadow-sm border border-slate-200 flex-1 relative z-0 flex flex-col">
+                        <div class="px-3 py-2 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-lg mb-2">
+                            <h3 class="font-bold text-slate-700"><i class="fa-solid fa-map-location-dot text-blue-500 mr-2"></i>Live Sensor Map</h3>
+                            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded uppercase tracking-wider animate-pulse flex items-center"><i class="fa-solid fa-satellite-dish mr-1"></i> Live</span>
+                        </div>
+                        <div id="map" class="w-full flex-1 rounded-lg bg-slate-100 z-0 border border-slate-200"></div>
+                    </div>
+                    
+                    <!-- Real-time WQ Panel -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 w-full lg:w-80 shrink-0 flex flex-col overflow-y-auto dark-scrollbar">
+                        <h3 class="font-bold text-slate-800 mb-4 border-b pb-2"><i class="fa-solid fa-chart-line text-cyan-500 mr-2"></i>Water Quality Telemetry</h3>
+                        
+                        <div class="mb-5">
+                            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Select Active Node</label>
+                            <select id="iot-node-select" class="w-full mt-1.5 p-2.5 border border-slate-300 rounded-lg font-semibold text-sm bg-slate-50 text-slate-700 focus:ring focus:ring-blue-200 outline-none transition" onchange="updateIoTPanel()">
+                                <option value="ekas">Ekas Bay - Zone A (IMTA)</option>
+                                <option value="kupang">Kupang Bay - Zone B</option>
+                                <option value="kei">Kei Islands - Zone C</option>
+                            </select>
+                        </div>
+
+                        <!-- Metrics Grid -->
+                        <div class="grid grid-cols-2 gap-3" id="iot-metrics-container">
+                            <!-- Populated dynamically by JavaScript -->
+                        </div>
+                        
+                        <div class="mt-auto pt-4 border-t mt-4 border-slate-100 flex justify-between items-center">
+                            <p class="text-xs font-medium text-slate-400"><i class="fa-solid fa-clock mr-1"></i>Last sync: <span id="iot-sync-time">Just now</span></p>
+                            <button onclick="updateIoTPanel()" class="text-blue-500 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 p-2 rounded transition" title="Force Sync"><i class="fa-solid fa-rotate-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- CLOSE view-map -->
+
+            <!-- ==========================================
+                 11. ALERT & RISK CENTER
+            =========================================== -->
+            <div id="view-alerts" class="page-view hidden space-y-6 w-full">
+                <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto mt-0 w-full">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-6 gap-3">
+                        <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-triangle-exclamation text-red-500 mr-2"></i>Alert & Risk Center</h3>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold flex items-center"><i class="fa-brands fa-whatsapp mr-1 text-base"></i> WhatsApp Sync Active</span>
+                    </div>
+                    
+                    <!-- Alert 1 -->
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 md:p-5 rounded-r-lg mb-4 shadow-sm">
+                        <div class="flex flex-col sm:flex-row justify-between items-start gap-2">
                             <div>
-                                <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-microscope text-blue-500 mr-2"></i>Unified Sampling & Observation</h3>
-                                <p class="text-xs text-slate-500 mt-1">Growth metrics & visual observations integrated per PRD.</p>
+                                <h4 class="text-red-800 font-bold text-base md:text-lg mb-1">High BGA Indicator (Biofouling Risk)</h4>
+                                <p class="text-red-900 text-xs md:text-sm mb-2">Location: <b>Ekas Bay - Zone C (Seaweed)</b></p>
+                                <p class="text-slate-700 text-xs md:text-sm">IoT sensors detect abnormal spike in BGA. Historic data indicates a <b>85% chance of severe Biofouling</b> within 48h.</p>
                             </div>
-                            <div class="flex gap-2 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0">
-                                <button onclick="switchTab('samp', 'fish')" id="tab-samp-fish" class="px-4 py-2 bg-blue-600 text-white font-bold rounded shadow-sm text-sm shrink-0">Fish & Lobster</button>
-                                <button onclick="switchTab('samp', 'oyster')" id="tab-samp-oyster" class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold rounded text-sm shrink-0">Oyster</button>
-                                <button onclick="switchTab('samp', 'seaweed')" id="tab-samp-seaweed" class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold rounded text-sm shrink-0">Seaweed</button>
-                            </div>
+                            <div class="bg-white px-2 py-1 rounded border border-red-200 text-[10px] md:text-xs text-red-500 font-bold shrink-0">10 Mins Ago</div>
                         </div>
-
-                        <!-- Fish Sampling -->
-                        <div id="content-samp-fish" class="tab-content active overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
-                            <table id="tbl-samp-fish" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
-                                <thead class="bg-slate-100 text-slate-600 uppercase font-bold">
-                                    <tr>
-                                        <!-- Core Metrics -->
-                                        <th class="p-2 border border-slate-200">Date</th><th class="p-2 border border-slate-200">Cage Code</th><th class="p-2 border border-slate-200">DOC</th><th class="p-2 border border-slate-200">Length/Carapace</th><th class="p-2 border border-slate-200 bg-white">Samp Wt</th><th class="p-2 border border-slate-200 bg-white">Samp Ct</th><th class="p-2 border border-slate-200 bg-white">Acc Feed</th><th class="p-2 border border-slate-200 bg-white">Acc Mortal</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">MBW</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Pop</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">SR (%)</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Biomass</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">FCR</th><th class="p-2 border border-slate-200">Uniformity (%)</th>
-                                        <!-- Visual Obs (Integrated) -->
-                                        <th class="p-2 border border-slate-200 bg-yellow-50 text-yellow-800 border-l-4 border-l-yellow-400">Weather</th><th class="p-2 border border-slate-200 bg-yellow-50 text-yellow-800">Disease/Behavior Notes</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody-samp-fish" class="divide-y divide-slate-100 text-sm"></tbody>
-                            </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addSampFishRow()" class="text-blue-600 hover:text-blue-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                                <button onclick="exportTableToCSV('tbl-samp-fish', 'Fish_Sampling.csv')" class="ml-auto bg-slate-100 text-slate-600 px-3 py-1 rounded text-xs font-semibold hover:bg-slate-200">Export</button>
-                            </div>
+                        <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                            <button class="bg-red-600 text-white px-4 py-2 rounded text-xs md:text-sm font-bold shadow hover:bg-red-700 w-full sm:w-auto"><i class="fa-solid fa-paper-plane mr-1"></i> Resend Alert to Team</button>
+                            <button class="bg-white text-slate-600 border border-slate-300 px-4 py-2 rounded text-xs md:text-sm font-bold hover:bg-slate-50 w-full sm:w-auto"><i class="fa-solid fa-check mr-1"></i> Mark as Handled</button>
                         </div>
-
-                        <!-- Oyster Sampling -->
-                        <div id="content-samp-oyster" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
-                            <table id="tbl-samp-oyster" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
-                                <thead class="bg-slate-100 text-slate-600 uppercase font-bold">
-                                    <tr>
-                                        <!-- Core Metrics -->
-                                        <th class="p-2 border border-slate-200">Date</th><th class="p-2 border border-slate-200">Cage/Line</th><th class="p-2 border border-slate-200">DOC</th><th class="p-2 border border-slate-200 bg-white">Avg Shell Length (cm)</th><th class="p-2 border border-slate-200 bg-white">Sample Ct</th><th class="p-2 border border-slate-200 bg-white">Acc Mortal</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Pop</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">SR (%)</th><th class="p-2 border border-slate-200">Uniformity (%)</th>
-                                        <!-- Visual Obs -->
-                                        <th class="p-2 border border-slate-200 bg-yellow-50 text-yellow-800 border-l-4 border-l-yellow-400">Weather</th><th class="p-2 border border-slate-200 bg-yellow-50 text-yellow-800">Biofouling/Disease Notes</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody-samp-oyster" class="divide-y divide-slate-100 text-sm"></tbody>
-                            </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addSampOysterRow()" class="text-slate-600 hover:text-slate-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                                <button onclick="exportTableToCSV('tbl-samp-oyster', 'Oyster_Sampling.csv')" class="ml-auto bg-slate-100 text-slate-600 px-3 py-1 rounded text-xs font-semibold hover:bg-slate-200">Export</button>
-                            </div>
-                        </div>
-
-                        <!-- Seaweed Sampling -->
-                        <div id="content-samp-seaweed" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
-                            <table id="tbl-samp-seaweed" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
-                                <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
-                                    <tr>
-                                        <!-- Core Metrics -->
-                                        <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Line/Tags</th><th class="p-2 border border-emerald-200">Age (Days)</th><th class="p-2 border border-emerald-200 bg-white">Weekly Growth (cm)</th><th class="p-2 border border-emerald-200">Float Condition</th><th class="p-2 border border-emerald-200">Rope Condition</th><th class="p-2 border border-emerald-200">Anchor Condition</th>
-                                        <!-- Visual Obs -->
-                                        <th class="p-2 border border-emerald-200 bg-yellow-50 text-yellow-800 border-l-4 border-l-yellow-400">Weather/Tide</th><th class="p-2 border border-emerald-200 bg-yellow-50 text-yellow-800">Disease/Biofouling Notes</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody-samp-seaweed" class="divide-y divide-slate-100 text-sm"></tbody>
-                            </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addSampSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                                <button onclick="exportTableToCSV('tbl-samp-seaweed', 'Seaweed_Sampling.csv')" class="ml-auto bg-slate-100 text-slate-600 px-3 py-1 rounded text-xs font-semibold hover:bg-slate-200">Export</button>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
 
-                <!-- 5. HARVEST MODULE -->
-                <div id="view-harvest" class="page-view hidden space-y-6 w-full">
-                    <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 w-full mx-auto mt-0">
-                        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b pb-4 mb-6 gap-4">
+                    <!-- Alert 2 -->
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 md:p-5 rounded-r-lg mb-4 shadow-sm">
+                        <div class="flex flex-col sm:flex-row justify-between items-start gap-2">
                             <div>
-                                <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-anchor text-emerald-500 mr-2"></i>Harvest & Yield Transaction</h3>
-                                <p class="text-xs text-slate-500 mt-1">Final output records for financial projections.</p>
+                                <h4 class="text-yellow-800 font-bold text-base md:text-lg mb-1">Low Dissolved Oxygen (Hypoxia Risk)</h4>
+                                <p class="text-yellow-900 text-xs md:text-sm mb-2">Location: <b>Cage C1F (Silver Pompano)</b></p>
+                                <p class="text-slate-700 text-xs md:text-sm">DO dropping below 4.5 mg/L. Appetite expected to decrease. <b>System recommends pausing 17:00 feeding.</b></p>
                             </div>
-                            <div class="flex gap-2 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0">
-                                <button onclick="switchTab('harv', 'fish')" id="tab-harv-fish" class="px-4 py-2 bg-emerald-600 text-white font-bold rounded shadow-sm text-sm shrink-0">Fish & Lobster</button>
-                                <button onclick="switchTab('harv', 'oyster')" id="tab-harv-oyster" class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold rounded text-sm shrink-0">Oyster</button>
-                                <button onclick="switchTab('harv', 'seaweed')" id="tab-harv-seaweed" class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold rounded text-sm shrink-0">Seaweed</button>
-                            </div>
-                        </div>
-
-                        <!-- Fish Harvest -->
-                        <div id="content-harv-fish" class="tab-content active overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
-                            <table id="tbl-harv-fish" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
-                                <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
-                                    <tr>
-                                        <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Cage Code</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200 bg-white">Sample Ct</th><th class="p-2 border border-emerald-200 bg-white">Sample Wt (kg)</th><th class="p-2 border border-emerald-200 bg-emerald-100/50">MBW</th><th class="p-2 border border-emerald-200 bg-white">Pop. Harvested</th><th class="p-2 border border-emerald-200 bg-emerald-100/50 font-bold text-emerald-700">Final Biomass (kg)</th><th class="p-2 border border-emerald-200 bg-white">Price/kg (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody-harv-fish" class="divide-y divide-slate-100 text-sm"></tbody>
-                            </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addHarvFishRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
-                        </div>
-
-                        <!-- Oyster Harvest -->
-                        <div id="content-harv-oyster" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
-                            <table id="tbl-harv-oyster" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
-                                <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
-                                    <tr>
-                                        <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Cage Code</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200 bg-white">Sample Ct</th><th class="p-2 border border-emerald-200 bg-white">Avg Length (cm)</th><th class="p-2 border border-emerald-200 bg-white">Pop. Harvested</th><th class="p-2 border border-emerald-200 bg-white">Price/cm (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody-harv-oyster" class="divide-y divide-slate-100 text-sm"></tbody>
-                            </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addHarvOysterRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
-                        </div>
-
-                        <!-- Seaweed Harvest -->
-                        <div id="content-harv-seaweed" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
-                            <table id="tbl-harv-seaweed" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
-                                <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
-                                    <tr>
-                                        <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Line/Tags</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200 bg-white">Final Wt (kg)</th><th class="p-2 border border-emerald-200">Age (Days)</th><th class="p-2 border border-emerald-200 bg-emerald-100/50">DGR (%)</th><th class="p-2 border border-emerald-200 bg-white">Price/kg (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody-harv-seaweed" class="divide-y divide-slate-100 text-sm"></tbody>
-                            </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addHarvSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
+                            <div class="bg-white px-2 py-1 rounded border border-yellow-200 text-[10px] md:text-xs text-yellow-600 font-bold shrink-0">1 Hour Ago</div>
                         </div>
                     </div>
                 </div>
+            </div> <!-- CLOSE view-alerts -->
 
-                <!-- 6. PROJECTION MODULE -->
-                <div id="view-projection" class="page-view hidden space-y-6 w-full">
-                    <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 max-w-[1400px] mx-auto mt-0 w-full">
-                        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b pb-4 mb-4 gap-4">
-                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-calendar-days text-blue-500 mr-2"></i>14-Day Feeding Projection (Fish)</h3>
-                            <div class="flex flex-col sm:flex-row gap-2 w-full lg:w-auto">
-                                <button onclick="exportTableToCSV('tbl-projection', 'Feeding_Plan_Projection.csv')" class="bg-slate-100 text-slate-600 px-4 py-2 rounded shadow-sm hover:bg-slate-200 font-semibold transition text-xs md:text-sm flex items-center justify-center w-full sm:w-auto"><i class="fa-solid fa-file-export mr-2"></i>Export Plan</button>
-                                <button onclick="saveProjectionToHistory()" class="bg-blue-600 text-white px-5 py-2 rounded shadow-sm hover:bg-blue-700 font-semibold transition text-xs md:text-sm flex items-center justify-center w-full sm:w-auto"><i class="fa-solid fa-bookmark mr-2"></i>Save to History</button>
-                            </div>
-                        </div>
-                        <form class="space-y-6 bg-slate-50 p-4 md:p-6 rounded-lg border border-slate-200 mb-8">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-7 gap-4">
-                                <div><label class="block text-xs font-semibold text-slate-700 mb-1">Cage</label><select id="projCage" class="block w-full rounded p-2 border border-slate-300 text-sm font-bold text-blue-700"><option>C1F</option></select></div>
-                                <div><label class="block text-xs font-semibold text-slate-700 mb-1">Start Date</label><input type="date" id="projDate" value="2026-03-16" class="block w-full rounded p-2 border border-slate-300 text-sm"></div>
-                                <div><label class="block text-xs font-semibold text-slate-700 mb-1">DOC</label><input type="number" id="projDoc" value="57" class="block w-full rounded p-2 border border-slate-300 text-sm"></div>
-                                <div><label class="block text-xs font-semibold text-slate-700 mb-1">Pop.</label><input type="number" id="projPop" value="905" class="block w-full rounded p-2 border border-slate-300 text-sm font-bold"></div>
-                                <div><label class="block text-xs font-semibold text-slate-700 mb-1">Cur. MBW (g)</label><input type="number" step="0.01" id="projCurrentMbw" value="49.00" class="block w-full rounded p-2 border border-blue-300 bg-blue-50 text-sm font-bold"></div>
-                                <div><label class="block text-xs font-semibold text-slate-700 mb-1">Tar. MBW (g)</label><input type="number" step="0.01" id="projTargetMbw" value="80.00" class="block w-full rounded p-2 border border-blue-300 bg-blue-50 text-sm font-bold"></div>
-                                <div><label class="block text-xs font-semibold text-slate-700 mb-1">Days</label><input type="number" id="projDays" value="13" class="block w-full rounded p-2 border border-slate-300 text-sm text-slate-500" title="Excludes final fasting day"></div>
-                            </div>
-                            <div class="pt-2"><button type="button" onclick="generateProjection()" class="bg-slate-800 text-white px-6 py-2 rounded shadow hover:bg-slate-900 transition font-semibold w-full md:w-auto"><i class="fa-solid fa-table-list mr-2"></i> Generate</button></div>
-                        </form>
-                        <div class="overflow-x-auto rounded-lg border border-slate-200 table-scrollbar -mx-4 md:mx-0">
-                            <table id="tbl-projection" class="w-full text-sm text-left text-slate-600 whitespace-nowrap">
-                                <thead class="text-xs text-white uppercase bg-slate-800"><tr><th class="px-4 py-3">DOC</th><th class="px-4 py-3">Date</th><th class="px-4 py-3">Pop.</th><th class="px-4 py-3">Proj MBW</th><th class="px-4 py-3">ADG</th><th class="px-4 py-3 bg-slate-700">Tar Biomass</th><th class="px-4 py-3 bg-red-900">Rate %</th><th class="px-4 py-3 bg-red-800">Feed (kg)</th><th class="px-4 py-3 bg-red-700">Acc</th></tr></thead>
-                                <tbody id="projectionTableBody" class="bg-white divide-y divide-slate-200"></tbody>
-                            </table>
-                        </div>
+            <!-- ==========================================
+                 12. CAMERA MONITORING
+            =========================================== -->
+            <div id="view-camera" class="page-view hidden space-y-6 w-full">
+                <div class="bg-slate-900 p-4 rounded-xl shadow-lg w-full h-[calc(100vh-120px)] flex flex-col relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-4 text-white z-10 px-2">
+                        <h3 class="text-xl font-bold"><i class="fa-solid fa-video text-red-500 mr-2 animate-pulse"></i> Live Underwater Feed</h3>
+                        <select class="bg-slate-800 border border-slate-600 text-sm p-2 rounded outline-none">
+                            <option>Cam 01: Ekas Zone A (C1F)</option>
+                            <option>Cam 02: Ekas Zone B (C2F)</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Video Placeholder -->
+                    <div class="flex-1 bg-slate-800 rounded-lg relative overflow-hidden border border-slate-700 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-40"></div>
                         
-                        <!-- HISTORY -->
-                        <div class="mt-8 md:mt-12 border-t border-slate-200 pt-6 md:pt-8">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-3">
-                                <h4 class="text-base md:text-lg font-bold text-slate-700"><i class="fa-solid fa-clock-rotate-left text-blue-500 mr-2"></i>Plan History</h4>
-                                <button onclick="exportTableToCSV('tbl-plan-history', 'Feeding_Plan_History.csv')" class="bg-slate-100 text-slate-600 px-4 py-2 rounded shadow-sm hover:bg-slate-200 font-semibold transition text-xs md:text-sm flex items-center w-full md:w-auto justify-center"><i class="fa-solid fa-file-export mr-2"></i>Export History</button>
-                            </div>
-                            <div class="overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
-                                <table id="tbl-plan-history" class="w-full text-sm text-left border border-slate-200 whitespace-nowrap">
-                                    <thead class="bg-slate-100 text-slate-600 uppercase text-xs font-bold">
-                                        <tr><th class="p-3 border border-slate-200">Gen. Date</th><th class="p-3 border border-slate-200">Cage</th><th class="p-3 border border-slate-200">Plan Start</th><th class="p-3 border border-slate-200">Tar. MBW</th><th class="p-3 border border-slate-200">Total Feed (kg)</th><th class="p-3 border border-slate-200">Status</th><th class="p-3 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
-                                    </thead>
-                                    <tbody id="tbody-plan-history" class="divide-y divide-slate-100"></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 7. ACTUAL FEED MODULE -->
-                <div id="view-feed" class="page-view hidden space-y-6 w-full">
-                    <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 max-w-[1400px] mx-auto mt-0 w-full">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-4 gap-3">
-                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-cubes-stacked text-blue-500 mr-2"></i>Actual Feed Report (Fish & Lobster)</h3>
-                            <button class="bg-blue-600 text-white px-5 py-2 rounded shadow-sm hover:bg-blue-700 font-semibold transition text-xs md:text-sm flex items-center justify-center w-full sm:w-auto"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Save All</button>
-                        </div>
-                        <div class="overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
-                            <table id="tbl-feed" class="w-full text-sm text-left border border-slate-200 whitespace-nowrap">
-                                <thead class="bg-slate-100 text-slate-600 uppercase text-xs font-bold">
-                                    <tr><th class="p-3 border border-slate-200">Date</th><th class="p-3 border border-slate-200">Cage Code</th><th class="p-3 border border-slate-200">Species</th><th class="p-3 border border-slate-200">Feed Type</th><th class="p-3 border border-slate-200 bg-white">07.00</th><th class="p-3 border border-slate-200 bg-white">12.00</th><th class="p-3 border border-slate-200 bg-white">15.00</th><th class="p-3 border border-slate-200 bg-white">17.00</th><th class="p-3 border border-slate-200 bg-slate-200 text-slate-800">Daily Total</th><th class="p-3 border border-slate-200 bg-blue-100 text-blue-800">Total Acc.</th><th class="p-3 border border-slate-200">Feeding Intensity</th><th class="p-3 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
-                                </thead>
-                                <tbody id="tbody-feed" class="divide-y divide-slate-100"></tbody>
-                            </table>
-                        </div>
-                        <button type="button" onclick="addFeedRow()" class="mt-4 text-blue-600 hover:text-blue-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                    </div>
-                </div>
-
-                <!-- 8. ALERT CENTER MODULE -->
-                <div id="view-alerts" class="page-view hidden space-y-6 w-full">
-                    <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto mt-0 w-full">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-6 gap-3">
-                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-triangle-exclamation text-red-500 mr-2"></i>Early Warning System (EWS)</h3>
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold flex items-center"><i class="fa-brands fa-whatsapp mr-1 text-base"></i> WhatsApp Sync Active</span>
-                        </div>
-                        
-                        <!-- Alert 1 -->
-                        <div class="bg-red-50 border-l-4 border-red-500 p-4 md:p-5 rounded-r-lg mb-4 shadow-sm">
-                            <div class="flex flex-col sm:flex-row justify-between items-start gap-2">
-                                <div>
-                                    <h4 class="text-red-800 font-bold text-base md:text-lg mb-1">High BGA Indicator (Biofouling Risk)</h4>
-                                    <p class="text-red-900 text-xs md:text-sm mb-2">Location: <b>Ekas Bay - Zone C (Seaweed)</b></p>
-                                    <p class="text-slate-700 text-xs md:text-sm">IoT sensors detect abnormal spike in BGA. Historic data indicates a <b>85% chance of severe Biofouling</b> within 48h.</p>
+                        <!-- Scanner UI -->
+                        <div class="absolute inset-0 z-10 pointer-events-none">
+                            <div class="w-full h-full border-[20px] border-slate-900/50 relative">
+                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                    <div class="w-12 h-px bg-red-500/50 absolute top-1/2 -translate-y-1/2 -left-6"></div>
+                                    <div class="h-12 w-px bg-red-500/50 absolute left-1/2 -translate-x-1/2 -top-6"></div>
                                 </div>
-                                <div class="bg-white px-2 py-1 rounded border border-red-200 text-[10px] md:text-xs text-red-500 font-bold shrink-0">10 Mins Ago</div>
-                            </div>
-                            <div class="mt-4 flex flex-col sm:flex-row gap-2">
-                                <button class="bg-red-600 text-white px-4 py-2 rounded text-xs md:text-sm font-bold shadow hover:bg-red-700 w-full sm:w-auto"><i class="fa-solid fa-paper-plane mr-1"></i> Resend Alert to Team</button>
-                                <button class="bg-white text-slate-600 border border-slate-300 px-4 py-2 rounded text-xs md:text-sm font-bold hover:bg-slate-50 w-full sm:w-auto"><i class="fa-solid fa-check mr-1"></i> Mark as Handled</button>
-                            </div>
-                        </div>
-
-                        <!-- Alert 2 -->
-                        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 md:p-5 rounded-r-lg mb-4 shadow-sm">
-                            <div class="flex flex-col sm:flex-row justify-between items-start gap-2">
-                                <div>
-                                    <h4 class="text-yellow-800 font-bold text-base md:text-lg mb-1">Low Dissolved Oxygen (Hypoxia Risk)</h4>
-                                    <p class="text-yellow-900 text-xs md:text-sm mb-2">Location: <b>Cage C1F (Silver Pompano)</b></p>
-                                    <p class="text-slate-700 text-xs md:text-sm">DO dropping below 4.5 mg/L. Appetite expected to decrease. <b>System recommends pausing 17:00 feeding.</b></p>
+                                
+                                <div class="absolute border-2 border-emerald-400 w-32 h-20 top-1/4 left-1/4 rounded">
+                                    <span class="bg-emerald-400 text-slate-900 text-[10px] font-bold px-1 absolute -top-4">Pompano: 120g (Est)</span>
                                 </div>
-                                <div class="bg-white px-2 py-1 rounded border border-yellow-200 text-[10px] md:text-xs text-yellow-600 font-bold shrink-0">1 Hour Ago</div>
+                                <div class="absolute border-2 border-emerald-400 w-40 h-24 top-1/2 left-2/3 rounded">
+                                    <span class="bg-emerald-400 text-slate-900 text-[10px] font-bold px-1 absolute -top-4">Pompano: 145g (Est)</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- 9. IOT MAP MODULE -->
-                <div id="view-map" class="page-view hidden h-full w-full">
-                    <div class="flex flex-col lg:flex-row gap-4 h-[calc(100vh-140px)] md:h-[calc(100vh-120px)] w-full">
-                        <!-- Map Container -->
-                        <div class="bg-white p-2 rounded-xl shadow-sm border border-slate-200 flex-1 relative z-0 flex flex-col">
-                            <div class="px-3 py-2 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-lg mb-2">
-                                <h3 class="font-bold text-slate-700"><i class="fa-solid fa-map-location-dot text-blue-500 mr-2"></i>Live Sensor Map</h3>
-                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded uppercase tracking-wider animate-pulse flex items-center"><i class="fa-solid fa-satellite-dish mr-1"></i> Live</span>
-                            </div>
-                            <div id="map" class="w-full flex-1 rounded-lg bg-slate-100 z-0 border border-slate-200"></div>
-                        </div>
-                        
-                        <!-- Real-time WQ Panel -->
-                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 w-full lg:w-80 shrink-0 flex flex-col overflow-y-auto dark-scrollbar">
-                            <h3 class="font-bold text-slate-800 mb-4 border-b pb-2"><i class="fa-solid fa-chart-line text-cyan-500 mr-2"></i>Water Quality Telemetry</h3>
-                            
-                            <div class="mb-5">
-                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Select Active Node</label>
-                                <select id="iot-node-select" class="w-full mt-1.5 p-2.5 border border-slate-300 rounded-lg font-semibold text-sm bg-slate-50 text-slate-700 focus:ring focus:ring-blue-200 outline-none transition" onchange="updateIoTPanel()">
-                                    <option value="ekas">Ekas Bay - Zone A (IMTA)</option>
-                                    <option value="kupang">Kupang Bay - Zone B</option>
-                                    <option value="kei">Kei Islands - Zone C</option>
-                                </select>
-                            </div>
-
-                            <!-- Metrics Grid -->
-                            <div class="grid grid-cols-2 gap-3" id="iot-metrics-container">
-                                <!-- Populated dynamically by JavaScript -->
-                            </div>
-                            
-                            <div class="mt-auto pt-4 border-t mt-4 border-slate-100 flex justify-between items-center">
-                                <p class="text-xs font-medium text-slate-400"><i class="fa-solid fa-clock mr-1"></i>Last sync: <span id="iot-sync-time">Just now</span></p>
-                                <button onclick="updateIoTPanel()" class="text-blue-500 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 p-2 rounded transition" title="Force Sync"><i class="fa-solid fa-rotate-right"></i></button>
-                            </div>
-                        </div>
+                    <!-- Bottom Controls -->
+                    <div class="mt-4 flex gap-4 text-slate-300 text-sm z-10">
+                        <button class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded shadow transition"><i class="fa-solid fa-camera mr-2"></i>Capture Frame</button>
+                        <button class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded shadow transition"><i class="fa-solid fa-chart-line mr-2"></i>Run Biomass Analysis</button>
                     </div>
                 </div>
+            </div> <!-- CLOSE view-camera -->
 
-                <!-- 10. BATCH PROCESSOR MODULE -->
-                <div id="view-batch" class="page-view hidden h-full w-full">
+            <!-- ==========================================
+                 13. CV SAMPLING ENGINE (BATCH PROCESSOR)
+            =========================================== -->
+            <div id="view-batch" class="page-view hidden h-full w-full">
                     <div class="flex flex-col md:flex-row h-[calc(100vh-140px)] md:h-[calc(100vh-120px)] bg-[#0e1117] rounded-xl overflow-hidden shadow-sm border border-slate-300 w-full">
                         <div class="w-full md:w-80 bg-[#262730] p-4 md:p-6 flex flex-col border-b md:border-b-0 md:border-r border-[#3a3b45] text-slate-200 shrink-0">
                             <h3 class="text-lg md:text-xl font-bold text-white mb-4 md:mb-6">Settings</h3>
