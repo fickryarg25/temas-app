@@ -22,7 +22,6 @@
         .leaflet-popup-content { margin: 12px; width: 260px !important; }
         .leaflet-container a.leaflet-popup-close-button { color: #64748b; padding: 4px; }
         
-        /* Table Input Styling */
         table input, table select { outline: none; background: transparent; width: 100%; min-width: 60px; font-size: 13px; }
         table input:focus, table select:focus { border-bottom: 2px solid #3b82f6; background: #fff; }
         table input[readonly] { font-weight: bold; color: #475569; }
@@ -55,44 +54,50 @@
             <button onclick="navigate('overview', 'Overview Dashboard', this)" class="nav-btn w-full text-left px-4 py-2 bg-blue-600 text-white rounded-lg shadow transition flex items-center text-sm font-semibold">
                 <i class="fa-solid fa-chart-pie w-5 mr-2"></i> Overview
             </button>
+            <button onclick="navigate('weather', 'Weather Dashboard', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
+                <i class="fa-solid fa-cloud-sun-rain w-5 mr-2"></i> Weather
+            </button>
+            <button onclick="navigate('wq-dash', 'Water Quality Dashboard', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
+                <i class="fa-solid fa-droplet w-5 mr-2"></i> Water Quality
+            </button>
 
             <!-- CORE OPERATIONS -->
             <div class="pt-5 pb-2 border-t border-slate-800 mt-4"><p class="px-2 text-xs font-bold text-blue-400 uppercase tracking-wider">Core Operations</p></div>
-            <button onclick="navigate('site-registry', 'Site Registry', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
-                <i class="fa-solid fa-map-location-dot w-5 mr-2"></i> Site Registry
+            <button onclick="navigate('site-registry', 'Site & Farm Registry', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
+                <i class="fa-solid fa-map-location-dot w-5 mr-2"></i> Site & Farm Registry
             </button>
-            <button onclick="navigate('farm-setup', 'Cycle Setup & Stocking', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
-                <i class="fa-solid fa-seedling w-5 mr-2"></i> Cycle Setup
+            <button onclick="navigate('cycle-setup', 'Cycle Setup & Stocking', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
+                <i class="fa-solid fa-seedling w-5 mr-2"></i> Cycle Setup & Stocking
             </button>
             <button onclick="navigate('feed-intel', 'Feed Intelligence', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
                 <i class="fa-solid fa-cubes-stacked w-5 mr-2"></i> Feed Intelligence
             </button>
-            <button onclick="navigate('growth-biomass', 'Growth & Biomass', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
+            <button onclick="navigate('growth-biomass', 'Growth & Biomass Monitoring', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
                 <i class="fa-solid fa-chart-line w-5 mr-2"></i> Growth & Biomass
             </button>
-            <button onclick="navigate('health-disease', 'Health & Disease', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
+            <button onclick="navigate('health-disease', 'Health, Mortality & Disease', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
                 <i class="fa-solid fa-heart-pulse w-5 mr-2"></i> Health & Disease
             </button>
             <button onclick="navigate('harvest', 'Harvest & Revenue', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-emerald-400 font-medium text-sm">
                 <i class="fa-solid fa-anchor w-5 mr-2"></i> Harvest & Revenue
             </button>
 
-            <!-- MONITORING -->
+            <!-- MONITORING & ALERTS -->
             <div class="pt-5 pb-2 border-t border-slate-800 mt-2"><p class="px-2 text-xs font-bold text-cyan-400 uppercase tracking-wider">Monitoring</p></div>
             <button onclick="navigate('map', 'IoT Map & Sensors', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
                 <i class="fa-solid fa-satellite-dish w-5 mr-2"></i> IoT Map
             </button>
+            <button onclick="navigate('camera', 'Camera Monitoring', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
+                <i class="fa-solid fa-video w-5 mr-2"></i> Camera Monitoring
+            </button>
             <button onclick="navigate('alerts', 'Alert & Risk Center', this)" class="nav-btn w-full text-left px-4 py-2.5 hover:bg-slate-800 rounded-lg transition flex items-center text-red-400 font-bold text-sm bg-red-900/20 mt-1">
                 <i class="fa-solid fa-triangle-exclamation w-5 mr-2 animate-pulse"></i> Alert Center
             </button>
-            <button onclick="navigate('camera', 'Camera Monitoring', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm mt-1">
-                <i class="fa-solid fa-video w-5 mr-2"></i> Camera Monitoring
-            </button>
 
             <!-- AI TOOLS -->
-            <div class="pt-5 pb-2 border-t border-slate-800 mt-2"><p class="px-2 text-xs font-bold text-purple-400 uppercase tracking-wider">Analytics & AI</p></div>
+            <div class="pt-5 pb-2 border-t border-slate-800 mt-2"><p class="px-2 text-xs font-bold text-purple-400 uppercase tracking-wider">AI Engines</p></div>
             <button onclick="navigate('batch', 'CV Sampling Engine', this)" class="nav-btn w-full text-left px-4 py-2 hover:bg-slate-800 rounded-lg transition flex items-center text-slate-300 text-sm">
-                <i class="fa-solid fa-microchip w-5 mr-2"></i> CV Sampling
+                <i class="fa-solid fa-microchip w-5 mr-2"></i> CV Sampling Engine
             </button>
 
         </nav>
@@ -119,10 +124,8 @@
         <div class="flex-1 overflow-y-auto p-4 md:p-6 bg-slate-100 w-full">
             <div class="max-w-[1400px] mx-auto pb-12 w-full">
 
-                <!-- ==========================================
-                     1. OVERVIEW DASHBOARD (PRD Section 5)
-                =========================================== -->
-                <div id="view-overview" class="page-view space-y-6 w-full">
+                <!-- 1. OVERVIEW DASHBOARD -->
+                <div id="view-overview" class="page-view space-y-6">
                     
                     <!-- GLOBAL COMMODITY FILTER -->
                     <div class="bg-white p-2 rounded-xl shadow-sm border border-slate-200 inline-flex flex-wrap md:flex-nowrap gap-1 md:gap-2 w-full md:w-auto">
@@ -141,126 +144,137 @@
                     </div>
 
                     <!-- DYNAMIC KPI CARDS CONTAINER -->
-                    <div id="kpi-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-                        <!-- Content injected dynamically via JavaScript based on commodity selected -->
+                    <div id="kpi-container" class="grid gap-4 md:gap-6">
+                        <!-- Rendered by JS -->
                     </div>
 
                     <!-- DYNAMIC CHARTS CONTAINER -->
                     <div id="chart-container" class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-                        <!-- Content injected dynamically via JavaScript based on commodity selected -->
+                        <!-- Rendered by JS -->
                     </div>
+                </div>
 
-                    <!-- Comparison Tool (Kept for Analytics Purpose) -->
-                    <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-slate-200 mt-6">
+                <!-- 2. WEATHER DASHBOARD (NEW) -->
+                <div id="view-weather" class="page-view hidden space-y-6">
+                    <div class="flex flex-col md:flex-row gap-4 items-center justify-between bg-gradient-to-r from-blue-900 to-indigo-800 rounded-xl p-6 md:p-8 text-white shadow-md">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-1">Ekas Bay - Zone A</h3>
+                            <p class="text-blue-200 text-sm">Marine & Atmospheric Conditions (Live)</p>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="text-center"><i class="fa-solid fa-cloud-sun text-4xl text-yellow-300 mb-2"></i><p class="font-bold text-2xl">29°C</p></div>
+                            <div class="h-12 w-px bg-white/20"></div>
+                            <div class="text-center"><i class="fa-solid fa-water text-4xl text-cyan-300 mb-2"></i><p class="font-bold text-xl">Low Tide</p><p class="text-xs text-blue-200">0.4m at 14:00</p></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-center">
+                            <i class="fa-solid fa-wind text-2xl text-slate-400 mb-2"></i>
+                            <p class="text-xs text-slate-500 font-bold uppercase mb-1">Wind Direction</p>
+                            <h4 class="text-xl font-bold text-slate-800">12 km/h <span class="text-sm font-normal text-slate-500">NE</span></h4>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-center">
+                            <i class="fa-solid fa-arrow-right-arrow-left text-2xl text-blue-400 mb-2"></i>
+                            <p class="text-xs text-slate-500 font-bold uppercase mb-1">Current Vel.</p>
+                            <h4 class="text-xl font-bold text-slate-800">0.2 m/s</h4>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-center">
+                            <i class="fa-solid fa-water text-2xl text-cyan-500 mb-2"></i>
+                            <p class="text-xs text-slate-500 font-bold uppercase mb-1">Wave Height</p>
+                            <h4 class="text-xl font-bold text-slate-800">0.8 m</h4>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-center">
+                            <i class="fa-solid fa-cloud-rain text-2xl text-indigo-400 mb-2"></i>
+                            <p class="text-xs text-slate-500 font-bold uppercase mb-1">Forecast</p>
+                            <h4 class="text-xl font-bold text-slate-800">15% Rain</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. WATER QUALITY DASHBOARD (NEW) -->
+                <div id="view-wq-dash" class="page-view hidden space-y-6">
+                    <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-slate-200">
                         <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end border-b pb-4 mb-4 gap-4">
                             <div>
                                 <h4 class="font-bold text-slate-700 text-base md:text-lg w-full lg:w-auto"><i class="fa-solid fa-code-compare text-blue-500 mr-2"></i>Parameter Comparison Engine</h4>
-                                <p class="text-xs text-slate-500">Correlate IoT Telemetry with Field Data</p>
+                                <p class="text-xs text-slate-500">Correlate Historical IoT Telemetry Data</p>
                             </div>
                             <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-end w-full lg:w-auto">
                                 <div class="w-full sm:w-48">
                                     <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Param A (IoT / WQ)</label>
                                     <select class="border p-2 rounded-md w-full bg-slate-50 font-medium text-sm">
                                         <option>DO (mg/L)</option><option>Salinity (ppt)</option><option>Temperature (°C)</option>
-                                        <option>Chlorophyll-a</option><option>Turbidity (NTU)</option>
                                     </select>
                                 </div>
                                 <div class="w-full sm:w-48">
                                     <label class="text-xs font-bold text-slate-500 uppercase mb-1 block">Param B (Field Data)</label>
                                     <select class="border p-2 rounded-md w-full bg-slate-50 font-medium text-sm">
-                                        <option>Mortality (ind)</option><option>Biofouling Rate (%)</option><option>MBW Growth (g)</option>
-                                        <option>Uniformity (%)</option><option>DGR Seaweed (%)</option>
+                                        <option>Mortality (ind)</option><option>Biofouling Rate (%)</option>
                                     </select>
                                 </div>
-                                <button class="bg-slate-800 text-white px-5 py-2 rounded-md hover:bg-slate-900 font-semibold shadow-sm transition w-full sm:w-auto">Analyze</button>
+                                <button class="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 font-semibold shadow-sm transition w-full sm:w-auto">Analyze</button>
                             </div>
                         </div>
-                        <div class="h-60 md:h-72 w-full"><canvas id="chartComparison"></canvas></div>
+                        <div class="h-60 md:h-72 w-full"><canvas id="chartWQComp"></canvas></div>
                     </div>
                 </div>
 
-                <!-- ==========================================
-                     2. SITE REGISTRY MODULE
-                =========================================== -->
+                <!-- 4. SITE & FARM REGISTRY -->
                 <div id="view-site-registry" class="page-view hidden space-y-6 w-full">
-                    <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto mt-0 w-full">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-6 gap-3">
-                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-location-crosshairs text-cyan-500 mr-2"></i>Comprehensive Site Registry</h3>
-                            <button class="bg-cyan-600 text-white px-5 py-2 rounded shadow-sm hover:bg-cyan-700 font-semibold transition text-xs md:text-sm flex items-center justify-center w-full sm:w-auto"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Save Site Profile</button>
+                    <div class="flex border-b border-slate-200 gap-4 mb-4">
+                        <button onclick="switchInternalTab('registry', 'site')" id="tab-registry-site" class="pb-2 text-sm font-bold text-blue-600 border-b-2 border-blue-600">Site Profile</button>
+                        <button onclick="switchInternalTab('registry', 'farm')" id="tab-registry-farm" class="pb-2 text-sm font-bold text-slate-500 hover:text-slate-700 border-b-2 border-transparent">Farm Master Data</button>
+                    </div>
+
+                    <!-- SITE REGISTRY -->
+                    <div id="content-registry-site" class="internal-tab-content active bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 max-w-[1400px] mx-auto mt-0 w-full">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-4 gap-3">
+                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-location-crosshairs text-cyan-500 mr-2"></i>Site Profile & Baseline</h3>
+                            <div class="flex gap-2">
+                                <button onclick="exportTableToCSV('tbl-site-registry', 'Site_Registry.csv')" class="bg-slate-100 text-slate-600 px-4 py-2 rounded shadow-sm hover:bg-slate-200 font-semibold transition text-xs md:text-sm"><i class="fa-solid fa-file-export mr-2"></i>Export CSV</button>
+                                <button class="bg-cyan-600 text-white px-5 py-2 rounded shadow-sm hover:bg-cyan-700 font-semibold transition text-xs md:text-sm"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Save All</button>
+                            </div>
                         </div>
-                        
-                        <form class="space-y-8">
-                            <!-- Group 1: General & Location -->
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 border-l-4 border-cyan-500 pl-2">General & Location Details</h4>
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-100">
-                                    <div class="sm:col-span-3"><label class="block text-xs font-semibold text-slate-700 mb-1">Site/Farm Name</label><input type="text" placeholder="Ekas Bay Zone A" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-semibold text-slate-700 mb-1">Date Logged</label><input type="date" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-semibold text-slate-700 mb-1">Latitude</label><input type="text" placeholder="-8.868" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm font-mono"></div>
-                                    <div><label class="block text-xs font-semibold text-slate-700 mb-1">Longitude</label><input type="text" placeholder="116.452" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm font-mono"></div>
-                                </div>
-                            </div>
+                        <div class="overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
+                            <table id="tbl-site-registry" class="w-full text-sm text-left border border-slate-200 whitespace-nowrap">
+                                <thead class="bg-cyan-50 text-cyan-900 uppercase text-xs font-bold">
+                                    <tr><th class="p-3 border border-cyan-100">Date</th><th class="p-3 border border-cyan-100">Site Name</th><th class="p-3 border border-cyan-100">Lat/Long</th><th class="p-3 border border-cyan-100">Depth (m)</th><th class="p-3 border border-cyan-100">Substrate</th><th class="p-3 border border-cyan-100">Coral/Seagrass Cover</th><th class="p-3 border border-cyan-100">Habitat Dist (km)</th><th class="p-3 border border-cyan-100 text-center"><i class="fa-solid fa-gear"></i></th></tr>
+                                </thead>
+                                <tbody id="tbody-site-registry" class="divide-y divide-slate-100"></tbody>
+                            </table>
+                        </div>
+                        <button type="button" onclick="addSiteRow()" class="mt-4 text-cyan-600 hover:text-cyan-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
+                    </div>
 
-                            <!-- Group 2: Physical Parameters -->
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 border-l-4 border-blue-500 pl-2">Physical Parameters</h4>
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Depth (m)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Current (m/s)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Wave Height (m)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Water Clarity (m)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Temperature (°C)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Salinity (ppt)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">TSS (mg/L)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Turbidity (NTU)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                </div>
-                            </div>
-
-                            <!-- Group 3: Chemical Parameters -->
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 border-l-4 border-purple-500 pl-2">Chemical Parameters</h4>
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">pH</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">DO (mg/L)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Ammonia (mg/L)</label><input type="number" step="0.001" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Nitrate (mg/L)</label><input type="number" step="0.001" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Nitrite (mg/L)</label><input type="number" step="0.001" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Phosphate (mg/L)</label><input type="number" step="0.001" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">BOD (mg/L)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">COD (mg/L)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                </div>
-                            </div>
-
-                            <!-- Group 4: Biological & Habitat -->
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 border-l-4 border-emerald-500 pl-2">Biological & Habitats</h4>
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                                    <div class="sm:col-span-2"><label class="block text-xs font-medium text-slate-700 mb-1">Substrate Type</label><input type="text" placeholder="Sandy/Mud/Coral" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Coral Cover (%)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Seagrass Cover (%)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div class="sm:col-span-2"><label class="block text-xs font-medium text-slate-700 mb-1">Sensitive Habitat Dist. (km)</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Chlorophyll-a</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div><label class="block text-xs font-medium text-slate-700 mb-1">Microplastic Level</label><input type="number" step="0.1" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div class="sm:col-span-2"><label class="block text-xs font-medium text-slate-700 mb-1">Phytoplankton Details</label><input type="text" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                    <div class="sm:col-span-2"><label class="block text-xs font-medium text-slate-700 mb-1">Zooplankton Details</label><input type="text" class="w-full rounded border-slate-300 p-2 text-sm border shadow-sm"></div>
-                                </div>
-                            </div>
-                        </form>
+                    <!-- FARM REGISTRY -->
+                    <div id="content-registry-farm" class="internal-tab-content hidden bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 max-w-[1400px] mx-auto mt-0 w-full">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-4 gap-3">
+                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-border-all text-blue-500 mr-2"></i>Farm Master Data (Infrastructure)</h3>
+                            <button class="bg-blue-600 text-white px-5 py-2 rounded shadow-sm hover:bg-blue-700 font-semibold transition text-xs md:text-sm"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Save All</button>
+                        </div>
+                        <div class="overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
+                            <table id="tbl-farm-master" class="w-full text-sm text-left border border-slate-200 whitespace-nowrap">
+                                <thead class="bg-slate-100 text-slate-600 uppercase text-xs font-bold">
+                                    <tr><th class="p-3 border border-slate-200">Farm Code</th><th class="p-3 border border-slate-200">Site Parent</th><th class="p-3 border border-slate-200">Cage/Line Code</th><th class="p-3 border border-slate-200">Commodity Allocation</th><th class="p-3 border border-slate-200">Area/Dimensions (m²)</th><th class="p-3 border border-slate-200">Status</th><th class="p-3 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
+                                </thead>
+                                <tbody id="tbody-farm-master" class="divide-y divide-slate-100"></tbody>
+                            </table>
+                        </div>
+                        <button type="button" onclick="addFarmMasterRow()" class="mt-4 text-blue-600 hover:text-blue-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
                     </div>
                 </div>
 
-                <!-- ==========================================
-                     3. CYCLE SETUP & STOCKING
-                =========================================== -->
-                <div id="view-farm-setup" class="page-view hidden space-y-6 w-full">
+                <!-- 5. CYCLE SETUP & STOCKING -->
+                <div id="view-cycle-setup" class="page-view hidden space-y-6 w-full">
                     <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 w-full mx-auto mt-0">
                         <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b pb-4 mb-6 gap-4">
                             <div>
-                                <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-seedling text-emerald-500 mr-2"></i>Cycle Setup & Initial Stocking</h3>
-                                <p class="text-xs text-slate-500 mt-1">Select commodity below to initialize a cycle with specific parameters.</p>
+                                <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-seedling text-indigo-500 mr-2"></i>Cycle Setup & Initial Stocking</h3>
+                                <p class="text-xs text-slate-500 mt-1">Select commodity below to load specific parameters.</p>
                             </div>
                             <div class="flex gap-2 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0">
-                                <button onclick="switchTab('cycle', 'fish')" id="tab-cycle-fish" class="px-4 py-2 bg-blue-600 text-white font-bold rounded shadow-sm text-sm shrink-0">Fish & Lobster</button>
+                                <button onclick="switchTab('cycle', 'fish')" id="tab-cycle-fish" class="px-4 py-2 bg-indigo-600 text-white font-bold rounded shadow-sm text-sm shrink-0">Fish & Lobster</button>
                                 <button onclick="switchTab('cycle', 'oyster')" id="tab-cycle-oyster" class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold rounded text-sm shrink-0">Oyster</button>
                                 <button onclick="switchTab('cycle', 'seaweed')" id="tab-cycle-seaweed" class="px-4 py-2 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold rounded text-sm shrink-0">Seaweed</button>
                             </div>
@@ -269,15 +283,13 @@
                         <!-- Fish/Lobster Stocking Table -->
                         <div id="content-cycle-fish" class="tab-content active overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-cycle-fish" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
-                                <thead class="bg-slate-100 text-slate-600 uppercase font-bold">
-                                    <tr>
-                                        <th class="p-2 border border-slate-200">Cage Code</th><th class="p-2 border border-slate-200">Species</th><th class="p-2 border border-slate-200">Stock Date</th><th class="p-2 border border-slate-200">Cycle ID</th><th class="p-2 border border-slate-200">Stock Source</th><th class="p-2 border border-slate-200">Cage Area (m²)</th><th class="p-2 border border-slate-200 bg-white">Stocking Count</th><th class="p-2 border border-slate-200 bg-blue-50 text-blue-800">Density</th><th class="p-2 border border-slate-200 bg-white">Samp. Wt (g)</th><th class="p-2 border border-slate-200 bg-white">Samp. Ct</th><th class="p-2 border border-slate-200 bg-blue-50 text-blue-800">MBW</th><th class="p-2 border border-slate-200">Length (cm)</th><th class="p-2 border border-slate-200">Uniformity (%)</th><th class="p-2 border border-slate-200">Reject Count</th><th class="p-2 border border-slate-200">Notes</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
+                                <thead class="bg-indigo-50 text-indigo-900 uppercase font-bold">
+                                    <tr><th class="p-2 border border-slate-200">Cage Code</th><th class="p-2 border border-slate-200">Species</th><th class="p-2 border border-slate-200">Stock Date</th><th class="p-2 border border-slate-200">Cycle ID</th><th class="p-2 border border-slate-200">Stock Source</th><th class="p-2 border border-slate-200">Cage Area (m²)</th><th class="p-2 border border-slate-200 bg-white">Stocking Count</th><th class="p-2 border border-slate-200 bg-indigo-50/50 text-indigo-800">Density</th><th class="p-2 border border-slate-200 bg-white">Samp. Wt (g)</th><th class="p-2 border border-slate-200 bg-white">Samp. Ct</th><th class="p-2 border border-slate-200 bg-indigo-50 text-indigo-800">MBW</th><th class="p-2 border border-slate-200">Length (cm)</th><th class="p-2 border border-slate-200">Uniformity (%)</th><th class="p-2 border border-slate-200">Reject Count</th><th class="p-2 border border-slate-200">Notes</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
                                 </thead>
                                 <tbody id="tbody-cycle-fish" class="divide-y divide-slate-100 text-sm"></tbody>
                             </table>
                             <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addCycleFishRow()" class="text-blue-600 hover:text-blue-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
+                                <button type="button" onclick="addCycleFishRow()" class="text-indigo-600 hover:text-indigo-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
                                 <button onclick="exportTableToCSV('tbl-cycle-fish', 'Fish_Stocking.csv')" class="ml-auto bg-slate-100 text-slate-600 px-3 py-1 rounded text-xs font-semibold hover:bg-slate-200">Export</button>
                             </div>
                         </div>
@@ -286,39 +298,28 @@
                         <div id="content-cycle-oyster" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-cycle-oyster" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
                                 <thead class="bg-slate-100 text-slate-600 uppercase font-bold">
-                                    <tr>
-                                        <th class="p-2 border border-slate-200">Line Code</th><th class="p-2 border border-slate-200">Species</th><th class="p-2 border border-slate-200">Stock Date</th><th class="p-2 border border-slate-200">Cycle ID</th><th class="p-2 border border-slate-200">Stock Source</th><th class="p-2 border border-slate-200 bg-white">Pocket Count</th><th class="p-2 border border-slate-200 bg-white">Stocking Count</th><th class="p-2 border border-slate-200 bg-slate-200 text-slate-800">Density (Ct/Pocket)</th><th class="p-2 border border-slate-200">Sample Count</th><th class="p-2 border border-slate-200">Shell Length (cm)</th><th class="p-2 border border-slate-200">Uniformity (%)</th><th class="p-2 border border-slate-200">Reject Count</th><th class="p-2 border border-slate-200">Notes</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
+                                    <tr><th class="p-2 border border-slate-200">Line Code</th><th class="p-2 border border-slate-200">Species</th><th class="p-2 border border-slate-200">Stock Date</th><th class="p-2 border border-slate-200">Cycle ID</th><th class="p-2 border border-slate-200">Stock Source</th><th class="p-2 border border-slate-200 bg-white">Pocket Count</th><th class="p-2 border border-slate-200 bg-white">Stocking Count</th><th class="p-2 border border-slate-200 bg-slate-200 text-slate-800">Density (Ct/Pocket)</th><th class="p-2 border border-slate-200">Sample Count</th><th class="p-2 border border-slate-200">Shell Length (cm)</th><th class="p-2 border border-slate-200">Uniformity (%)</th><th class="p-2 border border-slate-200">Reject Count</th><th class="p-2 border border-slate-200">Notes</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
                                 </thead>
                                 <tbody id="tbody-cycle-oyster" class="divide-y divide-slate-100 text-sm"></tbody>
                             </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addCycleOysterRow()" class="text-slate-600 hover:text-slate-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
+                            <div class="flex gap-2 mt-4"><button type="button" onclick="addCycleOysterRow()" class="text-slate-600 hover:text-slate-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
                         </div>
 
                         <!-- Seaweed Stocking Table -->
                         <div id="content-cycle-seaweed" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-cycle-seaweed" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
                                 <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
-                                    <tr>
-                                        <th class="p-2 border border-emerald-200">Tags/Line</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200">Stocking Date</th><th class="p-2 border border-emerald-200">Cycle ID</th><th class="p-2 border border-emerald-200">Stock Source</th><th class="p-2 border border-emerald-200">Bibbit Age</th><th class="p-2 border border-emerald-200">Bibbit Quality</th><th class="p-2 border border-emerald-200">Seeding Date</th><th class="p-2 border border-emerald-200">Planting Date</th><th class="p-2 border border-emerald-200">Care Type</th><th class="p-2 border border-emerald-200">Location</th><th class="p-2 border border-emerald-200">Tie Type</th><th class="p-2 border border-emerald-200 bg-white">Stocking Wt (kg)</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
+                                    <tr><th class="p-2 border border-emerald-200">Tags/Line</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200">Stocking Date</th><th class="p-2 border border-emerald-200">Cycle ID</th><th class="p-2 border border-emerald-200">Stock Source</th><th class="p-2 border border-emerald-200">Bibbit Age</th><th class="p-2 border border-emerald-200">Bibbit Quality</th><th class="p-2 border border-emerald-200">Seeding Date</th><th class="p-2 border border-emerald-200">Planting Date</th><th class="p-2 border border-emerald-200">Care Type</th><th class="p-2 border border-emerald-200">Location</th><th class="p-2 border border-emerald-200">Tie Type</th><th class="p-2 border border-emerald-200 bg-white">Stocking Wt (kg)</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
                                 </thead>
                                 <tbody id="tbody-cycle-seaweed" class="divide-y divide-slate-100 text-sm"></tbody>
                             </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addCycleSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
+                            <div class="flex gap-2 mt-4"><button type="button" onclick="addCycleSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ==========================================
-                     4. FEED INTELLIGENCE (FISH/LOBSTER)
-                =========================================== -->
+                <!-- 6. FEED INTELLIGENCE -->
                 <div id="view-feed-intel" class="page-view hidden space-y-6 w-full">
-                    <!-- Nav Tabs Internal -->
                     <div class="flex border-b border-slate-200 gap-4 mb-4">
                         <button onclick="switchInternalTab('feed', 'planner')" id="tab-feed-planner" class="pb-2 text-sm font-bold text-blue-600 border-b-2 border-blue-600">Feed Planner & Projection</button>
                         <button onclick="switchInternalTab('feed', 'actual')" id="tab-feed-actual" class="pb-2 text-sm font-bold text-slate-500 hover:text-slate-700 border-b-2 border-transparent">Actual Feed Report</button>
@@ -329,7 +330,7 @@
                         <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b pb-4 mb-4 gap-4">
                             <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-calculator text-blue-500 mr-2"></i>14-Day Feeding Projection Calculator</h3>
                             <div class="flex flex-col sm:flex-row gap-2 w-full lg:w-auto">
-                                <button class="bg-blue-600 text-white px-5 py-2 rounded shadow-sm hover:bg-blue-700 font-semibold transition text-xs md:text-sm flex items-center justify-center w-full sm:w-auto"><i class="fa-solid fa-bookmark mr-2"></i>Save Plan</button>
+                                <button onclick="exportTableToCSV('tbl-projection', 'Feeding_Plan.csv')" class="bg-slate-100 text-slate-600 px-5 py-2 rounded shadow-sm hover:bg-slate-200 font-semibold transition text-xs md:text-sm"><i class="fa-solid fa-file-export mr-2"></i>Export</button>
                             </div>
                         </div>
                         <form class="space-y-6 bg-slate-50 p-4 md:p-6 rounded-lg border border-slate-200 mb-8">
@@ -342,11 +343,11 @@
                                 <div><label class="block text-xs font-semibold text-slate-700 mb-1">Tar. MBW (g)</label><input type="number" step="0.01" id="projTargetMbw" value="80.00" class="block w-full rounded p-2 border border-blue-300 bg-blue-50 text-sm font-bold"></div>
                                 <div><label class="block text-xs font-semibold text-slate-700 mb-1">Days</label><input type="number" id="projDays" value="13" class="block w-full rounded p-2 border border-slate-300 text-sm text-slate-500"></div>
                             </div>
-                            <div class="pt-2"><button type="button" onclick="generateProjection()" class="bg-slate-800 text-white px-6 py-2 rounded shadow hover:bg-slate-900 transition font-semibold w-full md:w-auto"><i class="fa-solid fa-bolt mr-2"></i> Generate Projection</button></div>
+                            <div class="pt-2"><button type="button" onclick="generateProjection()" class="bg-slate-800 text-white px-6 py-2 rounded shadow hover:bg-slate-900 transition font-semibold w-full md:w-auto"><i class="fa-solid fa-table-list mr-2"></i> Generate</button></div>
                         </form>
                         <div class="overflow-x-auto rounded-lg border border-slate-200 table-scrollbar -mx-4 md:mx-0">
                             <table id="tbl-projection" class="w-full text-sm text-left text-slate-600 whitespace-nowrap">
-                                <thead class="text-xs text-white uppercase bg-slate-800"><tr><th class="px-4 py-3">DOC</th><th class="px-4 py-3">Date</th><th class="px-4 py-3">Pop.</th><th class="px-4 py-3">Proj MBW</th><th class="px-4 py-3">Proj ADG</th><th class="px-4 py-3 bg-slate-700">Proj Biomass</th><th class="px-4 py-3 bg-red-900">Feed Rate %</th><th class="px-4 py-3 bg-red-800">Proj Feed (kg)</th><th class="px-4 py-3 bg-red-700">Proj Acc Feed</th></tr></thead>
+                                <thead class="text-xs text-white uppercase bg-slate-800"><tr><th class="px-4 py-3">DOC</th><th class="px-4 py-3">Date</th><th class="px-4 py-3">Pop.</th><th class="px-4 py-3">Proj MBW</th><th class="px-4 py-3">ADG</th><th class="px-4 py-3 bg-slate-700">Tar Biomass</th><th class="px-4 py-3 bg-red-900">Rate %</th><th class="px-4 py-3 bg-red-800">Feed (kg)</th><th class="px-4 py-3 bg-red-700">Acc</th></tr></thead>
                                 <tbody id="projectionTableBody" class="bg-white divide-y divide-slate-200"></tbody>
                             </table>
                         </div>
@@ -355,8 +356,8 @@
                     <!-- ACTUAL FEED -->
                     <div id="content-feed-actual" class="internal-tab-content hidden bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 max-w-[1400px] mx-auto mt-0 w-full">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-4 gap-3">
-                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-clipboard-list text-blue-500 mr-2"></i>Actual Feed Entry</h3>
-                            <button class="bg-blue-600 text-white px-5 py-2 rounded shadow-sm hover:bg-blue-700 font-semibold transition text-xs md:text-sm flex items-center justify-center w-full sm:w-auto"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Save All</button>
+                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-cubes-stacked text-blue-500 mr-2"></i>Actual Feed Report</h3>
+                            <button class="bg-blue-600 text-white px-5 py-2 rounded shadow-sm hover:bg-blue-700 font-semibold transition text-xs md:text-sm"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Save All</button>
                         </div>
                         <div class="overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-feed" class="w-full text-sm text-left border border-slate-200 whitespace-nowrap">
@@ -368,17 +369,14 @@
                         </div>
                         <button type="button" onclick="addFeedRow()" class="mt-4 text-blue-600 hover:text-blue-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
                     </div>
-                </div> <!-- END view-feed-intel -->
+                </div>
 
-                <!-- ==========================================
-                     5. GROWTH & BIOMASS MONITORING (SAMPLING)
-                =========================================== -->
+                <!-- 7. GROWTH & BIOMASS MONITORING (SAMPLING) -->
                 <div id="view-growth-biomass" class="page-view hidden space-y-6 w-full">
                     <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 w-full mx-auto mt-0">
                         <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b pb-4 mb-6 gap-4">
                             <div>
                                 <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-microscope text-blue-500 mr-2"></i>Unified Sampling & Growth Monitoring</h3>
-                                <p class="text-xs text-slate-500 mt-1">Biomass calculation and core sampling records.</p>
                             </div>
                             <div class="flex gap-2 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0">
                                 <button onclick="switchTab('samp', 'fish')" id="tab-samp-fish" class="px-4 py-2 bg-blue-600 text-white font-bold rounded shadow-sm text-sm shrink-0">Fish & Lobster</button>
@@ -391,85 +389,62 @@
                         <div id="content-samp-fish" class="tab-content active overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-samp-fish" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
                                 <thead class="bg-slate-100 text-slate-600 uppercase font-bold">
-                                    <tr>
-                                        <!-- Core Metrics -->
-                                        <th class="p-2 border border-slate-200">Date</th><th class="p-2 border border-slate-200">Cage Code</th><th class="p-2 border border-slate-200">DOC</th><th class="p-2 border border-slate-200">Length/Carapace</th><th class="p-2 border border-slate-200 bg-white">Samp Wt</th><th class="p-2 border border-slate-200 bg-white">Samp Ct</th><th class="p-2 border border-slate-200 bg-white">Acc Feed</th><th class="p-2 border border-slate-200 bg-white">Acc Mortal</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">MBW</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Pop</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">SR (%)</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Biomass</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">FCR</th><th class="p-2 border border-slate-200">Uniformity (%)</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
+                                    <tr><th class="p-2 border border-slate-200">Date</th><th class="p-2 border border-slate-200">Cage Code</th><th class="p-2 border border-slate-200">DOC</th><th class="p-2 border border-slate-200">Length/Carapace</th><th class="p-2 border border-slate-200 bg-white">Samp Wt</th><th class="p-2 border border-slate-200 bg-white">Samp Ct</th><th class="p-2 border border-slate-200 bg-white">Acc Feed</th><th class="p-2 border border-slate-200 bg-white">Acc Mortal</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">MBW</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Pop</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">SR (%)</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Biomass</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">FCR</th><th class="p-2 border border-slate-200">Uniformity (%)</th><th class="p-2 border border-slate-200 bg-yellow-50 text-yellow-800">Weather</th><th class="p-2 border border-slate-200 bg-yellow-50 text-yellow-800">Disease/Behavior</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
                                 </thead>
                                 <tbody id="tbody-samp-fish" class="divide-y divide-slate-100 text-sm"></tbody>
                             </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addSampFishRow()" class="text-blue-600 hover:text-blue-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
+                            <div class="flex gap-2 mt-4"><button type="button" onclick="addSampFishRow()" class="text-blue-600 hover:text-blue-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
                         </div>
 
                         <!-- Oyster Sampling -->
                         <div id="content-samp-oyster" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-samp-oyster" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
                                 <thead class="bg-slate-100 text-slate-600 uppercase font-bold">
-                                    <tr>
-                                        <!-- Core Metrics -->
-                                        <th class="p-2 border border-slate-200">Date</th><th class="p-2 border border-slate-200">Cage/Line</th><th class="p-2 border border-slate-200">DOC</th><th class="p-2 border border-slate-200 bg-white">Avg Shell Length (cm)</th><th class="p-2 border border-slate-200 bg-white">Sample Ct</th><th class="p-2 border border-slate-200 bg-white">Acc Mortal</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Pop</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">SR (%)</th><th class="p-2 border border-slate-200">Uniformity (%)</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
+                                    <tr><th class="p-2 border border-slate-200">Date</th><th class="p-2 border border-slate-200">Cage/Line</th><th class="p-2 border border-slate-200">DOC</th><th class="p-2 border border-slate-200 bg-white">Avg Shell Length (cm)</th><th class="p-2 border border-slate-200 bg-white">Sample Ct</th><th class="p-2 border border-slate-200 bg-white">Acc Mortal</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">Pop</th><th class="p-2 border border-slate-200 bg-blue-100/50 text-blue-800">SR (%)</th><th class="p-2 border border-slate-200">Uniformity (%)</th><th class="p-2 border border-slate-200 bg-yellow-50 text-yellow-800">Weather</th><th class="p-2 border border-slate-200 bg-yellow-50 text-yellow-800">Biofouling Notes</th><th class="p-2 border border-slate-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
                                 </thead>
                                 <tbody id="tbody-samp-oyster" class="divide-y divide-slate-100 text-sm"></tbody>
                             </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addSampOysterRow()" class="text-slate-600 hover:text-slate-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
+                            <div class="flex gap-2 mt-4"><button type="button" onclick="addSampOysterRow()" class="text-slate-600 hover:text-slate-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
                         </div>
 
                         <!-- Seaweed Sampling -->
                         <div id="content-samp-seaweed" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-samp-seaweed" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
                                 <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
-                                    <tr>
-                                        <!-- Core Metrics -->
-                                        <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Line/Tags</th><th class="p-2 border border-emerald-200">Age (Days)</th><th class="p-2 border border-emerald-200 bg-white">Weekly Growth (cm)</th><th class="p-2 border border-emerald-200">Float Condition</th><th class="p-2 border border-emerald-200">Rope Condition</th><th class="p-2 border border-emerald-200">Anchor Condition</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
+                                    <tr><th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Line/Tags</th><th class="p-2 border border-emerald-200">Age (Days)</th><th class="p-2 border border-emerald-200 bg-white">Weekly Growth (cm)</th><th class="p-2 border border-emerald-200">Float Condition</th><th class="p-2 border border-emerald-200">Rope Condition</th><th class="p-2 border border-emerald-200">Anchor Condition</th><th class="p-2 border border-emerald-200 bg-yellow-50 text-yellow-800">Weather/Tide</th><th class="p-2 border border-emerald-200 bg-yellow-50 text-yellow-800">Disease Notes</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
                                 </thead>
                                 <tbody id="tbody-samp-seaweed" class="divide-y divide-slate-100 text-sm"></tbody>
                             </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addSampSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
+                            <div class="flex gap-2 mt-4"><button type="button" onclick="addSampSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
                         </div>
-
                     </div>
-                </div> <!-- END view-growth-biomass -->
+                </div>
 
-                <!-- ==========================================
-                     6. HEALTH, MORTALITY & DISEASE MONITORING
-                =========================================== -->
+                <!-- 8. HEALTH & DISEASE (Dedicated Form) -->
                 <div id="view-health-disease" class="page-view hidden space-y-6 w-full">
                     <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 w-full mx-auto mt-0">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-4 gap-3">
                             <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-staff-snake text-red-500 mr-2"></i>Health & Disease Logs</h3>
-                            <button class="bg-red-600 text-white px-5 py-2 rounded shadow-sm hover:bg-red-700 font-semibold transition text-xs md:text-sm flex items-center justify-center w-full sm:w-auto"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Save Logs</button>
+                            <button class="bg-red-600 text-white px-5 py-2 rounded shadow-sm hover:bg-red-700 font-semibold transition text-xs md:text-sm flex items-center justify-center w-full sm:w-auto"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Save All</button>
                         </div>
                         <div class="overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-health" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
                                 <thead class="bg-red-50 text-red-900 uppercase font-bold">
-                                    <tr>
-                                        <th class="p-2 border border-red-200">Date</th><th class="p-2 border border-red-200">Time</th><th class="p-2 border border-red-200">Cage/Line</th><th class="p-2 border border-red-200">Species</th><th class="p-2 border border-red-200">Weather</th><th class="p-2 border border-red-200">Season</th><th class="p-2 border border-red-200 bg-white">Disease Observed</th><th class="p-2 border border-red-200 bg-white">Behavior Notes</th><th class="p-2 border border-red-200">Mortality Ct</th><th class="p-2 border border-red-200">Photo Ref</th><th class="p-2 border border-red-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
+                                    <tr><th class="p-2 border border-red-200">Date</th><th class="p-2 border border-red-200">Time</th><th class="p-2 border border-red-200">Cage/Line</th><th class="p-2 border border-red-200">Species</th><th class="p-2 border border-red-200">Weather</th><th class="p-2 border border-red-200">Season</th><th class="p-2 border border-red-200 bg-white">Disease Observed</th><th class="p-2 border border-red-200 bg-white">Behavior Notes</th><th class="p-2 border border-red-200">Mortality Ct</th><th class="p-2 border border-red-200">Photo Ref</th><th class="p-2 border border-red-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
                                 </thead>
                                 <tbody id="tbody-health" class="divide-y divide-slate-100 text-sm"></tbody>
                             </table>
                         </div>
                         <button type="button" onclick="addHealthRow()" class="mt-4 text-red-600 hover:text-red-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Log</button>
                     </div>
-                </div> <!-- END view-health-disease -->
+                </div>
 
-                <!-- ==========================================
-                     7. HARVEST & REVENUE
-                =========================================== -->
+                <!-- 9. HARVEST MODULE -->
                 <div id="view-harvest" class="page-view hidden space-y-6 w-full">
                     <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 w-full mx-auto mt-0">
                         <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b pb-4 mb-6 gap-4">
                             <div>
-                                <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-anchor text-emerald-500 mr-2"></i>Harvest & Yield Transaction</h3>
-                                <p class="text-xs text-slate-500 mt-1">Final output records for financial projections.</p>
+                                <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-anchor text-emerald-500 mr-2"></i>Harvest & Revenue Transaction</h3>
                             </div>
                             <div class="flex gap-2 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0">
                                 <button onclick="switchTab('harv', 'fish')" id="tab-harv-fish" class="px-4 py-2 bg-emerald-600 text-white font-bold rounded shadow-sm text-sm shrink-0">Fish & Lobster</button>
@@ -482,55 +457,40 @@
                         <div id="content-harv-fish" class="tab-content active overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-harv-fish" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
                                 <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
-                                    <tr>
-                                        <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Time</th><th class="p-2 border border-emerald-200">Cage Code</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200 bg-white">Sample Ct</th><th class="p-2 border border-emerald-200 bg-white">Sample Wt (kg)</th><th class="p-2 border border-emerald-200 bg-emerald-100/50">MBW</th><th class="p-2 border border-emerald-200 bg-white">Pop. Harvested</th><th class="p-2 border border-emerald-200 bg-emerald-100/50 font-bold text-emerald-700">Final Biomass (kg)</th><th class="p-2 border border-emerald-200 bg-white">Price/kg (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
+                                    <tr><th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Time</th><th class="p-2 border border-emerald-200">Cage Code</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200 bg-white">Sample Ct</th><th class="p-2 border border-emerald-200 bg-white">Sample Wt (kg)</th><th class="p-2 border border-emerald-200 bg-emerald-100/50">MBW</th><th class="p-2 border border-emerald-200 bg-white">Pop. Harvested</th><th class="p-2 border border-emerald-200 bg-emerald-100/50 font-bold text-emerald-700">Biomass (kg)</th><th class="p-2 border border-emerald-200 bg-white">Price/kg (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
                                 </thead>
                                 <tbody id="tbody-harv-fish" class="divide-y divide-slate-100 text-sm"></tbody>
                             </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addHarvFishRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
+                            <div class="flex gap-2 mt-4"><button type="button" onclick="addHarvFishRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
                         </div>
 
                         <!-- Oyster Harvest -->
                         <div id="content-harv-oyster" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-harv-oyster" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
                                 <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
-                                    <tr>
-                                        <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Time</th><th class="p-2 border border-emerald-200">Cage Code</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200 bg-white">Sample Ct</th><th class="p-2 border border-emerald-200 bg-white">Avg Length (cm)</th><th class="p-2 border border-emerald-200 bg-white">Pop. Harvested</th><th class="p-2 border border-emerald-200 bg-white">Price/cm (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
+                                    <tr><th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Time</th><th class="p-2 border border-emerald-200">Cage Code</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200 bg-white">Sample Ct</th><th class="p-2 border border-emerald-200 bg-white">Avg Length (cm)</th><th class="p-2 border border-emerald-200 bg-white">Pop. Harvested</th><th class="p-2 border border-emerald-200 bg-white">Price/cm (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
                                 </thead>
                                 <tbody id="tbody-harv-oyster" class="divide-y divide-slate-100 text-sm"></tbody>
                             </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addHarvOysterRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
+                            <div class="flex gap-2 mt-4"><button type="button" onclick="addHarvOysterRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
                         </div>
 
                         <!-- Seaweed Harvest -->
                         <div id="content-harv-seaweed" class="tab-content overflow-x-auto table-scrollbar pb-2 -mx-4 md:mx-0 px-4 md:px-0">
                             <table id="tbl-harv-seaweed" class="w-full text-xs text-left border border-slate-200 whitespace-nowrap">
                                 <thead class="bg-emerald-50 text-emerald-900 uppercase font-bold">
-                                    <tr>
-                                        <th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Line/Tags</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200 bg-white">Final Wt (kg)</th><th class="p-2 border border-emerald-200">Age (Days)</th><th class="p-2 border border-emerald-200 bg-emerald-100/50">DGR (%)</th><th class="p-2 border border-emerald-200 bg-white">X (Harvest Factor)</th><th class="p-2 border border-emerald-200 bg-white">Price/kg (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th>
-                                    </tr>
+                                    <tr><th class="p-2 border border-emerald-200">Date</th><th class="p-2 border border-emerald-200">Line/Tags</th><th class="p-2 border border-emerald-200">Species</th><th class="p-2 border border-emerald-200 bg-white">Final Wt (kg)</th><th class="p-2 border border-emerald-200">Age (Days)</th><th class="p-2 border border-emerald-200 bg-emerald-100/50">DGR (%)</th><th class="p-2 border border-emerald-200 bg-white">X (Harvest Factor)</th><th class="p-2 border border-emerald-200 bg-white">Price/kg (Rp)</th><th class="p-2 border border-emerald-200 bg-emerald-200 text-emerald-900 font-bold">Est. Revenue</th><th class="p-2 border border-emerald-200 text-center"><i class="fa-solid fa-gear"></i></th></tr>
                                 </thead>
                                 <tbody id="tbody-harv-seaweed" class="divide-y divide-slate-100 text-sm"></tbody>
                             </table>
-                            <div class="flex gap-2 mt-4">
-                                <button type="button" onclick="addHarvSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button>
-                            </div>
+                            <div class="flex gap-2 mt-4"><button type="button" onclick="addHarvSeaweedRow()" class="text-emerald-600 hover:text-emerald-800 font-bold flex items-center text-sm"><i class="fa-solid fa-plus-circle mr-1"></i> Add Row</button></div>
                         </div>
                     </div>
-                </div> <!-- END view-harvest -->
+                </div>
 
-                <!-- ==========================================
-                     8. IOT MAP MODULE
-                =========================================== -->
+                <!-- 10. IOT MAP & SENSORS -->
                 <div id="view-map" class="page-view hidden h-full w-full">
                     <div class="flex flex-col lg:flex-row gap-4 h-[calc(100vh-140px)] md:h-[calc(100vh-120px)] w-full">
-                        <!-- Map Container -->
                         <div class="bg-white p-2 rounded-xl shadow-sm border border-slate-200 flex-1 relative z-0 flex flex-col">
                             <div class="px-3 py-2 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-lg mb-2">
                                 <h3 class="font-bold text-slate-700"><i class="fa-solid fa-map-location-dot text-blue-500 mr-2"></i>Live Sensor Map</h3>
@@ -539,10 +499,8 @@
                             <div id="map" class="w-full flex-1 rounded-lg bg-slate-100 z-0 border border-slate-200"></div>
                         </div>
                         
-                        <!-- Real-time WQ Panel -->
                         <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 w-full lg:w-80 shrink-0 flex flex-col overflow-y-auto dark-scrollbar">
                             <h3 class="font-bold text-slate-800 mb-4 border-b pb-2"><i class="fa-solid fa-chart-line text-cyan-500 mr-2"></i>Water Quality Telemetry</h3>
-                            
                             <div class="mb-5">
                                 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Select Active Node</label>
                                 <select id="iot-node-select" class="w-full mt-1.5 p-2.5 border border-slate-300 rounded-lg font-semibold text-sm bg-slate-50 text-slate-700 focus:ring focus:ring-blue-200 outline-none transition" onchange="updateIoTPanel()">
@@ -551,31 +509,22 @@
                                     <option value="kei">Kei Islands - Zone C</option>
                                 </select>
                             </div>
-
-                            <!-- Metrics Grid -->
-                            <div class="grid grid-cols-2 gap-3" id="iot-metrics-container">
-                                <!-- Populated dynamically by JavaScript -->
-                            </div>
-                            
+                            <div class="grid grid-cols-2 gap-3" id="iot-metrics-container"></div>
                             <div class="mt-auto pt-4 border-t mt-4 border-slate-100 flex justify-between items-center">
                                 <p class="text-xs font-medium text-slate-400"><i class="fa-solid fa-clock mr-1"></i>Last sync: <span id="iot-sync-time">Just now</span></p>
-                                <button onclick="updateIoTPanel()" class="text-blue-500 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 p-2 rounded transition" title="Force Sync"><i class="fa-solid fa-rotate-right"></i></button>
                             </div>
                         </div>
                     </div>
-                </div> <!-- END view-map -->
+                </div>
 
-                <!-- ==========================================
-                     9. ALERT & RISK CENTER
-                =========================================== -->
+                <!-- 11. ALERT & RISK CENTER -->
                 <div id="view-alerts" class="page-view hidden space-y-6 w-full">
                     <div class="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-slate-200 max-w-5xl mx-auto mt-0 w-full">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-6 gap-3">
-                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-triangle-exclamation text-red-500 mr-2"></i>Alert & Risk Center</h3>
+                            <h3 class="text-lg md:text-xl font-bold text-slate-800"><i class="fa-solid fa-triangle-exclamation text-red-500 mr-2"></i>Early Warning System (EWS)</h3>
                             <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold flex items-center"><i class="fa-brands fa-whatsapp mr-1 text-base"></i> WhatsApp Sync Active</span>
                         </div>
                         
-                        <!-- Alert 1 -->
                         <div class="bg-red-50 border-l-4 border-red-500 p-4 md:p-5 rounded-r-lg mb-4 shadow-sm">
                             <div class="flex flex-col sm:flex-row justify-between items-start gap-2">
                                 <div>
@@ -585,13 +534,8 @@
                                 </div>
                                 <div class="bg-white px-2 py-1 rounded border border-red-200 text-[10px] md:text-xs text-red-500 font-bold shrink-0">10 Mins Ago</div>
                             </div>
-                            <div class="mt-4 flex flex-col sm:flex-row gap-2">
-                                <button class="bg-red-600 text-white px-4 py-2 rounded text-xs md:text-sm font-bold shadow hover:bg-red-700 w-full sm:w-auto"><i class="fa-solid fa-paper-plane mr-1"></i> Resend Alert to Team</button>
-                                <button class="bg-white text-slate-600 border border-slate-300 px-4 py-2 rounded text-xs md:text-sm font-bold hover:bg-slate-50 w-full sm:w-auto"><i class="fa-solid fa-check mr-1"></i> Mark as Handled</button>
-                            </div>
                         </div>
-
-                        <!-- Alert 2 -->
+                        
                         <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 md:p-5 rounded-r-lg mb-4 shadow-sm">
                             <div class="flex flex-col sm:flex-row justify-between items-start gap-2">
                                 <div>
@@ -603,11 +547,9 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- END view-alerts -->
+                </div>
 
-                <!-- ==========================================
-                     10. CAMERA MONITORING
-                =========================================== -->
+                <!-- 12. CAMERA MONITORING -->
                 <div id="view-camera" class="page-view hidden space-y-6 w-full">
                     <div class="bg-slate-900 p-4 rounded-xl shadow-lg w-full h-[calc(100vh-120px)] flex flex-col relative overflow-hidden">
                         <div class="flex justify-between items-center mb-4 text-white z-10 px-2">
@@ -618,51 +560,30 @@
                             </select>
                         </div>
                         
-                        <!-- Video Placeholder -->
                         <div class="flex-1 bg-slate-800 rounded-lg relative overflow-hidden border border-slate-700 flex items-center justify-center">
                             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-40"></div>
-                            
-                            <!-- Scanner UI -->
                             <div class="absolute inset-0 z-10 pointer-events-none">
                                 <div class="w-full h-full border-[20px] border-slate-900/50 relative">
-                                    <!-- Crosshair -->
                                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                                         <div class="w-12 h-px bg-red-500/50 absolute top-1/2 -translate-y-1/2 -left-6"></div>
                                         <div class="h-12 w-px bg-red-500/50 absolute left-1/2 -translate-x-1/2 -top-6"></div>
                                     </div>
-                                    
-                                    <!-- Fake AI Boxes -->
-                                    <div class="absolute border-2 border-emerald-400 w-32 h-20 top-1/4 left-1/4 rounded">
-                                        <span class="bg-emerald-400 text-slate-900 text-[10px] font-bold px-1 absolute -top-4">Pompano: 120g (Est)</span>
-                                    </div>
-                                    <div class="absolute border-2 border-emerald-400 w-40 h-24 top-1/2 left-2/3 rounded">
-                                        <span class="bg-emerald-400 text-slate-900 text-[10px] font-bold px-1 absolute -top-4">Pompano: 145g (Est)</span>
-                                    </div>
+                                    <div class="absolute border-2 border-emerald-400 w-32 h-20 top-1/4 left-1/4 rounded"><span class="bg-emerald-400 text-slate-900 text-[10px] font-bold px-1 absolute -top-4">Pompano: 120g (Est)</span></div>
+                                    <div class="absolute border-2 border-emerald-400 w-40 h-24 top-1/2 left-2/3 rounded"><span class="bg-emerald-400 text-slate-900 text-[10px] font-bold px-1 absolute -top-4">Pompano: 145g (Est)</span></div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Bottom Controls -->
-                        <div class="mt-4 flex gap-4 text-slate-300 text-sm z-10">
-                            <button class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded shadow transition"><i class="fa-solid fa-camera mr-2"></i>Capture Frame</button>
-                            <button class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded shadow transition"><i class="fa-solid fa-chart-line mr-2"></i>Run Biomass Analysis</button>
-                        </div>
                     </div>
-                </div> <!-- END view-camera -->
+                </div>
 
-                <!-- ==========================================
-                     11. CV SAMPLING ENGINE (BATCH PROCESSOR)
-                =========================================== -->
+                <!-- 13. CV SAMPLING ENGINE -->
                 <div id="view-batch" class="page-view hidden h-full w-full">
                     <div class="flex flex-col md:flex-row h-[calc(100vh-140px)] md:h-[calc(100vh-120px)] bg-[#0e1117] rounded-xl overflow-hidden shadow-sm border border-slate-300 w-full">
                         <div class="w-full md:w-80 bg-[#262730] p-4 md:p-6 flex flex-col border-b md:border-b-0 md:border-r border-[#3a3b45] text-slate-200 shrink-0">
                             <h3 class="text-lg md:text-xl font-bold text-white mb-4 md:mb-6">Settings</h3>
                             <div class="mb-4 md:mb-6">
                                 <label class="text-xs md:text-sm block mb-2 text-slate-300">Select Species</label>
-                                <select class="w-full bg-[#0e1117] border border-[#3a3b45] text-white p-2.5 rounded text-sm">
-                                    <option>Silver Pompano</option>
-                                    <option>Panulirus homarus</option>
-                                </select>
+                                <select class="w-full bg-[#0e1117] border border-[#3a3b45] text-white p-2.5 rounded text-sm"><option>Silver Pompano</option><option>Panulirus homarus</option></select>
                             </div>
                             <hr class="border-[#3a3b45] mb-4 md:mb-6">
                             <div>
@@ -684,7 +605,7 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- END view-batch -->
+                </div>
 
             </div>
         </div>
@@ -757,7 +678,186 @@
             document.getElementById(`tab-${module}-${tabName}`).className = `pb-2 text-sm font-bold text-blue-600 border-b-2 border-blue-600`;
         }
 
-        // --- EXPORT ---
+        // --- DASHBOARD DYNAMIC ENGINE ---
+        let currentCharts = [];
+        const chartOptions = { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false } };
+
+        function createChart(containerId, title, config) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'bg-white p-6 rounded-xl shadow-sm border border-slate-200';
+            wrapper.innerHTML = `<h4 class="font-bold text-slate-700 mb-4 border-b pb-2">${title}</h4><div class="h-72"><canvas id="${containerId}"></canvas></div>`;
+            document.getElementById('chart-container').appendChild(wrapper);
+            
+            const ctx = document.getElementById(containerId).getContext('2d');
+            const chart = new Chart(ctx, config);
+            currentCharts.push(chart);
+        }
+
+        const commodityConfig = {
+            'fish': {
+                kpis: [
+                    { label: 'Total Biomass', val: '2,210', unit: 'kg', icon: 'fa-scale-balanced', color: 'text-blue-600', bg: 'bg-blue-100' },
+                    { label: 'Survival Rate/Pop', val: '88.5', unit: '%', icon: 'fa-heart-pulse', color: 'text-emerald-600', bg: 'bg-emerald-100' },
+                    { label: 'FCR', val: '1.81', unit: 'Ratio', icon: 'fa-bullseye', color: 'text-orange-600', bg: 'bg-orange-100' },
+                    { label: 'Feed Quantity', val: '4,150', unit: 'kg', icon: 'fa-cubes-stacked', color: 'text-slate-600', bg: 'bg-slate-200' },
+                    { label: 'Est. Revenue', val: '340', unit: 'Mil Rp', icon: 'fa-money-bill-trend-up', color: 'text-emerald-600', bg: 'bg-emerald-100' },
+                    { label: 'Cost', val: '185', unit: 'Mil Rp', icon: 'fa-file-invoice-dollar', color: 'text-red-600', bg: 'bg-red-100' }
+                ],
+                render: () => {
+                    createChart('chart1', 'Actual Fish Growth vs Fish Growth Projection (MBW)', {
+                        type: 'line',
+                        data: {
+                            labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
+                            datasets: [
+                                { label: 'Actual MBW (g)', data: [15, 30, 60, 95, 135, 180], borderColor: '#3b82f6', backgroundColor: '#93c5fd', fill: true, tension: 0.4 },
+                                { label: 'Proj. MBW (g)', data: [15, 32, 65, 100, 145, 195], borderColor: '#94a3b8', borderDash: [5, 5], tension: 0.4 }
+                            ]
+                        },
+                        options: chartOptions
+                    });
+                    createChart('chart2', 'Actual Fish Feed vs Projection Fish Feed', {
+                        type: 'bar',
+                        data: {
+                            labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
+                            datasets: [
+                                { label: 'Actual Feed (kg)', data: [120, 250, 480, 750, 1100, 1450], backgroundColor: '#f59e0b' },
+                                { label: 'Proj. Feed (kg)', data: [125, 260, 500, 780, 1150, 1500], type: 'line', borderColor: '#10b981', borderDash: [5, 5] }
+                            ]
+                        },
+                        options: chartOptions
+                    });
+                }
+            },
+            'lobster': {
+                kpis: [
+                    { label: 'Lobster Biomass', val: '450', unit: 'kg', icon: 'fa-scale-balanced', color: 'text-blue-600', bg: 'bg-blue-100' },
+                    { label: 'Survival Rate/Pop', val: '92.0', unit: '%', icon: 'fa-heart-pulse', color: 'text-emerald-600', bg: 'bg-emerald-100' },
+                    { label: 'Feed Quantity', val: '850', unit: 'kg', icon: 'fa-cubes-stacked', color: 'text-slate-600', bg: 'bg-slate-200' },
+                    { label: 'Est. Revenue', val: '850', unit: 'Mil Rp', icon: 'fa-money-bill-trend-up', color: 'text-emerald-600', bg: 'bg-emerald-100' },
+                    { label: 'Cost', val: '320', unit: 'Mil Rp', icon: 'fa-file-invoice-dollar', color: 'text-red-600', bg: 'bg-red-100' }
+                ],
+                render: () => {
+                    createChart('chart1', 'Lobster Growth (MBW & Average Length)', {
+                        type: 'line',
+                        data: {
+                            labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
+                            datasets: [
+                                { label: 'MBW (g)', data: [50, 85, 130, 185, 250, 320], borderColor: '#f43f5e', tension: 0.4, yAxisID: 'y' },
+                                { label: 'Avg Length (cm)', data: [5.2, 7.5, 9.8, 12.1, 14.5, 17.0], borderColor: '#8b5cf6', tension: 0.4, yAxisID: 'y1' }
+                            ]
+                        },
+                        options: { ...chartOptions, scales: { y1: { position: 'right' } } }
+                    });
+                    createChart('chart2', 'Lobster Total Feed Consumed', {
+                        type: 'bar',
+                        data: {
+                            labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
+                            datasets: [
+                                { label: 'Feed (kg)', data: [80, 110, 145, 160, 175, 180], backgroundColor: '#f97316' }
+                            ]
+                        },
+                        options: chartOptions
+                    });
+                }
+            },
+            'oyster': {
+                kpis: [
+                    { label: 'Avg Shell Length', val: '5.2', unit: 'cm', icon: 'fa-ruler', color: 'text-indigo-600', bg: 'bg-indigo-100' },
+                    { label: 'Survival Rate/Pop', val: '94.5', unit: '%', icon: 'fa-heart-pulse', color: 'text-emerald-600', bg: 'bg-emerald-100' },
+                    { label: 'Est. Revenue', val: '120', unit: 'Mil Rp', icon: 'fa-money-bill-trend-up', color: 'text-emerald-600', bg: 'bg-emerald-100' }
+                ],
+                render: () => {
+                    createChart('chart1', 'Oyster Shell Length Diagram', {
+                        type: 'line',
+                        data: {
+                            labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
+                            datasets: [
+                                { label: 'Avg Shell Length (cm)', data: [1.2, 2.5, 3.8, 4.5, 5.2, 6.1], borderColor: '#6366f1', backgroundColor: '#e0e7ff', fill: true, tension: 0.3 }
+                            ]
+                        },
+                        options: chartOptions
+                    });
+                    createChart('chart2', 'Survivability Trend', {
+                        type: 'line',
+                        data: {
+                            labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
+                            datasets: [
+                                { label: 'Survival Rate (%)', data: [100, 98.5, 97.2, 96.0, 95.1, 94.5], borderColor: '#10b981', backgroundColor: '#d1fae5', fill: true, tension: 0.1 }
+                            ]
+                        },
+                        options: chartOptions
+                    });
+                }
+            },
+            'seaweed': {
+                kpis: [
+                    { label: 'Bibbit Age', val: '25', unit: 'Days', icon: 'fa-seedling', color: 'text-emerald-600', bg: 'bg-emerald-100' },
+                    { label: 'Stocking Date', val: '12 May', unit: '2026', icon: 'fa-calendar-days', color: 'text-blue-600', bg: 'bg-blue-100' },
+                    { label: 'Days Count', val: '45', unit: 'Days', icon: 'fa-clock', color: 'text-amber-600', bg: 'bg-amber-100' },
+                    { label: 'Total Stocking Wt.', val: '1.2', unit: 'Ton', icon: 'fa-weight-hanging', color: 'text-purple-600', bg: 'bg-purple-100' },
+                    { label: 'Harvest Est.', val: '8.5', unit: 'Ton', icon: 'fa-truck-fast', color: 'text-emerald-600', bg: 'bg-emerald-100' }
+                ],
+                render: () => {
+                    createChart('chart1', 'Seaweed DGR (Daily Growth Rate)', {
+                        type: 'line',
+                        data: {
+                            labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
+                            datasets: [
+                                { label: 'DGR (%)', data: [2.1, 2.5, 3.2, 4.0, 4.5, 4.2], borderColor: '#14b8a6', tension: 0.4 }
+                            ]
+                        },
+                        options: chartOptions
+                    });
+                    createChart('chart2', 'Biomass / Harvest Estimation', {
+                        type: 'bar',
+                        data: {
+                            labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
+                            datasets: [
+                                { label: 'Est Biomass (Ton)', data: [1.2, 1.8, 2.9, 4.5, 6.2, 8.5], backgroundColor: '#10b981' }
+                            ]
+                        },
+                        options: chartOptions
+                    });
+                }
+            }
+        };
+
+        function switchCommodity(type, btnElement) {
+            document.querySelectorAll('.commodity-tab').forEach(btn => {
+                btn.className = 'commodity-tab flex-1 md:flex-none text-slate-500 hover:bg-slate-100 hover:text-slate-700 px-4 py-2 rounded-lg font-semibold text-sm transition';
+            });
+            btnElement.className = 'commodity-tab flex-1 md:flex-none bg-blue-50 text-blue-700 border border-blue-200 px-4 py-2 rounded-lg font-bold text-sm transition shadow-sm';
+
+            const config = commodityConfig[type];
+            
+            // Adjust Grid Columns dynamically based on number of KPIs
+            let gridClass = 'grid gap-4 md:gap-6 ';
+            const len = config.kpis.length;
+            if (len === 6) gridClass += 'grid-cols-2 md:grid-cols-3 lg:grid-cols-6';
+            else if (len === 5) gridClass += 'grid-cols-2 md:grid-cols-3 lg:grid-cols-5';
+            else gridClass += 'grid-cols-1 sm:grid-cols-3';
+
+            const container = document.getElementById('kpi-container');
+            container.className = gridClass;
+            
+            container.innerHTML = config.kpis.map(k => `
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between h-full">
+                    <div class="flex justify-between items-start mb-2">
+                        <p class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider">${k.label}</p>
+                        <div class="h-8 w-8 rounded-full ${k.bg} flex items-center justify-center ${k.color} shrink-0"><i class="fa-solid ${k.icon}"></i></div>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-extrabold text-slate-800">${k.val} <span class="text-xs md:text-sm font-medium text-slate-500">${k.unit}</span></h3>
+                </div>
+            `).join('');
+
+            // Re-render Charts
+            currentCharts.forEach(c => c.destroy());
+            currentCharts = [];
+            document.getElementById('chart-container').innerHTML = '';
+            config.render();
+        }
+
+        // --- EXPORT FUNCTION ---
         function exportTableToCSV(tableId, filename) {
             let table = document.getElementById(tableId); let rows = table.querySelectorAll('tr'); let csv = [];
             for (let i = 0; i < rows.length; i++) {
@@ -775,193 +875,19 @@
             let downloadLink = document.createElement('a'); downloadLink.download = filename; downloadLink.href = window.URL.createObjectURL(csvFile); downloadLink.style.display = 'none'; document.body.appendChild(downloadLink); downloadLink.click(); document.body.removeChild(downloadLink);
         }
 
+        // --- ROW GENERATORS ---
         const cageOptions = `<option value="C1F">C1F</option><option value="EX1F">EX1F</option>`;
 
-        // --- DYNAMIC DASHBOARD ENGINE ---
-        let currentCharts = [];
-        const commonChartOptions = { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false } };
-
-        function createChart(containerId, title, config) {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'bg-white p-6 rounded-xl shadow-sm border border-slate-200';
-            wrapper.innerHTML = `<h4 class="font-bold text-slate-700 mb-4 border-b pb-2">${title}</h4><div class="h-72"><canvas id="${containerId}"></canvas></div>`;
-            document.getElementById('chart-container').appendChild(wrapper);
-            
-            const ctx = document.getElementById(containerId).getContext('2d');
-            const chart = new Chart(ctx, config);
-            currentCharts.push(chart);
-        }
-
-        const commodityConfig = {
-            'fish': {
-                kpis: [
-                    { label: 'Fish Biomass', val: '2,210', unit: 'kg', icon: 'fa-scale-balanced', color: 'text-blue-600', bg: 'bg-blue-100' },
-                    { label: 'Survival Rate / Pop', val: '88.5', unit: '%', icon: 'fa-heart-pulse', color: 'text-emerald-600', bg: 'bg-emerald-100' },
-                    { label: 'Fish FCR', val: '1.81', unit: 'Ratio', icon: 'fa-bullseye', color: 'text-orange-600', bg: 'bg-orange-100' },
-                    { label: 'Feed Quantity', val: '4,150', unit: 'kg', icon: 'fa-cubes-stacked', color: 'text-amber-600', bg: 'bg-amber-100' },
-                    { label: 'Est. Revenue', val: '340', unit: 'Mil Rp', icon: 'fa-money-bill-trend-up', color: 'text-emerald-600', bg: 'bg-emerald-100' },
-                    { label: 'Cost', val: '185', unit: 'Mil Rp', icon: 'fa-file-invoice-dollar', color: 'text-red-600', bg: 'bg-red-100' }
-                ],
-                render: () => {
-                    createChart('chart1', 'Actual Fish Growth vs Fish Growth Projection (MBW)', {
-                        type: 'line',
-                        data: {
-                            labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
-                            datasets: [
-                                { label: 'Actual MBW (g)', data: [15, 30, 60, 95, 135, 180], borderColor: '#3b82f6', backgroundColor: '#93c5fd', fill: true, tension: 0.4 },
-                                { label: 'Proj. MBW (g)', data: [15, 32, 65, 100, 145, 195], borderColor: '#94a3b8', borderDash: [5, 5], tension: 0.4 }
-                            ]
-                        },
-                        options: commonChartOptions
-                    });
-                    createChart('chart2', 'Actual Fish Feed vs Projection Fish Feed', {
-                        type: 'bar',
-                        data: {
-                            labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
-                            datasets: [
-                                { label: 'Actual Feed (kg)', data: [120, 250, 480, 750, 1100, 1450], backgroundColor: '#f59e0b' },
-                                { label: 'Proj. Feed (kg)', data: [125, 260, 500, 780, 1150, 1500], type: 'line', borderColor: '#10b981', borderDash: [5, 5] }
-                            ]
-                        },
-                        options: commonChartOptions
-                    });
-                }
-            },
-            'lobster': {
-                kpis: [
-                    { label: 'Lobster Biomass', val: '450', unit: 'kg', icon: 'fa-scale-balanced', color: 'text-blue-600', bg: 'bg-blue-100' },
-                    { label: 'Survival Rate / Pop', val: '92.0', unit: '%', icon: 'fa-heart-pulse', color: 'text-emerald-600', bg: 'bg-emerald-100' },
-                    { label: 'Feed Quantity', val: '850', unit: 'kg', icon: 'fa-cubes-stacked', color: 'text-amber-600', bg: 'bg-amber-100' },
-                    { label: 'Est. Revenue', val: '850', unit: 'Mil Rp', icon: 'fa-money-bill-trend-up', color: 'text-emerald-600', bg: 'bg-emerald-100' },
-                    { label: 'Cost', val: '320', unit: 'Mil Rp', icon: 'fa-file-invoice-dollar', color: 'text-red-600', bg: 'bg-red-100' }
-                ],
-                render: () => {
-                    createChart('chart1', 'Lobster Growth (MBW & Average Length)', {
-                        type: 'line',
-                        data: {
-                            labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
-                            datasets: [
-                                { label: 'MBW (g)', data: [50, 85, 130, 185, 250, 320], borderColor: '#f43f5e', tension: 0.4, yAxisID: 'y' },
-                                { label: 'Avg Length (cm)', data: [5.2, 7.5, 9.8, 12.1, 14.5, 17.0], borderColor: '#8b5cf6', tension: 0.4, yAxisID: 'y1' }
-                            ]
-                        },
-                        options: { ...commonChartOptions, scales: { y1: { position: 'right' } } }
-                    });
-                    createChart('chart2', 'Lobster Total Feed Consumed', {
-                        type: 'bar',
-                        data: {
-                            labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
-                            datasets: [
-                                { label: 'Feed (kg)', data: [80, 110, 145, 160, 175, 180], backgroundColor: '#f97316' }
-                            ]
-                        },
-                        options: commonChartOptions
-                    });
-                }
-            },
-            'oyster': {
-                kpis: [
-                    { label: 'Shell Length', val: '5.2', unit: 'cm', icon: 'fa-ruler', color: 'text-indigo-600', bg: 'bg-indigo-100' },
-                    { label: 'Survival Rate / Pop', val: '94.5', unit: '%', icon: 'fa-heart-pulse', color: 'text-emerald-600', bg: 'bg-emerald-100' },
-                    { label: 'Revenue', val: '120', unit: 'Mil Rp', icon: 'fa-money-bill-trend-up', color: 'text-emerald-600', bg: 'bg-emerald-100' }
-                ],
-                render: () => {
-                    createChart('chart1', 'Oyster Shell Length Diagram', {
-                        type: 'line',
-                        data: {
-                            labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
-                            datasets: [
-                                { label: 'Avg Shell Length (cm)', data: [1.2, 2.5, 3.8, 4.5, 5.2, 6.1], borderColor: '#6366f1', backgroundColor: '#e0e7ff', fill: true, tension: 0.3 }
-                            ]
-                        },
-                        options: commonChartOptions
-                    });
-                    createChart('chart2', 'Survivability Trend', {
-                        type: 'line',
-                        data: {
-                            labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
-                            datasets: [
-                                { label: 'Survival Rate (%)', data: [100, 98.5, 97.2, 96.0, 95.1, 94.5], borderColor: '#10b981', backgroundColor: '#d1fae5', fill: true, tension: 0.1 }
-                            ]
-                        },
-                        options: commonChartOptions
-                    });
-                }
-            },
-            'seaweed': {
-                kpis: [
-                    { label: 'Bibbit Age', val: '25', unit: 'Days', icon: 'fa-seedling', color: 'text-emerald-600', bg: 'bg-emerald-100' },
-                    { label: 'Stocking Date', val: '12 May', unit: '2026', icon: 'fa-calendar-days', color: 'text-blue-600', bg: 'bg-blue-100' },
-                    { label: 'Days Count', val: '45', unit: 'Days', icon: 'fa-clock', color: 'text-amber-600', bg: 'bg-amber-100' },
-                    { label: 'Stocking Wt.', val: '1.2', unit: 'Ton', icon: 'fa-weight-hanging', color: 'text-purple-600', bg: 'bg-purple-100' },
-                    { label: 'Harvest Est.', val: '8.5', unit: 'Ton', icon: 'fa-truck-fast', color: 'text-emerald-600', bg: 'bg-emerald-100' }
-                ],
-                render: () => {
-                    createChart('chart1', 'Seaweed DGR (Daily Growth Rate)', {
-                        type: 'line',
-                        data: {
-                            labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
-                            datasets: [
-                                { label: 'DGR (%)', data: [2.1, 2.5, 3.2, 4.0, 4.5, 4.2], borderColor: '#14b8a6', tension: 0.4 }
-                            ]
-                        },
-                        options: commonChartOptions
-                    });
-                    createChart('chart2', 'Biomass / Harvest Estimation', {
-                        type: 'bar',
-                        data: {
-                            labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
-                            datasets: [
-                                { label: 'Est Biomass (Ton)', data: [1.2, 1.8, 2.9, 4.5, 6.2, 8.5], backgroundColor: '#10b981' }
-                            ]
-                        },
-                        options: commonChartOptions
-                    });
-                }
-            }
-        };
-
-        function switchCommodity(type, btnElement) {
-            // 1. Reset tabs styling
-            document.querySelectorAll('.commodity-tab').forEach(btn => {
-                btn.className = 'commodity-tab flex-1 md:flex-none text-slate-500 hover:bg-slate-100 hover:text-slate-700 px-4 py-2 rounded-lg font-semibold text-sm transition';
-            });
-            btnElement.className = 'commodity-tab flex-1 md:flex-none bg-blue-50 text-blue-700 border border-blue-200 px-4 py-2 rounded-lg font-bold text-sm transition shadow-sm';
-
-            const config = commodityConfig[type];
-
-            // 2. Render KPI Cards Dynamically
-            const kpiCount = config.kpis.length;
-            let gridClass = 'grid grid-cols-2 md:grid-cols-3 ';
-            if (kpiCount === 3) gridClass += 'lg:grid-cols-3';
-            else if (kpiCount === 5) gridClass += 'lg:grid-cols-5';
-            else gridClass += 'lg:grid-cols-6'; // for 6 cards (Fish)
-            
-            document.getElementById('kpi-container').className = gridClass + ' gap-4 md:gap-6';
-            
-            const kpiHtml = config.kpis.map(k => `
-                <div class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between h-full">
-                    <div class="flex justify-between items-start mb-2">
-                        <p class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider">${k.label}</p>
-                        <div class="h-8 w-8 rounded-full ${k.bg} flex items-center justify-center ${k.color} shrink-0"><i class="fa-solid ${k.icon}"></i></div>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-extrabold text-slate-800">${k.val} <span class="text-xs md:text-sm font-medium text-slate-500">${k.unit}</span></h3>
-                </div>
-            `).join('');
-            document.getElementById('kpi-container').innerHTML = kpiHtml;
-
-            // 3. Render Charts Dynamically
-            currentCharts.forEach(c => c.destroy());
-            currentCharts = [];
-            document.getElementById('chart-container').innerHTML = ''; // Clear DOM
-            config.render();
-        }
-
-        // --- ROW GENERATORS ---
         function addSiteRow() {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-40" placeholder="Site Name"></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-32" placeholder="-8.8, 116.4"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.1" class="w-16"></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-24" placeholder="Sandy"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.1" class="w-24" placeholder="%"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.1" class="w-24"></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
+            tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-32" placeholder="Site Name"></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-24" placeholder="-8.8, 116.4"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.1" class="w-16"></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-24" placeholder="Sandy"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.1" class="w-24" placeholder="%"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.1" class="w-24"></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
             document.getElementById('tbody-site-registry').appendChild(tr);
+        }
+
+        function addFarmMasterRow() {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-24 font-bold"></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-32"></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-24"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-32"><option>Fish</option><option>Lobster</option><option>Oyster</option><option>Seaweed</option></select></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-24"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-24 text-emerald-600 font-bold"><option>Active</option><option class="text-slate-500">Inactive</option></select></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
+            document.getElementById('tbody-farm-master').appendChild(tr);
         }
 
         function addCycleFishRow() {
@@ -982,6 +908,19 @@
             document.getElementById('tbody-cycle-seaweed').appendChild(tr);
         }
 
+        function addFeedRow() {
+            const tbody = document.getElementById('tbody-feed');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-32"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-20 font-bold text-blue-700">${cageOptions}</select></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-28 italic"><option>T. blochii</option><option>P. homarus</option></select></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-24" placeholder="Pellet/Trash"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.001" class="w-16 in-07" oninput="calcRowFeed(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.001" class="w-16 in-12" oninput="calcRowFeed(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.001" class="w-16 in-15" oninput="calcRowFeed(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.001" class="w-16 in-17" oninput="calcRowFeed(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-slate-200"><input type="number" readonly class="w-20 text-slate-800 font-bold out-daily"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-100"><input type="number" readonly class="w-20 text-blue-800 font-bold out-total"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-24"><option>High</option><option>Normal</option><option>Low</option></select></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
+            tbody.appendChild(tr);
+        }
+
+        function addPlanHistoryRow() {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-32"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-20 font-bold text-slate-700">${cageOptions}</select></td><td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-32"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.01" class="w-24"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.01" class="w-24"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-24 font-semibold text-emerald-600"><option>Active</option><option>Completed</option><option>Archived</option></select></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
+            document.getElementById('tbody-plan-history').appendChild(tr);
+        }
+
         function addSampFishRow() {
             const tr = document.createElement('tr');
             tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-16 font-bold text-blue-700">${cageOptions}</select></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" class="w-12"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.1" class="w-20"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.01" class="w-16 in-swt" oninput="calcRowBiomass(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" class="w-16 in-sct" oninput="calcRowBiomass(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.01" class="w-16 in-afeed" oninput="calcRowBiomass(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" class="w-16 in-amort" oninput="calcRowBiomass(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-50/50"><input type="number" readonly class="w-16 text-blue-800 font-bold out-mbw"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-50/50"><input type="number" readonly class="w-16 text-blue-800 font-bold out-pop"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-50/50"><input type="text" readonly class="w-16 text-blue-800 font-bold out-srate"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-50/50"><input type="number" readonly class="w-16 text-blue-800 font-bold out-bio"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-50/50"><input type="number" readonly class="w-16 text-blue-800 font-bold out-fcr"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.1" class="w-16"></td><td class="p-2 border-b border-slate-200 border-r bg-yellow-50"><input type="text" class="w-24" placeholder="Sunny"></td><td class="p-2 border-b border-slate-200 border-r bg-yellow-50"><input type="text" class="w-32" placeholder="Normal"></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
@@ -990,13 +929,13 @@
 
         function addSampOysterRow() {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-20 font-bold"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" class="w-12"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.1" class="w-20"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" class="w-16"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" class="w-16"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-50/50"><input type="number" readonly class="w-16 text-blue-800 font-bold"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-50/50"><input type="text" readonly class="w-16 text-blue-800 font-bold"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.1" class="w-16"></td><td class="p-2 border-b border-slate-200 border-r bg-yellow-50"><input type="text" class="w-24"></td><td class="p-2 border-b border-slate-200 border-r bg-yellow-50"><input type="text" class="w-32"></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
+            tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-20 font-bold"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" class="w-12"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.1" class="w-20"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" class="w-16"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" class="w-16"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-100/50"><input type="text" readonly class="w-16 text-blue-800 font-bold" value="0.5%"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-100/50"><input type="number" readonly class="w-16 text-blue-800 font-bold" value="995"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-100/50"><input type="text" readonly class="w-16 text-blue-800 font-bold" value="99.5%"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.1" class="w-16"></td><td class="p-2 border-b border-slate-200 border-r bg-yellow-50"><input type="text" class="w-24"></td><td class="p-2 border-b border-slate-200 border-r bg-yellow-50"><input type="text" class="w-32"></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
             document.getElementById('tbody-samp-oyster').appendChild(tr);
         }
 
         function addSampSeaweedRow() {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td class="p-2 border-b border-emerald-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-24 font-bold"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-20"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="number" class="w-16"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" step="0.1" class="w-24"></td><td class="p-2 border-b border-emerald-200 border-r"><select class="w-24"><option>Good</option><option>Needs Maint.</option></select></td><td class="p-2 border-b border-emerald-200 border-r"><select class="w-24"><option>Good</option><option>Needs Maint.</option></select></td><td class="p-2 border-b border-emerald-200 border-r"><select class="w-24"><option>Good</option><option>Needs Maint.</option></select></td><td class="p-2 border-b border-emerald-200 border-r bg-yellow-50"><input type="text" class="w-24"></td><td class="p-2 border-b border-emerald-200 border-r bg-yellow-50"><input type="text" class="w-32" placeholder="Ice-Ice: 0%"></td><td class="p-2 border-b border-emerald-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
+            tr.innerHTML = `<td class="p-2 border-b border-emerald-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-24 font-bold"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="number" class="w-12"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" step="0.1" class="w-20"></td><td class="p-2 border-b border-emerald-200 border-r"><select class="w-24"><option>Good</option><option>Needs Maint.</option></select></td><td class="p-2 border-b border-emerald-200 border-r"><select class="w-24"><option>Good</option><option>Needs Maint.</option></select></td><td class="p-2 border-b border-emerald-200 border-r"><select class="w-24"><option>Good</option><option>Needs Maint.</option></select></td><td class="p-2 border-b border-emerald-200 border-r bg-yellow-50"><input type="text" class="w-24"></td><td class="p-2 border-b border-emerald-200 border-r bg-yellow-50"><input type="text" class="w-32" placeholder="Ice-Ice: 0%"></td><td class="p-2 border-b border-emerald-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
             document.getElementById('tbody-samp-seaweed').appendChild(tr);
         }
 
@@ -1006,35 +945,22 @@
             document.getElementById('tbody-health').appendChild(tr);
         }
 
-        function addFeedRow() {
-            const tbody = document.getElementById('tbody-feed');
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-32"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-20 font-bold text-blue-700">${cageOptions}</select></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-28 italic"><option>T. blochii</option><option>P. homarus</option></select></td><td class="p-2 border-b border-slate-200 border-r"><input type="text" class="w-24" placeholder="Pellet/Trash"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.001" class="w-16 in-07" oninput="calcRowFeed(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.001" class="w-16 in-12" oninput="calcRowFeed(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.001" class="w-16 in-15" oninput="calcRowFeed(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.001" class="w-16 in-17" oninput="calcRowFeed(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-slate-200"><input type="number" readonly class="w-20 text-slate-800 font-bold out-daily"></td><td class="p-2 border-b border-slate-200 border-r bg-white"><input type="number" step="0.001" class="w-20 in-prev" oninput="calcRowFeed(this)"></td><td class="p-2 border-b border-slate-200 border-r bg-blue-100"><input type="number" readonly class="w-20 text-blue-800 font-bold out-total"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-24"><option>High</option><option>Normal</option><option>Low</option></select></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
-            tbody.appendChild(tr);
-        }
-
         function addHarvFishRow() {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td class="p-2 border-b border-emerald-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="time" class="w-20"></td><td class="p-2 border-b border-emerald-200 border-r"><select class="w-20 font-bold text-emerald-700">${cageOptions}</select></td><td class="p-2 border-b border-emerald-200 border-r"><select class="w-28 italic"><option>T. blochii</option><option>P. homarus</option></select></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-16 in-sc" oninput="calcHarvFish(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" step="0.01" class="w-24 in-sw" oninput="calcHarvFish(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-100/50"><input type="number" readonly class="w-20 text-emerald-800 font-bold out-mbw"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-24 in-pop" oninput="calcHarvFish(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-100/50 font-bold text-emerald-700"><input type="number" readonly class="w-28 out-bio"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-24 in-pr" oninput="calcHarvFish(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-200 text-emerald-900 font-bold"><input type="text" readonly class="w-32 out-rev"></td><td class="p-2 border-b border-emerald-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
+            tr.innerHTML = `<td class="p-2 border-b border-emerald-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="time" class="w-20"></td><td class="p-2 border-b border-emerald-200 border-r"><select class="w-20 font-bold text-emerald-700">${cageOptions}</select></td><td class="p-2 border-b border-emerald-200 border-r"><select class="w-28 italic"><option>T. blochii</option><option>P. homarus</option></select></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-16 in-sc" oninput="calcHarvFish(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" step="0.01" class="w-20 in-sw" oninput="calcHarvFish(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-100/50"><input type="number" readonly class="w-16 text-emerald-800 font-bold out-mbw"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-20 in-pop" oninput="calcHarvFish(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-100/50 text-emerald-700 font-bold"><input type="number" readonly class="w-24 out-bio"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-24 in-pr" oninput="calcHarvFish(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-200 text-emerald-900 font-bold"><input type="number" readonly class="w-28 out-rev"></td><td class="p-2 border-b border-emerald-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
             document.getElementById('tbody-harv-fish').appendChild(tr);
         }
 
         function addHarvOysterRow() {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td class="p-2 border-b border-emerald-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="time" class="w-20"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-20 font-bold"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-28 italic" placeholder="Crassostrea"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-16"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" step="0.1" class="w-24 in-len" oninput="calcHarvOys(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-24 in-pop" oninput="calcHarvOys(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-24 in-pr" oninput="calcHarvOys(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-200 text-emerald-900 font-bold"><input type="text" readonly class="w-32 out-rev"></td><td class="p-2 border-b border-emerald-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
+            tr.innerHTML = `<td class="p-2 border-b border-emerald-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="time" class="w-20"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-20 font-bold"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-28 italic" placeholder="Crassostrea"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-16"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" step="0.1" class="w-20 in-len" oninput="calcHarvOys(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-20 in-pop" oninput="calcHarvOys(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-24 in-pr" oninput="calcHarvOys(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-200 text-emerald-900 font-bold"><input type="text" readonly class="w-32 out-rev"></td><td class="p-2 border-b border-emerald-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
             document.getElementById('tbody-harv-oyster').appendChild(tr);
         }
 
         function addHarvSeaweedRow() {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td class="p-2 border-b border-emerald-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-24 font-bold"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-28 italic" placeholder="Eucheuma"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" step="0.1" class="w-24 in-wt" oninput="calcHarvSW(this)"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="number" class="w-16"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-100/50"><input type="number" step="0.1" class="w-20"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" step="0.1" class="w-24"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-24 in-pr" oninput="calcHarvSW(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-200 text-emerald-900 font-bold"><input type="text" readonly class="w-32 out-rev"></td><td class="p-2 border-b border-emerald-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
+            tr.innerHTML = `<td class="p-2 border-b border-emerald-200 border-r"><input type="date" class="w-28"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-20 font-bold"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="text" class="w-28 italic" placeholder="Eucheuma"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" step="0.1" class="w-20 in-wt" oninput="calcHarvSW(this)"></td><td class="p-2 border-b border-emerald-200 border-r"><input type="number" class="w-16"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-100/50"><input type="number" step="0.1" class="w-16"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" step="0.1" class="w-20"></td><td class="p-2 border-b border-emerald-200 border-r bg-white"><input type="number" class="w-24 in-pr" oninput="calcHarvSW(this)"></td><td class="p-2 border-b border-emerald-200 border-r bg-emerald-200 text-emerald-900 font-bold"><input type="text" readonly class="w-32 out-rev"></td><td class="p-2 border-b border-emerald-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
             document.getElementById('tbody-harv-seaweed').appendChild(tr);
-        }
-
-        function addPlanHistoryRow() {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-32"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-20 font-bold text-slate-700">${cageOptions}</select></td><td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-32"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.01" class="w-24"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.01" class="w-24"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-24 font-semibold text-emerald-600"><option>Active</option><option>Completed</option><option>Archived</option></select></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
-            document.getElementById('tbody-plan-history').appendChild(tr);
         }
 
         // --- CALCULATION LOGIC ---
@@ -1056,7 +982,7 @@
 
         function calcRowBiomass(el) {
             let tr = el.closest('tr');
-            let stockNum = 1000; // Mock base for SR calculation
+            let stockNum = 1000; // Mock
             let sampleWt = parseFloat(tr.querySelector('.in-swt').value) || 0; let sampleCt = parseFloat(tr.querySelector('.in-sct').value) || 0; let accumFeed = parseFloat(tr.querySelector('.in-afeed').value) || 0; let accumMortal = parseFloat(tr.querySelector('.in-amort').value) || 0;
             let currentMbw = 0;
             if (sampleWt > 0 && sampleCt > 0) { currentMbw = (sampleWt * 1000) / sampleCt; tr.querySelector('.out-mbw').value = currentMbw.toFixed(2); } else tr.querySelector('.out-mbw').value = '';
@@ -1073,57 +999,21 @@
         const rpFormatter = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 });
         function calcHarvFish(el) {
             let tr = el.closest('tr');
-            let sw = parseFloat(tr.querySelector('.in-sw').value) || 0; let sc = parseFloat(tr.querySelector('.in-sc').value) || 0;
-            let pop = parseFloat(tr.querySelector('.in-pop').value) || 0; let pr = parseFloat(tr.querySelector('.in-pr').value) || 0;
-            let mbw = (sw > 0 && sc > 0) ? (sw * 1000) / sc : 0;
-            tr.querySelector('.out-mbw').value = mbw > 0 ? mbw.toFixed(2) : '';
-            let bio = (mbw * pop) / 1000;
-            tr.querySelector('.out-bio').value = bio > 0 ? bio.toFixed(2) : '';
-            tr.querySelector('.out-rev').value = (bio > 0 && pr > 0) ? rpFormatter.format(bio * pr) : '';
+            let sw = parseFloat(tr.querySelector('.in-sw').value) || 0; let sc = parseFloat(tr.querySelector('.in-sc').value) || 0; let pop = parseFloat(tr.querySelector('.in-pop').value) || 0; let pr = parseFloat(tr.querySelector('.in-pr').value) || 0;
+            let mbw = (sw > 0 && sc > 0) ? (sw * 1000) / sc : 0; tr.querySelector('.out-mbw').value = mbw > 0 ? mbw.toFixed(2) : '';
+            let bio = (mbw * pop) / 1000; tr.querySelector('.out-bio').value = bio > 0 ? bio.toFixed(2) : '';
+            tr.querySelector('.out-rev').value = (bio > 0 && pr > 0) ? (bio * pr).toFixed(0) : '';
         }
         function calcHarvOys(el) {
             let tr = el.closest('tr');
             let len = parseFloat(tr.querySelector('.in-len').value) || 0; let pop = parseFloat(tr.querySelector('.in-pop').value) || 0; let pr = parseFloat(tr.querySelector('.in-pr').value) || 0;
-            tr.querySelector('.out-rev').value = (len > 0 && pop > 0 && pr > 0) ? rpFormatter.format(len * pop * pr) : '';
+            tr.querySelector('.out-rev').value = (len > 0 && pop > 0 && pr > 0) ? (len * pop * pr).toFixed(0) : '';
         }
         function calcHarvSW(el) {
             let tr = el.closest('tr');
             let wt = parseFloat(tr.querySelector('.in-wt').value) || 0; let pr = parseFloat(tr.querySelector('.in-pr').value) || 0;
-            tr.querySelector('.out-rev').value = (wt > 0 && pr > 0) ? rpFormatter.format(wt * pr) : '';
+            tr.querySelector('.out-rev').value = (wt > 0 && pr > 0) ? (wt * pr).toFixed(0) : '';
         }
-
-        // Initialize empty rows & charts
-        document.addEventListener('DOMContentLoaded', () => {
-            addSiteRow(); 
-            addCycleFishRow(); addCycleOysterRow(); addCycleSeaweedRow();
-            addSampFishRow(); addSampOysterRow(); addSampSeaweedRow();
-            addFeedRow(); addPlanHistoryRow();
-            addHealthRow();
-            addHarvFishRow(); addHarvOysterRow(); addHarvSeaweedRow();
-            
-            // Switch to initial commodity view
-            const initBtn = document.querySelector('.commodity-tab');
-            if(initBtn) switchCommodity('fish', initBtn);
-            
-            // Map Setup
-            map = L.map('map').setView([-7.0, 124.0], 5);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-            function generatePopupHTML(siteName, statusData, isOptimal) {
-                const statusColorClass = isOptimal ? 'border-green-500 text-green-600' : 'border-orange-500 text-orange-600';
-                const statusIcon = isOptimal ? 'fa-check-circle' : 'fa-triangle-exclamation';
-                const statusText = isOptimal ? 'OPTIMAL CONDITION' : 'WARNING: LOW DO';
-                let tableRows = '';
-                for (const [key, val] of Object.entries(statusData)) { tableRows += `<tr><td class="font-semibold py-0.5 text-gray-600">${key}:</td><td class="text-right text-gray-800">${val}</td></tr>`; }
-                return `<div class="text-sm font-sans p-1"><h4 class="font-bold text-gray-800 text-base mb-2">${siteName} IoT</h4><div class="border ${statusColorClass} font-bold text-center rounded py-1 mb-3 text-xs bg-white"><i class="fa-solid ${statusIcon}"></i> ${statusText}</div><table class="w-full text-xs">${tableRows}</table></div>`;
-            }
-
-            const ekasData = { "Temperature": "29.70 °C", "Depth": "2.19 m", "Dissolved Oxygen": "7.62 mg/L", "pH": "7.80" };
-            L.marker([-8.868, 116.452]).addTo(map).bindPopup(generatePopupHTML('Ekas Bay (IMTA)', ekasData, true));
-            const kupangData = { "Temperature": "28.50 °C", "Depth": "1.80 m", "Dissolved Oxygen": "6.80 mg/L", "pH": "8.10" };
-            L.marker([-10.158, 123.596]).addTo(map).bindPopup(generatePopupHTML('Kupang Bay', kupangData, true));
-            const keiData = { "Temperature": "30.10 °C", "Depth": "2.40 m", "Dissolved Oxygen": "<span class='text-red-500 font-bold'>3.80 mg/L</span>", "pH": "7.20" };
-            L.marker([-5.756, 132.732]).addTo(map).bindPopup(generatePopupHTML('Kei Islands', keiData, false));
-        });
 
         // --- IOT PANEL ---
         const iotDataLive = {
@@ -1132,6 +1022,7 @@
             'kei': { name: 'Kei Islands', lat: -5.756, lng: 132.732, do: 3.80, temp: 30.1, ph: 7.2, sal: 33.0, turb: 12.4, am: 0.18 }
         };
 
+        let map;
         function updateIoTPanel() {
             const node = document.getElementById('iot-node-select').value;
             const d = iotDataLive[node];
@@ -1141,44 +1032,21 @@
             const doBg = d.do < 4 ? 'bg-red-50 border-red-200' : 'bg-emerald-50 border-emerald-100';
 
             container.innerHTML = `
-                <div class="p-3 rounded-xl border ${doBg} flex flex-col justify-center shadow-sm">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">DO (mg/L)</span>
-                    <span class="text-2xl font-black ${doColor}">${d.do.toFixed(2)}</span>
-                </div>
-                <div class="p-3 rounded-xl border border-slate-200 bg-white flex flex-col justify-center shadow-sm">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Temp (°C)</span>
-                    <span class="text-2xl font-black text-slate-700">${d.temp.toFixed(1)}</span>
-                </div>
-                <div class="p-3 rounded-xl border border-slate-200 bg-white flex flex-col justify-center shadow-sm">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">pH Level</span>
-                    <span class="text-2xl font-black text-slate-700">${d.ph.toFixed(1)}</span>
-                </div>
-                <div class="p-3 rounded-xl border border-slate-200 bg-white flex flex-col justify-center shadow-sm">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Salinity (ppt)</span>
-                    <span class="text-2xl font-black text-slate-700">${d.sal.toFixed(1)}</span>
-                </div>
-                <div class="p-3 rounded-xl border border-slate-200 bg-white flex flex-col justify-center shadow-sm">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Ammonia (mg/L)</span>
-                    <span class="text-2xl font-black text-slate-700">${d.am.toFixed(2)}</span>
-                </div>
-                <div class="p-3 rounded-xl border border-slate-200 bg-white flex flex-col justify-center shadow-sm">
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Turbidity (NTU)</span>
-                    <span class="text-2xl font-black text-slate-700">${d.turb.toFixed(1)}</span>
-                </div>
+                <div class="p-3 rounded-xl border ${doBg} flex flex-col justify-center shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">DO (mg/L)</span><span class="text-2xl font-black ${doColor}">${d.do.toFixed(2)}</span></div>
+                <div class="p-3 rounded-xl border border-slate-200 bg-white flex flex-col justify-center shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Temp (°C)</span><span class="text-2xl font-black text-slate-700">${d.temp.toFixed(1)}</span></div>
+                <div class="p-3 rounded-xl border border-slate-200 bg-white flex flex-col justify-center shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">pH Level</span><span class="text-2xl font-black text-slate-700">${d.ph.toFixed(1)}</span></div>
+                <div class="p-3 rounded-xl border border-slate-200 bg-white flex flex-col justify-center shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Salinity (ppt)</span><span class="text-2xl font-black text-slate-700">${d.sal.toFixed(1)}</span></div>
+                <div class="p-3 rounded-xl border border-slate-200 bg-white flex flex-col justify-center shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Ammonia (mg/L)</span><span class="text-2xl font-black text-slate-700">${d.am.toFixed(2)}</span></div>
+                <div class="p-3 rounded-xl border border-slate-200 bg-white flex flex-col justify-center shadow-sm"><span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Turbidity (NTU)</span><span class="text-2xl font-black text-slate-700">${d.turb.toFixed(1)}</span></div>
             `;
             
             document.getElementById('iot-sync-time').innerText = new Date().toLocaleTimeString();
-            if(map && !document.getElementById('view-map').classList.contains('hidden')) map.flyTo([d.lat, d.lng], 12, { animate: true, duration: 1.5 });
+            if(map) map.flyTo([d.lat, d.lng], 12, { animate: true, duration: 1.5 });
         }
 
         // --- POMPANO PROJECTION ---
         const pompanoStandardRates = [
-            [50.00, 5.0], [50.80, 5.0], [51.60, 5.0], [52.40, 5.0], [53.20, 5.0], [54.00, 5.0], [54.80, 5.0], [55.60, 5.0], [56.40, 5.0], [57.20, 5.0], [58.20, 5.0], [59.20, 5.0], [60.20, 5.0], [61.20, 5.0], [62.20, 5.0], [63.20, 5.0], [64.20, 5.0], [65.20, 5.0], [66.20, 5.0], [67.20, 5.0], [68.40, 5.0], [69.60, 5.0], [70.80, 5.0], [72.00, 5.0], [73.20, 5.0], [74.40, 5.0], [75.60, 5.0], [76.80, 5.0], [78.00, 5.0], [79.20, 5.0], 
-            [80.60, 4.5], [82.00, 4.5], [83.40, 4.5], [84.80, 4.5], [86.20, 4.5], [87.60, 4.5], [89.00, 4.5], [90.40, 4.5], [91.80, 4.5], [93.20, 4.5], [94.80, 4.5], [96.40, 4.5], [98.00, 4.5], [99.60, 4.5], [101.20, 4.5], [102.80, 4.5], [104.40, 4.5], [106.00, 4.5], [107.60, 4.5], [109.20, 4.5], [111.00, 4.5], [112.80, 4.5], [114.60, 4.5], [116.40, 4.5], [118.20, 4.5], [120.00, 4.5], [121.80, 4.5], [123.60, 4.5], 
-            [125.40, 3.8], [127.20, 3.8], [129.40, 3.8], [131.60, 3.8], [133.80, 3.8], [136.00, 3.8], [138.20, 3.8], [140.40, 3.8], [142.60, 3.8], [144.80, 3.8], [147.00, 3.8], [149.20, 3.8], [151.80, 3.8], [154.40, 3.8], [157.00, 3.8], [159.60, 3.8], [162.20, 3.8], [164.80, 3.8], [167.40, 3.8], [170.00, 3.8], [172.60, 3.8], [175.20, 3.8], [178.20, 3.8], [181.20, 3.8], [184.20, 3.8], [187.20, 3.8], [190.20, 3.8], [193.20, 3.8], [196.20, 3.8], [199.20, 3.8], 
-            [202.20, 3.5], [205.20, 3.5], [208.20, 3.5], [211.20, 3.5], [214.20, 3.5], [217.20, 3.5], [220.20, 3.5], [223.20, 3.5], [226.20, 3.5], [229.20, 3.5], [232.20, 3.5], [235.20, 3.5], [238.20, 3.5], [241.20, 3.5], [244.20, 3.5], [247.20, 3.5], 
-            [250.20, 3.3], [253.20, 3.3], [256.20, 3.3], [259.20, 3.3], [262.20, 3.3], [265.20, 3.3], [268.20, 3.3], [271.20, 3.3], [274.20, 3.3], [277.20, 3.3], [280.20, 3.3], [283.20, 3.3], [286.20, 3.3], [289.20, 3.3], [292.20, 3.3], [296.20, 3.3], 
-            [300.70, 3.0], [305.20, 3.0], [309.70, 3.0], [314.20, 3.0], [318.70, 3.0], [323.20, 3.0], [327.70, 3.0], [332.20, 3.0], [336.70, 3.0], [341.20, 3.0], [345.70, 3.0], [350.20, 3.0], [354.70, 3.0], [359.20, 3.0], [363.70, 3.0], [368.20, 3.0], [372.70, 3.0], [377.20, 3.0], [381.70, 3.0], [386.20, 3.0], [391.80, 3.0], [397.40, 3.0], [403.00, 3.0], [408.60, 3.0], [414.20, 3.0], [419.80, 3.0], [425.40, 3.0], [431.00, 3.0], [436.60, 3.0], [441.10, 3.0], [445.60, 3.0], [450.10, 3.0], [454.60, 3.0], [459.10, 3.0], [463.60, 3.0], [468.10, 3.0], [472.60, 3.0], [477.10, 3.0], [481.60, 3.0], [486.10, 3.0], [490.60, 3.0], [495.10, 3.0], [499.60, 3.0], [504.10, 3.0], [508.60, 3.0], [513.10, 3.0], [517.60, 3.0], [522.10, 3.0], [526.60, 3.0], [531.10, 3.0]
+            [50.00, 5.0], [80.60, 4.5], [125.40, 3.8], [202.20, 3.5], [250.20, 3.3], [300.70, 3.0], [531.10, 3.0]
         ];
         pompanoStandardRates.sort((a, b) => b[0] - a[0]);
 
@@ -1192,23 +1060,13 @@
 
         let lastCalculatedTotalFeed = 0;
         function generateProjection() {
-            const startDateInput = document.getElementById('projDate').value; 
-            const startDoc = parseInt(document.getElementById('projDoc').value) || 0; 
-            const pop = parseInt(document.getElementById('projPop').value) || 0; 
-            const currentMbw = parseFloat(document.getElementById('projCurrentMbw').value) || 0; 
-            const targetMbw = parseFloat(document.getElementById('projTargetMbw').value) || 0; 
-            const feedDays = parseInt(document.getElementById('projDays').value) || 13;
-            
+            const startDateInput = document.getElementById('projDate').value; const startDoc = parseInt(document.getElementById('projDoc').value) || 0; const pop = parseInt(document.getElementById('projPop').value) || 0; const currentMbw = parseFloat(document.getElementById('projCurrentMbw').value) || 0; const targetMbw = parseFloat(document.getElementById('projTargetMbw').value) || 0; const feedDays = parseInt(document.getElementById('projDays').value) || 13;
             const tbody = document.getElementById('projectionTableBody'); tbody.innerHTML = '';
             const adg = (targetMbw - currentMbw) / feedDays;
             let cumulativeFeed = 0; let currentDate = new Date(startDateInput);
 
             for (let i = 0; i < feedDays; i++) {
-                let dayMbw = currentMbw + (i * adg); 
-                let dayBiomass = (dayMbw * pop) / 1000; 
-                let feedRate = getPompanoFeedRate(dayMbw); 
-                let dailyFeed = dayBiomass * (feedRate / 100);
-                
+                let dayMbw = currentMbw + (i * adg); let dayBiomass = (dayMbw * pop) / 1000; let feedRate = getPompanoFeedRate(dayMbw); let dailyFeed = dayBiomass * (feedRate / 100);
                 cumulativeFeed += dailyFeed;
                 let dateStr = currentDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
                 let tr = `<tr class="hover:bg-slate-50"><td class="px-4 py-2 border-b">${startDoc + i}</td><td class="px-4 py-2 border-b font-medium">${dateStr}</td><td class="px-4 py-2 border-b">${pop.toFixed(2)}</td><td class="px-4 py-2 border-b">${dayMbw.toFixed(2)}</td><td class="px-4 py-2 border-b text-blue-600 font-bold">${adg.toFixed(2)}</td><td class="px-4 py-2 border-b bg-slate-50">${dayBiomass.toFixed(2)}</td><td class="px-4 py-2 border-b bg-red-50 text-red-700">${feedRate.toFixed(1)}</td><td class="px-4 py-2 border-b bg-red-50 text-red-700 font-bold">${dailyFeed.toFixed(2)}</td><td class="px-4 py-2 border-b bg-red-50 text-blue-700 font-bold">${cumulativeFeed.toFixed(2)}</td></tr>`;
@@ -1226,7 +1084,44 @@
             tr.innerHTML = `<td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-32" value="${today}"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-20 font-bold text-slate-700">${cageOptions.replace('value="'+cage+'"', 'value="'+cage+'" selected')}</select></td><td class="p-2 border-b border-slate-200 border-r"><input type="date" class="w-32" value="${date}"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.01" class="w-24" value="${target}"></td><td class="p-2 border-b border-slate-200 border-r"><input type="number" step="0.01" class="w-24" value="${totalFeed}"></td><td class="p-2 border-b border-slate-200 border-r"><select class="w-24 font-semibold text-emerald-600"><option>Active</option><option>Completed</option><option>Archived</option></select></td><td class="p-2 border-b border-slate-200 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button></td>`;
             tbody.appendChild(tr);
         }
-        setTimeout(generateProjection, 500);
+
+        // --- INIT & CHART RENDERER ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render basic view tables
+            addSiteRow(); addFarmMasterRow();
+            addCycleFishRow(); addCycleOysterRow(); addCycleSeaweedRow();
+            addSampFishRow(); addSampOysterRow(); addSampSeaweedRow();
+            addFeedRow(); addPlanHistoryRow(); addHealthRow();
+            addHarvFishRow(); addHarvOysterRow(); addHarvSeaweedRow();
+            
+            // Map Setup
+            map = L.map('map').setView([-7.0, 124.0], 5);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            function generatePopupHTML(siteName, statusData, isOptimal) {
+                const statusColorClass = isOptimal ? 'border-green-500 text-green-600' : 'border-orange-500 text-orange-600';
+                const statusIcon = isOptimal ? 'fa-check-circle' : 'fa-triangle-exclamation';
+                const statusText = isOptimal ? 'OPTIMAL CONDITION' : 'WARNING: LOW DO';
+                let tableRows = '';
+                for (const [key, val] of Object.entries(statusData)) { tableRows += `<tr><td class="font-semibold py-0.5 text-gray-600">${key}:</td><td class="text-right text-gray-800">${val}</td></tr>`; }
+                return `<div class="text-sm font-sans p-1"><h4 class="font-bold text-gray-800 text-base mb-2">${siteName} IoT</h4><div class="border ${statusColorClass} font-bold text-center rounded py-1 mb-3 text-xs bg-white"><i class="fa-solid ${statusIcon}"></i> ${statusText}</div><table class="w-full text-xs">${tableRows}</table></div>`;
+            }
+
+            L.marker([-8.868, 116.452]).addTo(map).bindPopup(generatePopupHTML('Ekas Bay', { "Temperature": "29.70 °C", "DO": "7.62 mg/L", "pH": "7.80" }, true));
+            L.marker([-10.158, 123.596]).addTo(map).bindPopup(generatePopupHTML('Kupang Bay', { "Temperature": "28.50 °C", "DO": "6.80 mg/L", "pH": "8.10" }, true));
+            L.marker([-5.756, 132.732]).addTo(map).bindPopup(generatePopupHTML('Kei Islands', { "Temperature": "30.10 °C", "DO": "<span class='text-red-500 font-bold'>3.80 mg/L</span>", "pH": "7.20" }, false));
+            updateIoTPanel();
+            
+            // WQ Comparison Chart Setup
+            new Chart(document.getElementById('chartWQComp').getContext('2d'), {
+                type: 'line',
+                data: { labels: ['DOC 1', 'DOC 15', 'DOC 30', 'DOC 45', 'DOC 60'], datasets: [{ label: 'DO (mg/L)', data: [6.8, 6.2, 5.5, 4.8, 4.5], borderColor: '#3b82f6', tension: 0.3, yAxisID: 'y'}, { label: 'Mortality (ind)', data: [2, 5, 12, 25, 40], borderColor: '#f43f5e', borderDash: [5, 5], tension: 0.3, yAxisID: 'y1'}] },
+                options: chartOptions
+            });
+
+            // Initial Tab Selection
+            switchCommodity('fish', document.querySelector('.commodity-tab'));
+            setTimeout(generateProjection, 500);
+        });
 
     </script>
 </body>
