@@ -628,6 +628,8 @@
             }
         }
 
+        let isMapInitialized = false; // Penanda agar peta tidak dimuat berkali-kali
+
         function navigate(viewId, title, btnElement) {
             document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
             const targetView = document.getElementById('view-' + viewId);
@@ -641,14 +643,34 @@
                  else btnElement.classList.add('bg-blue-600', 'text-white', 'shadow');
             }
             if(window.innerWidth < 768) toggleSidebar();
-            if(viewId === 'map' && typeof map !== 'undefined') {
+            
+            // LAZY INITIALIZATION MAP: Hanya render peta jika tab IoT Map dibuka!
+            if(viewId === 'map') {
                 setTimeout(() => { 
-                    map.invalidateSize(); 
-                    if(!document.getElementById('view-map').classList.contains('hidden')) updateIoTPanel(); 
-                }, 100);
+                    if (!isMapInitialized) {
+                        map = L.map('map').setView([-7.0, 124.0], 5);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+                        
+                        function generatePopupHTML(siteName, statusData, isOptimal) {
+                            const statusColorClass = isOptimal ? 'border-green-500 text-green-600' : 'border-orange-500 text-orange-600';
+                            const statusIcon = isOptimal ? 'fa-check-circle' : 'fa-triangle-exclamation';
+                            const statusText = isOptimal ? 'OPTIMAL CONDITION' : 'WARNING: LOW DO';
+                            let tableRows = '';
+                            for (const [key, val] of Object.entries(statusData)) { tableRows += `<tr><td class="font-semibold py-0.5 text-gray-600">${key}:</td><td class="text-right text-gray-800">${val}</td></tr>`; }
+                            return `<div class="text-sm font-sans p-1"><h4 class="font-bold text-gray-800 text-base mb-2">${siteName} IoT</h4><div class="border ${statusColorClass} font-bold text-center rounded py-1 mb-3 text-xs bg-white"><i class="fa-solid ${statusIcon}"></i> ${statusText}</div><table class="w-full text-xs">${tableRows}</table></div>`;
+                        }
+
+                        L.marker([-8.868, 116.452]).addTo(map).bindPopup(generatePopupHTML('Ekas Bay', { "Temperature": "29.70 °C", "DO": "7.62 mg/L", "pH": "7.80" }, true));
+                        L.marker([-10.158, 123.596]).addTo(map).bindPopup(generatePopupHTML('Kupang Bay', { "Temperature": "28.50 °C", "DO": "6.80 mg/L", "pH": "8.10" }, true));
+                        L.marker([-5.756, 132.732]).addTo(map).bindPopup(generatePopupHTML('Kei Islands', { "Temperature": "30.10 °C", "DO": "<span class='text-red-500 font-bold'>3.80 mg/L</span>", "pH": "7.20" }, false));
+                        isMapInitialized = true;
+                    }
+                    map.invalidateSize(); // Wajib ada untuk penyesuaian ukuran div layar
+                    updateIoTPanel(); 
+                }, 200); // 200ms cukup untuk menunggu DOM beralih dari hidden ke block
             }
         }
-
+        
         function switchTab(module, tabName) {
             document.querySelectorAll(`[id^="content-${module}-"]`).forEach(el => el.classList.remove('active'));
             document.querySelectorAll(`[id^="tab-${module}-"]`).forEach(btn => {
